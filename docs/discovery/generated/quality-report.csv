@@ -1,0 +1,7 @@
+﻿check,result,detail
+reactor modules catalogued,PASS,42 of 42 expected
+compose components catalogued,PASS,68 of 68 expected
+unresolved HTTP methods,REVIEW,1
+image-only component internals,REVIEW,2
+source/Compose datastore mismatches,REVIEW,19
+inferred responsibilities and boundaries,REVIEW,All require domain validation

@@ -1,0 +1,4 @@
+service,category,matching_log_lines,since,note
+ts-notification-service,connection_refused,159,2026-08-23T18:02:18.817710Z,matched; raw line withheld to avoid secret leakage
+ts-notification-service,exception,55,2026-08-23T18:02:18.817710Z,matched; raw line withheld to avoid secret leakage
+ts-ui-dashboard,http_5xx,2,2026-08-23T18:02:18.817710Z,matched; raw line withheld to avoid secret leakage

@@ -1,0 +1,2 @@
+caller,callee,remote_ip,remote_port,tcp_state,observation,limitation
+ts-ui-dashboard,ts-travel2-service,172.18.0.41,16346,TIME_WAIT,live_tcp_socket,"connection, not HTTP request count"

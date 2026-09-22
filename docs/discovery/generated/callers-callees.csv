@@ -1,0 +1,43 @@
+﻿service,callers,callees,in_degree,out_degree
+ts-admin-basic-info-service,,ts-config-service; ts-contacts-service; ts-price-service; ts-station-service; ts-train-service,0,5
+ts-admin-order-service,,ts-order-other-service; ts-order-service,0,2
+ts-admin-route-service,,ts-route-service; ts-station-service,0,2
+ts-admin-travel-service,,ts-route-service; ts-station-service; ts-train-service; ts-travel-service; ts-travel2-service,0,5
+ts-admin-user-service,,ts-user-service,0,1
+ts-assurance-service,ts-preserve-other-service; ts-preserve-service,,2,0
+ts-auth-service,ts-user-service,ts-verification-code-service,1,1
+ts-basic-service,ts-preserve-other-service; ts-preserve-service; ts-travel-service; ts-travel2-service,ts-price-service; ts-route-service; ts-station-service; ts-train-service,4,4
+ts-cancel-service,,ts-inside-payment-service; ts-notification-service; ts-order-other-service; ts-order-service; ts-user-service,0,5
+ts-common,,,0,0
+ts-config-service,ts-admin-basic-info-service; ts-seat-service,,2,0
+ts-consign-price-service,ts-consign-service,,1,0
+ts-consign-service,ts-preserve-other-service; ts-preserve-service,ts-consign-price-service,2,1
+ts-contacts-service,ts-admin-basic-info-service; ts-preserve-other-service; ts-preserve-service,,3,0
+ts-delivery-service,,,0,0
+ts-execute-service,,ts-order-other-service; ts-order-service,0,2
+ts-food-delivery-service,,ts-station-food-service,0,1
+ts-food-service,ts-preserve-other-service; ts-preserve-service,ts-station-food-service; ts-train-food-service; ts-travel-service,2,3
+ts-gateway-service,,,0,0
+ts-inside-payment-service,ts-cancel-service; ts-rebook-service,ts-order-other-service; ts-order-service; ts-payment-service,2,3
+ts-notification-service,ts-cancel-service,,1,0
+ts-order-other-service,ts-admin-order-service; ts-cancel-service; ts-execute-service; ts-inside-payment-service; ts-preserve-other-service; ts-rebook-service; ts-seat-service; ts-security-service,ts-station-service,8,1
+ts-order-service,ts-admin-order-service; ts-cancel-service; ts-execute-service; ts-inside-payment-service; ts-preserve-service; ts-rebook-service; ts-seat-service; ts-security-service,ts-station-service,8,1
+ts-payment-service,ts-inside-payment-service,,1,0
+ts-preserve-other-service,,ts-assurance-service; ts-basic-service; ts-consign-service; ts-contacts-service; ts-food-service; ts-order-other-service; ts-seat-service; ts-security-service; ts-station-service; ts-travel2-service; ts-user-service,0,11
+ts-preserve-service,ts-wait-order-service,ts-assurance-service; ts-basic-service; ts-consign-service; ts-contacts-service; ts-food-service; ts-order-service; ts-seat-service; ts-security-service; ts-station-service; ts-travel-service; ts-user-service,1,11
+ts-price-service,ts-admin-basic-info-service; ts-basic-service,,2,0
+ts-rebook-service,,ts-inside-payment-service; ts-order-other-service; ts-order-service; ts-route-service; ts-seat-service; ts-train-service; ts-travel-service; ts-travel2-service,0,8
+ts-route-plan-service,ts-travel-plan-service,ts-route-service; ts-travel-service; ts-travel2-service,1,3
+ts-route-service,ts-admin-route-service; ts-admin-travel-service; ts-basic-service; ts-rebook-service; ts-route-plan-service; ts-travel-service; ts-travel2-service,,7,0
+ts-seat-service,ts-preserve-other-service; ts-preserve-service; ts-rebook-service; ts-travel-plan-service; ts-travel-service; ts-travel2-service,ts-config-service; ts-order-other-service; ts-order-service,6,3
+ts-security-service,ts-preserve-other-service; ts-preserve-service,ts-order-other-service; ts-order-service,2,2
+ts-station-food-service,ts-food-delivery-service; ts-food-service,,2,0
+ts-station-service,ts-admin-basic-info-service; ts-admin-route-service; ts-admin-travel-service; ts-basic-service; ts-order-other-service; ts-order-service; ts-preserve-other-service; ts-preserve-service,,8,0
+ts-train-food-service,ts-food-service,,1,0
+ts-train-service,ts-admin-basic-info-service; ts-admin-travel-service; ts-basic-service; ts-rebook-service; ts-travel-plan-service; ts-travel-service; ts-travel2-service,,7,0
+ts-travel-plan-service,,ts-route-plan-service; ts-seat-service; ts-train-service; ts-travel-service; ts-travel2-service,0,5
+ts-travel-service,ts-admin-travel-service; ts-food-service; ts-preserve-service; ts-rebook-service; ts-route-plan-service; ts-travel-plan-service,ts-basic-service; ts-route-service; ts-seat-service; ts-train-service,6,4
+ts-travel2-service,ts-admin-travel-service; ts-preserve-other-service; ts-rebook-service; ts-route-plan-service; ts-travel-plan-service,ts-basic-service; ts-route-service; ts-seat-service; ts-train-service,5,4
+ts-user-service,ts-admin-user-service; ts-cancel-service; ts-preserve-other-service; ts-preserve-service,ts-auth-service,4,1
+ts-verification-code-service,ts-auth-service,,1,0
+ts-wait-order-service,,ts-preserve-service,0,1

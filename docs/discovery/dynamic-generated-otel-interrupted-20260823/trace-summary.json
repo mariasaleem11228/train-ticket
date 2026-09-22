@@ -1,0 +1,36 @@
+{
+  "exported_at_utc": "2026-08-23T17:45:22.563628+00:00",
+  "jaeger_services": [
+    "jaeger",
+    "ts-auth-service",
+    "ts-config-service",
+    "ts-consign-price-service",
+    "ts-contacts-service",
+    "ts-food-map-service",
+    "ts-inside-payment-service",
+    "ts-order-other-service",
+    "ts-order-service",
+    "ts-payment-service",
+    "ts-price-service",
+    "ts-route-service",
+    "ts-security-service",
+    "ts-station-service",
+    "ts-train-service",
+    "ts-travel-service",
+    "ts-travel2-service",
+    "ts-user-service",
+    "ts-verification-code-service"
+  ],
+  "unique_traces": 217,
+  "scenario_matched_traces": 60,
+  "spans": 453,
+  "cross_service_edge_groups": 1,
+  "scenario_trace_chains": 60,
+  "database_span_groups": 23,
+  "dependency_classifications": {
+    "NOT_EXERCISED": 89,
+    "OBSERVED_IN_BOTH": 1
+  },
+  "unmatched_traces": 157,
+  "classification_note": "UNMATCHED traces are background or outside the controlled workload."
+}

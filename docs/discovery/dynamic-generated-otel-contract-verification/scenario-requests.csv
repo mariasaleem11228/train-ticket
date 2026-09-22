@@ -1,0 +1,10 @@
+timestamp_utc,scenario,iteration,trace_id,method,route,http_status,latency_ms,response_bytes,response_sha256,application_status,application_message,response_shape,result_count,error_type
+2026-08-27T17:29:08.840131+00:00,login,1,f4eb1dbd7210753c1ec0e21da2071e7a,POST,/api/v1/users/login,200,634.541,368,83c0c0c07ce5cba6152d657e501d15e74d9043eb89175763164a69bc8d4f150a,1,login success,dict,,
+2026-08-27T17:29:09.386623+00:00,login,2,2ed389ddb16da92a47e454d8b51920e4,POST,/api/v1/users/login,200,546.146,368,179b6243781b91528933a263ad8c8dc626a32bd102dab3b412d4d226f96bc6f4,1,login success,dict,,
+2026-08-27T17:29:10.143307+00:00,login,3,7692da95e60738431655848fe8a98b0c,POST,/api/v1/users/login,200,756.372,368,a8a5ea854e497a920bd0b45bdf51a060d5671cd6877cbaa6e2eb138d0f8eb066,1,login success,dict,,
+2026-08-27T17:29:14.690953+00:00,search_g_train,1,d90d50061ff457b3286a368c4ecc21ae,POST,/api/v1/travelservice/trips/left,200,4547.354,327,420ba28ba2c14ea0abd6488ee5875ec6f1680c29cc0a25bbfefd288516ecd734,1,Success,dict,1,
+2026-08-27T17:29:19.112105+00:00,search_g_train,2,075fbc0d69d459c13590a9bd0247a9ec,POST,/api/v1/travelservice/trips/left,200,4420.79,327,420ba28ba2c14ea0abd6488ee5875ec6f1680c29cc0a25bbfefd288516ecd734,1,Success,dict,1,
+2026-08-27T17:29:22.125950+00:00,search_g_train,3,4980dcc0a82245b00679ddfe6f938b17,POST,/api/v1/travelservice/trips/left,200,3013.457,327,420ba28ba2c14ea0abd6488ee5875ec6f1680c29cc0a25bbfefd288516ecd734,1,Success,dict,1,
+2026-08-27T17:29:23.957755+00:00,search_d_train,1,eb46e17026bfa11dddddc2c9f5564c09,POST,/api/v1/travel2service/trips/left,200,1831.437,44,0a660a6ee1c3d46862e33601f4d7f8b4b629a1785229e70bcd3da0865b8db8b9,1,Success Query,dict,0,
+2026-08-27T17:29:24.765269+00:00,search_d_train,2,006ab76ca4e0f1fb2e18e5ae92b636ae,POST,/api/v1/travel2service/trips/left,200,806.992,44,0a660a6ee1c3d46862e33601f4d7f8b4b629a1785229e70bcd3da0865b8db8b9,1,Success Query,dict,0,
+2026-08-27T17:29:25.694302+00:00,search_d_train,3,0ec1f635bdf9dad51557bcba443a37bd,POST,/api/v1/travel2service/trips/left,200,928.749,44,0a660a6ee1c3d46862e33601f4d7f8b4b629a1785229e70bcd3da0865b8db8b9,1,Success Query,dict,0,

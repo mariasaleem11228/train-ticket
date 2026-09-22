@@ -1,0 +1,143 @@
+x-otel-environment: &otel-environment
+  JAVA_TOOL_OPTIONS: -javaagent:/otel/opentelemetry-javaagent.jar
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+  OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_METRICS_EXPORTER: none
+  OTEL_LOGS_EXPORTER: none
+  OTEL_PROPAGATORS: tracecontext,baggage
+  OTEL_RESOURCE_ATTRIBUTES: service.namespace=train-ticket,deployment.environment.name=baseline-instrumented
+
+x-otel-volumes: &otel-volumes
+  - ./observability/opentelemetry-javaagent.jar:/otel/opentelemetry-javaagent.jar:ro
+
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2.20.0
+    command: ["--set=receivers.otlp.protocols.grpc.endpoint=0.0.0.0:4317", "--set=receivers.otlp.protocols.http.endpoint=0.0.0.0:4318"]
+    ports:
+      - "16686:16686"
+    networks:
+      - my-network
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.159.0
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    volumes:
+      - ./observability/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    depends_on:
+      - jaeger
+    networks:
+      - my-network
+
+  ts-admin-basic-info-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-admin-basic-info-service }
+    volumes: *otel-volumes
+  ts-admin-order-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-admin-order-service }
+    volumes: *otel-volumes
+  ts-admin-route-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-admin-route-service }
+    volumes: *otel-volumes
+  ts-admin-travel-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-admin-travel-service }
+    volumes: *otel-volumes
+  ts-admin-user-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-admin-user-service }
+    volumes: *otel-volumes
+  ts-assurance-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-assurance-service }
+    volumes: *otel-volumes
+  ts-auth-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-auth-service }
+    volumes: *otel-volumes
+  ts-basic-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-basic-service }
+    volumes: *otel-volumes
+  ts-cancel-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-cancel-service }
+    volumes: *otel-volumes
+  ts-config-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-config-service }
+    volumes: *otel-volumes
+  ts-consign-price-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-consign-price-service }
+    volumes: *otel-volumes
+  ts-consign-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-consign-service }
+    volumes: *otel-volumes
+  ts-contacts-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-contacts-service }
+    volumes: *otel-volumes
+  ts-execute-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-execute-service }
+    volumes: *otel-volumes
+  ts-food-map-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-food-map-service }
+    volumes: *otel-volumes
+  ts-food-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-food-service }
+    volumes: *otel-volumes
+  ts-inside-payment-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-inside-payment-service }
+    volumes: *otel-volumes
+  ts-notification-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-notification-service }
+    volumes: *otel-volumes
+  ts-order-other-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-order-other-service }
+    volumes: *otel-volumes
+  ts-order-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-order-service }
+    volumes: *otel-volumes
+  ts-payment-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-payment-service }
+    volumes: *otel-volumes
+  ts-preserve-other-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-preserve-other-service }
+    volumes: *otel-volumes
+  ts-preserve-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-preserve-service }
+    volumes: *otel-volumes
+  ts-price-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-price-service }
+    volumes: *otel-volumes
+  ts-rebook-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-rebook-service }
+    volumes: *otel-volumes
+  ts-route-plan-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-route-plan-service }
+    volumes: *otel-volumes
+  ts-route-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-route-service }
+    volumes: *otel-volumes
+  ts-seat-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-seat-service }
+    volumes: *otel-volumes
+  ts-security-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-security-service }
+    volumes: *otel-volumes
+  ts-station-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-station-service }
+    volumes: *otel-volumes
+  ts-ticketinfo-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-ticketinfo-service }
+    volumes: *otel-volumes
+  ts-train-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-train-service }
+    volumes: *otel-volumes
+  ts-travel-plan-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-travel-plan-service }
+    volumes: *otel-volumes
+  ts-travel-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-travel-service }
+    volumes: *otel-volumes
+  ts-travel2-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-travel2-service }
+    volumes: *otel-volumes
+  ts-user-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-user-service }
+    volumes: *otel-volumes
+  ts-verification-code-service:
+    environment: { <<: *otel-environment, OTEL_SERVICE_NAME: ts-verification-code-service }
+    volumes: *otel-volumes

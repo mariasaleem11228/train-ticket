@@ -1,0 +1,4 @@
+scenario,method,route,requests,successes,failures,semantic_successes,empty_or_unsuccessful_results,latency_min_ms,latency_mean_ms,latency_median_ms,latency_p95_ms,latency_max_ms
+login,POST,/api/v1/users/login,3,3,0,3,0,546.146,645.686,634.541,744.189,756.372
+search_g_train,POST,/api/v1/travelservice/trips/left,3,3,0,3,0,3013.457,3993.867,4420.79,4534.698,4547.354
+search_d_train,POST,/api/v1/travel2service/trips/left,3,3,0,0,3,806.992,1189.059,928.749,1741.168,1831.437

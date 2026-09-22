@@ -1,0 +1,42 @@
+﻿service,candidate_context,candidate_module,basis,status
+ts-admin-basic-info-service,Administration,administration,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-admin-order-service,Administration,administration,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-admin-route-service,Administration,administration,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-admin-travel-service,Administration,administration,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-admin-user-service,Administration,administration,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-assurance-service,Payment and assurance,payment-and-assurance,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-auth-service,Identity and customer,identity-and-customer,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-basic-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-cancel-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-config-service,Unclassified,unclassified,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-consign-price-service,Consignment,consignment,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-consign-service,Consignment,consignment,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-contacts-service,Identity and customer,identity-and-customer,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-delivery-service,Food and delivery,food-and-delivery,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-execute-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-food-delivery-service,Food and delivery,food-and-delivery,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-food-service,Food and delivery,food-and-delivery,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-gateway-service,Edge and presentation,edge-and-presentation,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-inside-payment-service,Payment and assurance,payment-and-assurance,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-notification-service,Customer communication,customer-communication,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-order-other-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-order-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-payment-service,Payment and assurance,payment-and-assurance,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-preserve-other-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-preserve-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-price-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-rebook-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-route-plan-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-route-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-seat-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-security-service,Identity and customer,identity-and-customer,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-station-food-service,Food and delivery,food-and-delivery,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-station-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-train-food-service,Food and delivery,food-and-delivery,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-train-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-travel-plan-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-travel-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-travel2-service,Rail network and timetable,rail-network-and-timetable,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-user-service,Identity and customer,identity-and-customer,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-verification-code-service,Identity and customer,identity-and-customer,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW
+ts-wait-order-service,Booking and order lifecycle,booking-and-order-lifecycle,service-name keyword heuristic,INFERRED_REQUIRES_REVIEW

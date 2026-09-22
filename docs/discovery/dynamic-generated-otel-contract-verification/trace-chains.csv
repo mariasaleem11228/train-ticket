@@ -1,0 +1,10 @@
+trace_id,scenario,iteration,services,service_count,span_count,trace_duration_ms,error_spans
+006ab76ca4e0f1fb2e18e5ae92b636ae,search_d_train,2,ts-travel2-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service,5,39,731.053,0
+075fbc0d69d459c13590a9bd0247a9ec,search_g_train,2,ts-travel-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service -> ts-train-service -> ts-price-service -> ts-order-service -> ts-seat-service -> ts-config-service,10,171,4435.692,0
+0ec1f635bdf9dad51557bcba443a37bd,search_d_train,3,ts-travel2-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service,5,39,817.597,0
+2ed389ddb16da92a47e454d8b51920e4,login,2,ts-auth-service -> ts-verification-code-service,2,7,554.535,0
+4980dcc0a82245b00679ddfe6f938b17,search_g_train,3,ts-travel-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service -> ts-train-service -> ts-price-service -> ts-order-service -> ts-seat-service -> ts-config-service,10,171,2989.11,0
+7692da95e60738431655848fe8a98b0c,login,3,ts-auth-service -> ts-verification-code-service,2,7,751.594,0
+d90d50061ff457b3286a368c4ecc21ae,search_g_train,1,ts-travel-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service -> ts-train-service -> ts-price-service -> ts-order-service -> ts-seat-service -> ts-config-service,10,171,4498.057,0
+eb46e17026bfa11dddddc2c9f5564c09,search_d_train,1,ts-travel2-service -> ts-ticketinfo-service -> ts-basic-service -> ts-station-service -> ts-route-service,5,39,1938.7,0
+f4eb1dbd7210753c1ec0e21da2071e7a,login,1,ts-auth-service -> ts-verification-code-service,2,7,550.581,0

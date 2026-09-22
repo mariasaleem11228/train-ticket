@@ -1,0 +1,17 @@
+{
+  "reactor_children": 42,
+  "reactor_projects_including_root": 43,
+  "compose_components": 68,
+  "catalog_components": 75,
+  "endpoints": 262,
+  "http_call_sites": 158,
+  "unique_http_edges": 90,
+  "source_data_ownership_rows": 25,
+  "compose_datastores": 25,
+  "duplicated_type_names": 45,
+  "limitations": [
+    "Regex-based static analysis; dynamic URLs may require review.",
+    "Business responsibilities, contexts, modules, and migration order are hypotheses.",
+    "Runtime-discovered calls and image-only internals are not observable from local source."
+  ]
+}

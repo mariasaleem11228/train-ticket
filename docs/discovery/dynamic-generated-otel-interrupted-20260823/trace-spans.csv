@@ -1,0 +1,454 @@
+trace_id,scenario,iteration,span_id,parent_span_id,service,operation,span_kind,start_time_utc,duration_ms,http_method,http_route,http_status,error
+00074a87920ea48d5410139f02d5d24f,UNMATCHED,,a9fcc44af5ac88df,2123f4e57cb65e5d,ts-travel-service,find ts.trip,client,2026-08-23T17:42:50.624261+00:00,1.238,,,,false
+00074a87920ea48d5410139f02d5d24f,UNMATCHED,,2123f4e57cb65e5d,,ts-travel-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.622000+00:00,3.971,,,,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,621adc84011b1547,45e8b8c69e68c7f2,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.073850+00:00,1.59,,,,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,5699a1316b725aad,64b5f475ea2d8b36,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.154195+00:00,0.966,,,,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,5f86b73f89f2a765,e1824753ccde909c,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.053000+00:00,105.445,POST,/api/v1/users/login,200,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,45e8b8c69e68c7f2,5f86b73f89f2a765,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.071997+00:00,4.499,,,,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,64b5f475ea2d8b36,5f86b73f89f2a765,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.152895+00:00,2.668,,,,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,b2f1b696e4e89af8,5f86b73f89f2a765,ts-auth-service,GET,client,2026-08-23T17:44:00.057606+00:00,12.783,GET,,200,false
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,57ff08de1809121d,b2f1b696e4e89af8,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.061000+00:00,10.556,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,b6c85ec734ed1eed,2161b3459f586832,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.052920+00:00,1.39,,,,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,9879b57be9e8439f,3158052819664d04,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.157596+00:00,1.555,,,,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,27caab5bc21cbc86,afd4d4caed0c3248,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.029000+00:00,136.058,POST,/api/v1/users/login,200,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,2161b3459f586832,27caab5bc21cbc86,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.050274+00:00,4.63,,,,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,3158052819664d04,27caab5bc21cbc86,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.156236+00:00,3.862,,,,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,922e68f60e0f9401,27caab5bc21cbc86,ts-auth-service,GET,client,2026-08-23T17:44:01.036835+00:00,10.955,GET,,200,false
+00e6aee41a5234bd08dbcb72bebc1256,login,12,384c73976aa7fd07,922e68f60e0f9401,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.038000+00:00,10.638,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+027a79c5411f04c39668d9712791e8b6,login,15,8605f5c70d71c754,3437e2caf6275c91,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.482463+00:00,1.315,,,,false
+027a79c5411f04c39668d9712791e8b6,login,15,cc187864312d35f0,a8be8bbf295367a5,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.589270+00:00,2.418,,,,false
+027a79c5411f04c39668d9712791e8b6,login,15,fc60b4f40489b5c2,d31cc2ffcb9aa7c0,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.465000+00:00,132.294,POST,/api/v1/users/login,200,false
+027a79c5411f04c39668d9712791e8b6,login,15,3437e2caf6275c91,fc60b4f40489b5c2,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.480534+00:00,3.989,,,,false
+027a79c5411f04c39668d9712791e8b6,login,15,a8be8bbf295367a5,fc60b4f40489b5c2,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.587692+00:00,5.014,,,,false
+027a79c5411f04c39668d9712791e8b6,login,15,43c67f005fb86b08,fc60b4f40489b5c2,ts-auth-service,GET,client,2026-08-23T17:44:01.469067+00:00,8.573,GET,,200,false
+027a79c5411f04c39668d9712791e8b6,login,15,c812603ee6c90f89,43c67f005fb86b08,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.471000+00:00,8.608,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+0445896a7a46440bcd19ef0a8ee14da5,search_d_train,14,4c1d620d08dfbbc8,664fb67a61c49af3,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.506000+00:00,5.526,POST,/api/v1/travel2service/trips/left,200,false
+04cf72c5aae1f8486ac26bb61032de33,UNMATCHED,,d66ea9050719955a,c17be271ca50cdff,ts-order-service,find ts.orders,client,2026-08-23T17:42:43.945051+00:00,3.886,,,,false
+04cf72c5aae1f8486ac26bb61032de33,UNMATCHED,,c17be271ca50cdff,,ts-order-service,OrderRepository.findById,internal,2026-08-23T17:42:43.935000+00:00,15.137,,,,false
+04f560fb114b5bcb400436e1aabf88ef,UNMATCHED,,3c7516eb673c20b8,,ts-food-map-service,TrainFoodRepository.save,internal,2026-08-23T17:41:55.505000+00:00,15.162,,,,false
+04f560fb114b5bcb400436e1aabf88ef,UNMATCHED,,f2951e964cf60fbf,3c7516eb673c20b8,ts-food-map-service,update ts.trainfoods,client,2026-08-23T17:41:55.515206+00:00,4.259,,,,false
+0574696184a47b0683e66ed23128770c,UNMATCHED,,4fc17c94e9a476aa,604e7c9724a874f9,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.492081+00:00,9.704,,,,false
+0574696184a47b0683e66ed23128770c,UNMATCHED,,604e7c9724a874f9,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.484000+00:00,18.315,,,,false
+091d64fc4eedf522c47814b607a88e57,UNMATCHED,,a17069a2deecb5a9,257b8a9cd8be5a01,ts-contacts-service,find ts.contacts,client,2026-08-23T17:42:35.464297+00:00,107.95,,,,false
+091d64fc4eedf522c47814b607a88e57,UNMATCHED,,257b8a9cd8be5a01,,ts-contacts-service,ContactsRepository.findByAccountId,internal,2026-08-23T17:42:33.960000+00:00,2476.2,,,,false
+0a73ba517cb8c631724289175bf86f40,search_d_train,9,94e431f6eb0991be,c537f98821f71b26,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.397000+00:00,7.852,POST,/api/v1/travel2service/trips/left,200,false
+0b7cdd04e13d4f8402c6ebf0cebf6da4,UNMATCHED,,8d3a46bed558d6f3,,jaeger,/api/services,server,2026-08-23T17:34:06.091327+00:00,19.522,GET,/api/services,200,false
+0bff07eb8d030272202b6c70c50fed03,UNMATCHED,,b2303aead291218e,,jaeger,/api/traces,server,2026-08-23T17:44:28.570334+00:00,1.48,GET,/api/traces,200,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,75544de3ccf0f671,9046901798ae9e91,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.258522+00:00,1.272,,,,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,5c920e416b5e1a67,ff124655a210179b,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.335011+00:00,0.841,,,,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,3cf7e6ceb9aaa62f,32fc9ee50373b468,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.181000+00:00,163.705,POST,/api/v1/users/login,200,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,9046901798ae9e91,3cf7e6ceb9aaa62f,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.236027+00:00,24.282,,,,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,ff124655a210179b,3cf7e6ceb9aaa62f,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.334053+00:00,2.132,,,,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,a40f6964ddbb94ed,3cf7e6ceb9aaa62f,ts-auth-service,GET,client,2026-08-23T17:44:00.191545+00:00,42.995,GET,,200,false
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,a26365f85e909f91,a40f6964ddbb94ed,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.202000+00:00,34.82,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+0d8307a876e9fa4e789a044f2b0f8d60,UNMATCHED,,20b1590ee70d5b28,,jaeger,/api/services,server,2026-08-23T17:32:14.408813+00:00,1.499,GET,/api/services,200,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,d341bcbf7320e63e,db849624c37591bd,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.616346+00:00,1.203,,,,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,bdd66bf49e23397f,1938da0c104320f1,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.702798+00:00,1.002,,,,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,2390a3ccf96aabbd,414255c9c0964958,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.595000+00:00,112.685,POST,/api/v1/users/login,200,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,db849624c37591bd,2390a3ccf96aabbd,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.614968+00:00,9.242,,,,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,1938da0c104320f1,2390a3ccf96aabbd,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.701610+00:00,3.147,,,,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,6a9df47a0a5b9e8e,2390a3ccf96aabbd,ts-auth-service,GET,client,2026-08-23T17:44:00.599854+00:00,12.613,GET,,200,false
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,8052eb82b06a88b8,6a9df47a0a5b9e8e,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.603000+00:00,10.317,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+114d86edb7c5ceb261d65ac38efa3b25,UNMATCHED,,e5be76143c3faa8a,ab6e82d3dd2c8ad5,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.213130+00:00,13.893,,,,false
+114d86edb7c5ceb261d65ac38efa3b25,UNMATCHED,,ab6e82d3dd2c8ad5,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.198000+00:00,29.854,,,,false
+12d83cb7af78617c8fbaa29875a80b96,UNMATCHED,,bd6bfd25e712a1d5,,ts-order-other-service,OrderOtherRepository.findByAccountId,internal,2026-08-23T17:42:43.893000+00:00,1803.606,,,,false
+12d83cb7af78617c8fbaa29875a80b96,UNMATCHED,,43c8bd58a6776f41,bd6bfd25e712a1d5,ts-order-other-service,find ts.orders,client,2026-08-23T17:42:45.032920+00:00,77.253,,,,false
+14311b5f19fba03d1d441e05b7a49fab,search_d_train,3,fab57f0f42b22b50,65f499304e55b1e7,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.274000+00:00,6.744,POST,/api/v1/travel2service/trips/left,200,false
+149596f3b9b49534ae97ca35ab68d661,UNMATCHED,,8bb730fe564a7b41,,ts-food-map-service,TrainFoodRepository.findById,internal,2026-08-23T17:41:55.351000+00:00,19.687,,,,false
+149596f3b9b49534ae97ca35ab68d661,UNMATCHED,,b0213491876a5e76,8bb730fe564a7b41,ts-food-map-service,find ts.trainfoods,client,2026-08-23T17:41:55.354942+00:00,14.306,,,,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,516458886f559aea,7f69f8bbe84ccdfb,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.653292+00:00,1.565,,,,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,1de10ec86c04e573,307642943b785998,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.765819+00:00,1.558,,,,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,bd405722cf0c03e6,0331fd57146e35b6,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.625000+00:00,149.818,POST,/api/v1/users/login,200,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,7f69f8bbe84ccdfb,bd405722cf0c03e6,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.651653+00:00,3.831,,,,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,307642943b785998,bd405722cf0c03e6,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.763397+00:00,4.521,,,,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,27a1a2cb5368daf0,bd405722cf0c03e6,ts-auth-service,GET,client,2026-08-23T17:44:01.635815+00:00,13.819,GET,,200,false
+158be9f7dcf6d1866a169d5a4224ec63,login,16,5454dbe663ff7e25,27a1a2cb5368daf0,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.638000+00:00,12.567,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+163e295b06785e164c850f1e2140a734,UNMATCHED,,f67d9dbfcd67d000,,ts-security-service,SecurityRepository.findByName,internal,2026-08-23T17:42:31.202000+00:00,19.783,,,,false
+163e295b06785e164c850f1e2140a734,UNMATCHED,,a2106b67e8962b4d,f67d9dbfcd67d000,ts-security-service,find ts.security_config,client,2026-08-23T17:42:31.214028+00:00,5.125,,,,false
+1802e2858c8f5a1e9c795fc8883138fc,UNMATCHED,,6a9bdd9704f15e36,,jaeger,/api/services,server,2026-08-23T17:32:44.994232+00:00,1.184,GET,/api/services,200,false
+189e6d492026f256a6d4a2aed71487f6,UNMATCHED,,4f6530d5eca063e3,,jaeger,/api/traces,server,2026-08-23T17:44:28.446840+00:00,4.263,GET,/api/traces,200,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,7fdd9cfa4b0178b5,78ee4f4d715a84b9,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:02.088129+00:00,1.267,,,,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,334fd1c0405b3966,45a0680df0e66574,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:02.181053+00:00,2.88,,,,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,c457d295e3cabde4,b55404d481257b65,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:02.075000+00:00,112.241,POST,/api/v1/users/login,200,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,78ee4f4d715a84b9,c457d295e3cabde4,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:02.087084+00:00,2.981,,,,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,45a0680df0e66574,c457d295e3cabde4,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:02.179573+00:00,4.893,,,,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,10b60ac1a9dd9cbe,c457d295e3cabde4,ts-auth-service,GET,client,2026-08-23T17:44:02.079863+00:00,5.961,GET,,200,false
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,1bbba79aca8a5844,10b60ac1a9dd9cbe,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:02.081000+00:00,5.079,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+1ae3cfc77cf549604fe57aee153da98f,UNMATCHED,,c0a0feaf03ef64ea,fc6edecb71a92251,ts-train-service,find ts.trainType,client,2026-08-23T17:42:18.460925+00:00,11.176,,,,false
+1ae3cfc77cf549604fe57aee153da98f,UNMATCHED,,fc6edecb71a92251,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:18.457000+00:00,19.291,,,,false
+1bf3d58d8bc5041b01d7878b6e0948e4,search_d_train,1,381f969bfaf64054,1e639e0481ff3a3f,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:03.740000+00:00,514.081,POST,/api/v1/travel2service/trips/left,200,false
+1c7fd48571ad242ccc13779d9216af9e,search_d_train,18,16af76506abc5279,c1bf07d90cc04ad8,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.589000+00:00,10.582,POST,/api/v1/travel2service/trips/left,200,false
+1d10b88a778e52957a8223d07bf61e7b,UNMATCHED,,1eb89a8032b6ad1d,dcfc8acda709463e,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:23:58.010945+00:00,16.449,,,,false
+1d10b88a778e52957a8223d07bf61e7b,UNMATCHED,,dcfc8acda709463e,,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:23:57.739000+00:00,333.699,,,,false
+1e5d7cbd5b561139e24effacca99d659,UNMATCHED,,a93f5e6f51f3b23e,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.621000+00:00,26.74,,,,false
+1e5d7cbd5b561139e24effacca99d659,UNMATCHED,,f4a119bfc257d985,a93f5e6f51f3b23e,ts-station-service,find ts.station,client,2026-08-23T17:42:34.624171+00:00,12.469,,,,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,5750b9db6eb36051,52aae7092c720e11,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.875307+00:00,2.676,,,,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,a8627bfdfca90f9d,b5ce81fcbb375524,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.992052+00:00,2.279,,,,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,6e9105ac5a466a84,f1a5d355509bac4e,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.850000+00:00,157.472,POST,/api/v1/users/login,200,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,52aae7092c720e11,6e9105ac5a466a84,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.873672+00:00,5.068,,,,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,b5ce81fcbb375524,6e9105ac5a466a84,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.988892+00:00,6.513,,,,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,383078881ad8e8f1,6e9105ac5a466a84,ts-auth-service,GET,client,2026-08-23T17:44:00.857148+00:00,14.373,GET,,200,false
+20663b40b54822e48ffe46e5a1b2afc1,login,11,b85ab152ba93abd8,383078881ad8e8f1,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.860000+00:00,13.058,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+212a3e09656603004721cfb37132117a,UNMATCHED,,11f4cb48a55fc178,f910966219b54c3f,ts-travel-service,find ts.trip,client,2026-08-23T17:42:50.629048+00:00,1.527,,,,false
+212a3e09656603004721cfb37132117a,UNMATCHED,,f910966219b54c3f,,ts-travel-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.627000+00:00,4.423,,,,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,ee831abab631c46e,44ab63c27084dd66,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.804793+00:00,1.589,,,,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,12e456989c882283,3510db353fe27e0e,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.900227+00:00,1.279,,,,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,d92a7abdfabe16fb,41ad72d18c7aa985,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.786000+00:00,120.477,POST,/api/v1/users/login,200,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,44ab63c27084dd66,d92a7abdfabe16fb,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.803368+00:00,3.482,,,,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,3510db353fe27e0e,d92a7abdfabe16fb,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.898678+00:00,3.435,,,,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,4ec912ef4279ccc8,d92a7abdfabe16fb,ts-auth-service,GET,client,2026-08-23T17:44:01.790109+00:00,11.865,GET,,200,false
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,0adddecfe5fd27a2,4ec912ef4279ccc8,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.791000+00:00,11.18,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+2293ec0e54c523ba163b8e4039456368,UNMATCHED,,4b1f49e898be430e,7f1ea49a788c32f7,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.180758+00:00,12.103,,,,false
+2293ec0e54c523ba163b8e4039456368,UNMATCHED,,7f1ea49a788c32f7,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.174000+00:00,24.163,,,,false
+25eb598ce891aa74a006a2b39318a925,search_g_train,8,e280c2e66cca4c7a,b8d12a5979e9ce77,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.309000+00:00,6.31,POST,/api/v1/travelservice/trips/left,200,false
+273da52205019be9bdf56ff1289bcc3c,search_g_train,2,c23d23af98dc34b6,2fc0d6744d0eb35d,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.137000+00:00,7.786,POST,/api/v1/travelservice/trips/left,200,false
+27452d97616d2a95fc1f10efcce40dd2,UNMATCHED,,e9e05330b2f3eb43,,ts-food-map-service,TrainFoodRepository.findById,internal,2026-08-23T17:41:55.500000+00:00,4.748,,,,false
+27452d97616d2a95fc1f10efcce40dd2,UNMATCHED,,52414e5992592068,e9e05330b2f3eb43,ts-food-map-service,find ts.trainfoods,client,2026-08-23T17:41:55.502758+00:00,1.505,,,,false
+27f5cb3a866d54761c42c176809ce3f9,UNMATCHED,,e3301c0f54df5726,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:54.650000+00:00,40.272,,,,false
+27f5cb3a866d54761c42c176809ce3f9,UNMATCHED,,d0bad50477aaaaed,e3301c0f54df5726,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:54.677181+00:00,12.3,,,,false
+2a6a8a89e9f752437ab4da69f347a6a3,UNMATCHED,,7af2b21c9a17e4d2,,jaeger,/api/traces,server,2026-08-23T17:44:28.492174+00:00,0.485,GET,/api/traces,200,false
+2ac1388a7b64d71509f313acadfb3e83,UNMATCHED,,240e07f5ebce5cb9,2c77b9590714b705,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.373514+00:00,4.646,,,,false
+2ac1388a7b64d71509f313acadfb3e83,UNMATCHED,,2c77b9590714b705,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.362000+00:00,16.833,,,,false
+2b29836d3e463213aab9f7db3bbe1458,search_d_train,17,3e5fb9cbd65286fa,12dcb6af88038d28,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.565000+00:00,13.079,POST,/api/v1/travel2service/trips/left,200,false
+2b67361084133b74adf97b01b51a227e,UNMATCHED,,2b92ef4e125f77c3,4722479c19a0126b,ts-consign-price-service,find ts.consign_price,client,2026-08-23T17:42:21.034019+00:00,419.827,,,,false
+2b67361084133b74adf97b01b51a227e,UNMATCHED,,4722479c19a0126b,,ts-consign-price-service,ConsignPriceConfigRepository.findByIndex,internal,2026-08-23T17:42:18.051000+00:00,4800.035,,,,false
+2c7aeaeb6e3d91e20c390138ceb149e9,UNMATCHED,,dc8ab0d795b18166,a9ad6e510129173b,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.480100+00:00,2.144,,,,false
+2c7aeaeb6e3d91e20c390138ceb149e9,UNMATCHED,,a9ad6e510129173b,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.475000+00:00,8.539,,,,false
+30d82003742627dc0dd9d0db142293a7,UNMATCHED,,a81bbb78fa0d8956,c191551a65bfee30,ts-train-service,find ts.trainType,client,2026-08-23T17:42:18.418807+00:00,20.002,,,,false
+30d82003742627dc0dd9d0db142293a7,UNMATCHED,,c191551a65bfee30,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:18.414000+00:00,26.711,,,,false
+30fa9526795a60459dbc98373ee19747,UNMATCHED,,3704e9bcc7474a19,809cf1160f3b409f,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.832590+00:00,4.589,,,,false
+30fa9526795a60459dbc98373ee19747,UNMATCHED,,809cf1160f3b409f,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.741000+00:00,97.112,,,,false
+31265f1a251586ee5fdacc906780be67,UNMATCHED,,ccd367390da0f4a5,5f9ffbb0c145cc45,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.426165+00:00,15.567,,,,false
+31265f1a251586ee5fdacc906780be67,UNMATCHED,,5f9ffbb0c145cc45,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.394000+00:00,48.691,,,,false
+31fd092734f242dc32bcbeca4297b966,UNMATCHED,,429827ebd12dd0a7,,jaeger,/api/traces,server,2026-08-23T17:44:28.601517+00:00,0.606,GET,/api/traces,200,false
+360e149cf49cd1dd8d0e86b188c6ca44,search_g_train,5,0e82937a76f10fe8,9356cda7933364d4,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.214000+00:00,3.855,POST,/api/v1/travelservice/trips/left,200,false
+3887552c3ec3d73a202e2e6c60828ef3,search_d_train,8,0f6fd4307ac3f0ed,cb105b3d3dcba8ff,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.366000+00:00,7.939,POST,/api/v1/travel2service/trips/left,200,false
+39c4164bf212e6849315e9d903a7b4ce,UNMATCHED,,cb4bf586a77fc78b,c3f4dfc9e6ac14a1,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.852765+00:00,4.821,,,,false
+39c4164bf212e6849315e9d903a7b4ce,UNMATCHED,,c3f4dfc9e6ac14a1,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.839000+00:00,19.1,,,,false
+3a07ac2b342d3384786b9a2323a31400,UNMATCHED,,4adadbe45d6f91cf,422279802040f986,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.298052+00:00,5.05,,,,false
+3a07ac2b342d3384786b9a2323a31400,UNMATCHED,,422279802040f986,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.295000+00:00,9.842,,,,false
+3aaa2f82a83c8dc0f493bc91edc5834b,search_g_train,20,cc01bf1da23a94ca,1859288f89ab6308,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.587000+00:00,2.861,POST,/api/v1/travelservice/trips/left,200,false
+3b6f86fe3109d4d01ce4de7490ffc322,search_g_train,3,ae437df33c247ef8,f34978083dce241a,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.157000+00:00,5.096,POST,/api/v1/travelservice/trips/left,200,false
+3c5ac378869f965b49066f82c1e3b924,UNMATCHED,,347f8009dfca916b,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.681000+00:00,26.326,,,,false
+3c5ac378869f965b49066f82c1e3b924,UNMATCHED,,ff0763b722431249,347f8009dfca916b,ts-station-service,find ts.station,client,2026-08-23T17:42:34.693244+00:00,11.426,,,,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,69d3e8da41c4a8ae,df5e2af70368dea6,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.739227+00:00,1.18,,,,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,698fc673799ce8ef,6d70903e709d16c6,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.828642+00:00,1.933,,,,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,3d6a1ac200f1c05b,5f60a19abc339163,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.720000+00:00,115.906,POST,/api/v1/users/login,200,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,df5e2af70368dea6,3d6a1ac200f1c05b,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.737998+00:00,3.127,,,,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,6d70903e709d16c6,3d6a1ac200f1c05b,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.826081+00:00,5.409,,,,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,f2d4255c3be3af9a,3d6a1ac200f1c05b,ts-auth-service,GET,client,2026-08-23T17:44:00.727188+00:00,9.365,GET,,200,false
+3ceea2abd2dcbf51dc76b458160de36c,login,10,ed61fc2be432eb5c,f2d4255c3be3af9a,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.731000+00:00,5.463,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+3d9f68e3cbb91564fab6e5dc9c497815,UNMATCHED,,83354eda579f9248,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:53.306000+00:00,1285.869,,,,false
+3d9f68e3cbb91564fab6e5dc9c497815,UNMATCHED,,5ced0a9c1fc47614,83354eda579f9248,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:54.171931+00:00,148.922,,,,false
+3eecabb1f9eb1c201c3ca35e5dc13763,search_d_train,20,69dac6a2731ab198,689d422eea872cea,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.636000+00:00,6.834,POST,/api/v1/travel2service/trips/left,200,false
+3f51b8ba05f9305dea8d4a165082abcf,UNMATCHED,,5c3f8db85abd052a,07d09a5a1d8c3c2f,ts-price-service,update ts.price_config,client,2026-08-23T17:42:18.017437+00:00,68.138,,,,false
+3f51b8ba05f9305dea8d4a165082abcf,UNMATCHED,,07d09a5a1d8c3c2f,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.958000+00:00,130.682,,,,false
+4100823447f28d2cfd3f96c00be9eb28,UNMATCHED,,39c006ad8e0de414,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:55.280000+00:00,57.238,,,,false
+4100823447f28d2cfd3f96c00be9eb28,UNMATCHED,,9376a973606fd3a3,39c006ad8e0de414,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:55.319843+00:00,15.252,,,,false
+41d95edae3a3645d84466292727b9844,UNMATCHED,,7c90fd4d6fa726b9,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.360000+00:00,65.624,,,,false
+41d95edae3a3645d84466292727b9844,UNMATCHED,,744b8bcb4a22da65,7c90fd4d6fa726b9,ts-station-service,find ts.station,client,2026-08-23T17:42:34.390452+00:00,33.13,,,,false
+41f96d99683477f9afd2d44d6ac8e493,UNMATCHED,,7ae764778edd72e4,,jaeger,/api/services,server,2026-08-23T17:31:21.980839+00:00,1.727,GET,/api/services,200,false
+42a541d4d8412424510897fb28f9dea6,search_g_train,9,8e711dff78004c0f,cc59436c1ba99e44,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.340000+00:00,9.496,POST,/api/v1/travelservice/trips/left,200,false
+45c1f3bdde51fec834a669f2b294f7c2,UNMATCHED,,33ef103069401376,,jaeger,/api/services,server,2026-08-23T17:31:42.080276+00:00,0.203,GET,/api/services,200,false
+45c4cf16a18ce3e30154b6585c88bf3f,UNMATCHED,,17005e41c1bbeb50,,ts-food-map-service,TrainFoodRepository.save,internal,2026-08-23T17:41:55.371000+00:00,53.556,,,,false
+45c4cf16a18ce3e30154b6585c88bf3f,UNMATCHED,,dad73ae8f2f401bf,17005e41c1bbeb50,ts-food-map-service,update ts.trainfoods,client,2026-08-23T17:41:55.412378+00:00,9.289,,,,false
+45d2433f9bb0f4538ded7af8a23c1e47,search_g_train,19,87ed62d2ae8f9e88,9a4828bb994b9dfc,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.558000+00:00,4.136,POST,/api/v1/travelservice/trips/left,200,false
+47a4407153a3f5348e83d9674d96c253,UNMATCHED,,3be8cc1a262be4de,8b26e90d82af93a7,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.288482+00:00,4.858,,,,false
+47a4407153a3f5348e83d9674d96c253,UNMATCHED,,8b26e90d82af93a7,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.282000+00:00,12.375,,,,false
+4868a36cb1bc08577ee0012aea16708a,UNMATCHED,,9591df96462ebf5e,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.503000+00:00,7.194,,,,false
+4868a36cb1bc08577ee0012aea16708a,UNMATCHED,,dc985a6eb2e14923,9591df96462ebf5e,ts-station-service,find ts.station,client,2026-08-23T17:42:34.505630+00:00,3.212,,,,false
+4b3c2eb07ceef47dc715f70143d9da61,search_g_train,18,9cb29fb52d4a4e98,a403d5d691770de4,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.525000+00:00,4.242,POST,/api/v1/travelservice/trips/left,200,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,4fa55b1bc1617a4f,46175d3891e8a1b5,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.198858+00:00,2.308,,,,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,169cc1e5f78e5a3d,167e10332dc855a3,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.306314+00:00,1.2,,,,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,f8ea82421287f38e,1bf108b22bbf60b5,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.174000+00:00,139.991,POST,/api/v1/users/login,200,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,46175d3891e8a1b5,f8ea82421287f38e,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.196268+00:00,7.484,,,,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,167e10332dc855a3,f8ea82421287f38e,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.305161+00:00,2.857,,,,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,2a731d63e6a29853,f8ea82421287f38e,ts-auth-service,GET,client,2026-08-23T17:44:01.182231+00:00,11.885,GET,,200,false
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,2c8ef48310adc479,2a731d63e6a29853,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.184000+00:00,11.408,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+4d4ceb38ed10bbec6b0f98a0abe65311,search_d_train,4,8da8f6d8440a21aa,3f539e4a42c20913,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.289000+00:00,6.555,POST,/api/v1/travel2service/trips/left,200,false
+4ea60d55d13bf261fff9f3ff3f9ea7e3,UNMATCHED,,84bcd518983fc55a,cb23a2f57762cba7,ts-order-service,find ts.orders,client,2026-08-23T17:42:43.962176+00:00,3.921,,,,false
+4ea60d55d13bf261fff9f3ff3f9ea7e3,UNMATCHED,,cb23a2f57762cba7,,ts-order-service,OrderRepository.findById,internal,2026-08-23T17:42:43.956000+00:00,11.562,,,,false
+50542c0416367edb84530513e8aa6d62,UNMATCHED,,7c77ab706d6c6eec,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:54.819000+00:00,123.696,,,,false
+50542c0416367edb84530513e8aa6d62,UNMATCHED,,07e5372721c56a93,7c77ab706d6c6eec,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:54.862218+00:00,27.544,,,,false
+51115a802f29b021f12c5936bafffd45,UNMATCHED,,3d7554b20a879810,,jaeger,/api/services,server,2026-08-23T17:38:17.912150+00:00,469.058,GET,/api/services,200,false
+513d4cf1ac323dfe3108b9ea73f8e961,UNMATCHED,,76917dfc491c0f60,,ts-food-map-service,TrainFoodRepository.save,internal,2026-08-23T17:41:55.476000+00:00,16.569,,,,false
+513d4cf1ac323dfe3108b9ea73f8e961,UNMATCHED,,4850fe5a09bfc353,76917dfc491c0f60,ts-food-map-service,update ts.trainfoods,client,2026-08-23T17:41:55.484986+00:00,5.622,,,,false
+5187d8d1f08a2cd44b023c1de8607ca8,UNMATCHED,,770e555b3c2664fb,9a76e5daebbc64e3,ts-price-service,update ts.price_config,client,2026-08-23T17:42:18.128196+00:00,2.841,,,,false
+5187d8d1f08a2cd44b023c1de8607ca8,UNMATCHED,,9a76e5daebbc64e3,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:18.112000+00:00,19.527,,,,false
+51fe3b93947cc2ef478deabe190be8a8,UNMATCHED,,b99f26761710f183,95ce3a711199fd99,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.597023+00:00,20.55,,,,false
+51fe3b93947cc2ef478deabe190be8a8,UNMATCHED,,95ce3a711199fd99,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.531000+00:00,87.699,,,,false
+5214f0606984fc065869357305e8b5d1,UNMATCHED,,114a386a377a01bf,0127d88610207375,ts-travel-service,find ts.trip,client,2026-08-23T17:42:50.635853+00:00,1.032,,,,false
+5214f0606984fc065869357305e8b5d1,UNMATCHED,,0127d88610207375,,ts-travel-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.632000+00:00,5.364,,,,false
+5396d4c33347f8767486a7574a2092d3,UNMATCHED,,81681b25be78b291,,jaeger,/api/traces,server,2026-08-23T17:44:28.606772+00:00,0.456,GET,/api/traces,200,false
+56e75cfebfb9d392d45e6fda90762706,search_d_train,16,0781191c525ef72d,94cf6340d806b00e,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.531000+00:00,20.992,POST,/api/v1/travel2service/trips/left,200,false
+576e85240870ecedd242c9b32ed94a13,UNMATCHED,,3fd062f8c92294c8,,jaeger,/api/traces,server,2026-08-23T17:44:28.539319+00:00,4.837,GET,/api/traces,200,false
+584f0733038fdb9fa18d3e1791454f5e,UNMATCHED,,70193ea054744f42,,jaeger,/api/services,server,2026-08-23T17:33:05.170188+00:00,1.49,GET,/api/services,200,false
+5b33b0c8f177bd2099e6b4ca907cd432,UNMATCHED,,1ef77abe77656c7f,46429f6312dad10f,ts-price-service,update ts.price_config,client,2026-08-23T17:42:18.183581+00:00,2.046,,,,false
+5b33b0c8f177bd2099e6b4ca907cd432,UNMATCHED,,46429f6312dad10f,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:18.150000+00:00,36.125,,,,false
+5b5b771783f70068d6b372ea36c7255c,UNMATCHED,,8ae8d3d5b44b3036,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:55.208000+00:00,23.59,,,,false
+5b5b771783f70068d6b372ea36c7255c,UNMATCHED,,95848faace9499e3,8ae8d3d5b44b3036,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:55.229100+00:00,1.929,,,,false
+5ee9f232ab16ba0719a9e9d8b0984137,UNMATCHED,,36a3be9395caa034,d654cc93b32216af,ts-route-service,update ts.routes,client,2026-08-23T17:42:22.951502+00:00,122.055,,,,false
+5ee9f232ab16ba0719a9e9d8b0984137,UNMATCHED,,d654cc93b32216af,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:22.607000+00:00,514.023,,,,false
+5f2b382504f2c891d7de35170341c978,search_d_train,5,33a841bfdc852103,06ea33b681eba0e8,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.304000+00:00,7.002,POST,/api/v1/travel2service/trips/left,200,false
+5fe47f68d9e808fb7e935820d81fe362,UNMATCHED,,9bd6925f88611200,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:54.746000+00:00,70.948,,,,false
+5fe47f68d9e808fb7e935820d81fe362,UNMATCHED,,446ff810c5e9a6ed,9bd6925f88611200,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:54.785998+00:00,30.155,,,,false
+602aa2153d8355e75a182252b8a58dbc,UNMATCHED,,a251dd448a2fbb2e,,jaeger,/api/services,server,2026-08-23T17:44:28.364307+00:00,8.73,GET,/api/services,200,false
+60e427958fbbf9e76aab172080ca57ec,UNMATCHED,,132b079e5fff5042,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:54.600000+00:00,49.676,,,,false
+60e427958fbbf9e76aab172080ca57ec,UNMATCHED,,9b9c99f5c14b35f1,132b079e5fff5042,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:54.631120+00:00,18.038,,,,false
+615b97ea7f686bfe0085185745dacdb3,UNMATCHED,,fa279f24b4363952,,ts-food-map-service,TrainFoodRepository.save,internal,2026-08-23T17:41:55.460000+00:00,7.676,,,,false
+615b97ea7f686bfe0085185745dacdb3,UNMATCHED,,32bd476d2ecf05f2,fa279f24b4363952,ts-food-map-service,update ts.trainfoods,client,2026-08-23T17:41:55.463864+00:00,2.625,,,,false
+65fcf1ce585982e536663bab48cdbc29,UNMATCHED,,282e3f2a874857bb,c3ba3951818dc5d9,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.702899+00:00,6.345,,,,false
+65fcf1ce585982e536663bab48cdbc29,UNMATCHED,,c3ba3951818dc5d9,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.694000+00:00,17.139,,,,false
+681c9682641ac274dea009105ac3545a,search_g_train,7,3929c9b4c88e7857,da9c975711158a7a,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.280000+00:00,4.388,POST,/api/v1/travelservice/trips/left,200,false
+68aadaaf4c157f131dc54ba735617694,search_g_train,15,a7ae426728fc34d5,d19f5ad807b2093d,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.480000+00:00,2.786,POST,/api/v1/travelservice/trips/left,200,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,e38426f7a436f5d2,9ba9a34232803848,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:59.952727+00:00,0.997,,,,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,cc759c0c63270830,154a10bbc2bf00bc,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.033865+00:00,1.111,,,,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,68fe17f7683545e1,720de0dba50d7393,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:43:58.315000+00:00,1725.126,POST,/api/v1/users/login,200,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,9ba9a34232803848,68fe17f7683545e1,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:59.951577+00:00,2.659,,,,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,154a10bbc2bf00bc,68fe17f7683545e1,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.032875+00:00,2.575,,,,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,e91a69812a38fc5d,68fe17f7683545e1,ts-auth-service,GET,client,2026-08-23T17:43:58.324637+00:00,1624.764,GET,,200,false
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,39fa4f79b39da2d2,e91a69812a38fc5d,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:43:59.934000+00:00,16.815,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+6a56f80a272a78331a17f084f0065a63,UNMATCHED,,840a0d6b57129d44,b234a547af066490,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.941059+00:00,12.618,,,,false
+6a56f80a272a78331a17f084f0065a63,UNMATCHED,,b234a547af066490,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.925000+00:00,32.66,,,,false
+6b1a5d5fc0d3bfff5b89719ad068cf61,search_d_train,6,c2d96f020073589b,8e73732f1aa33153,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.318000+00:00,11.142,POST,/api/v1/travel2service/trips/left,200,false
+6b4b1e12276968ff23483c0ce1a98c8e,UNMATCHED,,293ef4f72dbe9011,a5874fab5a2dad8a,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.263100+00:00,14.038,,,,false
+6b4b1e12276968ff23483c0ce1a98c8e,UNMATCHED,,a5874fab5a2dad8a,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.258000+00:00,19.625,,,,false
+6d7ce3cf9269389d170887ccf0becb7f,UNMATCHED,,9168520d2960fcce,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.547000+00:00,44.066,,,,false
+6d7ce3cf9269389d170887ccf0becb7f,UNMATCHED,,a63e81cdef614bb7,9168520d2960fcce,ts-station-service,find ts.station,client,2026-08-23T17:42:34.554623+00:00,35.287,,,,false
+6ddd1d54893be7c81aa49bd822d3c637,UNMATCHED,,cde178036d106ff4,,jaeger,/api/services,server,2026-08-23T17:34:26.272042+00:00,0.925,GET,/api/services,200,false
+6df0ae24f915486a48193b504b79d737,search_g_train,11,8a3429d30907fa44,7eac97a9f08cf6b1,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.387000+00:00,4.675,POST,/api/v1/travelservice/trips/left,200,false
+6e2543cc26647f0d71e91823660efe9d,UNMATCHED,,af66c98849df951f,,jaeger,/api/traces,server,2026-08-23T17:44:28.523855+00:00,2.468,GET,/api/traces,200,false
+6ea2f779ea4759c988a907eb52b4c230,UNMATCHED,,08977300667bf601,4e9495df76a77fd0,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.247417+00:00,5.442,,,,false
+6ea2f779ea4759c988a907eb52b4c230,UNMATCHED,,4e9495df76a77fd0,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.233000+00:00,23.751,,,,false
+6ef1491b23977854e64652438ac11d8e,UNMATCHED,,bb78c57c2c038ec0,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.459000+00:00,24.906,,,,false
+6ef1491b23977854e64652438ac11d8e,UNMATCHED,,8f67fe2282f0f0f3,bb78c57c2c038ec0,ts-station-service,find ts.station,client,2026-08-23T17:42:34.476054+00:00,6.547,,,,false
+7032902f50a696f91f3e308d31ef7a4f,UNMATCHED,,f9ecdaad3503d3b7,c1594079eeeddd9f,ts-travel-service,find ts.trip,client,2026-08-23T17:42:50.619924+00:00,1.296,,,,false
+7032902f50a696f91f3e308d31ef7a4f,UNMATCHED,,c1594079eeeddd9f,,ts-travel-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.615000+00:00,6.808,,,,false
+7271d7495a0a7339855a1b556b535b09,login,2,f6abb252c0b9a5b6,ff57f7456fb23a7b,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:57.947751+00:00,1.507,,,,false
+7271d7495a0a7339855a1b556b535b09,login,2,a7e1503868760da0,1a49c1953d39a03b,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:58.053307+00:00,1.289,,,,false
+7271d7495a0a7339855a1b556b535b09,login,2,3fbc2474246d61a4,97e89b77bb0799c7,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:43:57.863000+00:00,200.165,POST,/api/v1/users/login,200,false
+7271d7495a0a7339855a1b556b535b09,login,2,ff57f7456fb23a7b,3fbc2474246d61a4,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:57.944103+00:00,6.247,,,,false
+7271d7495a0a7339855a1b556b535b09,login,2,1a49c1953d39a03b,3fbc2474246d61a4,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:58.052003+00:00,3.109,,,,false
+7271d7495a0a7339855a1b556b535b09,login,2,01ebd63d6b93acdd,3fbc2474246d61a4,ts-auth-service,GET,client,2026-08-23T17:43:57.877618+00:00,63.645,GET,,200,false
+7271d7495a0a7339855a1b556b535b09,login,2,028532781b3c1f01,01ebd63d6b93acdd,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:43:57.898000+00:00,45.145,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+72bf4a2df65349ac1eb31cf0d715c9f9,UNMATCHED,,9e4da83248444f98,372ab5fcfe867e4e,ts-price-service,find ts.price_config,client,2026-08-23T17:42:18.144629+00:00,2.387,,,,false
+72bf4a2df65349ac1eb31cf0d715c9f9,UNMATCHED,,372ab5fcfe867e4e,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:18.135000+00:00,14.17,,,,false
+7300d4ea19da13d79a77a3aae35e3310,UNMATCHED,,2205eeeab8912228,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:55.157000+00:00,9.44,,,,false
+7300d4ea19da13d79a77a3aae35e3310,UNMATCHED,,7f30d26ebe7a0dee,2205eeeab8912228,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:55.159950+00:00,4.309,,,,false
+74adae9cdeb4a6859f6632561a8b1cbb,UNMATCHED,,b8e514b9a0976ba1,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.655000+00:00,21.397,,,,false
+74adae9cdeb4a6859f6632561a8b1cbb,UNMATCHED,,45c8407f05ce2317,b8e514b9a0976ba1,ts-station-service,find ts.station,client,2026-08-23T17:42:34.671238+00:00,2.688,,,,false
+74ae0981b2a44c87d3a351f897ed6fff,UNMATCHED,,efd7f9fd730926f1,3e3235ec08e246ce,ts-train-service,find ts.trainType,client,2026-08-23T17:42:18.402192+00:00,7.22,,,,false
+74ae0981b2a44c87d3a351f897ed6fff,UNMATCHED,,3e3235ec08e246ce,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:18.393000+00:00,17.409,,,,false
+7542396fbbdcaa8612856fe65a98a5c1,UNMATCHED,,44eb076cc878099c,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:51.048000+00:00,2259.637,,,,false
+7542396fbbdcaa8612856fe65a98a5c1,UNMATCHED,,390cfb8df83ae55c,44eb076cc878099c,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:52.899393+00:00,278.172,,,,false
+75d27ac2b5101c51f91f77aec970d2d5,search_d_train,7,fe6b83895e5a31d4,83649ad42fa93052,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.338000+00:00,6.68,POST,/api/v1/travel2service/trips/left,200,false
+75fb8ca66ede2e62ac1c157f10fcd507,UNMATCHED,,a4b292c4c0346f6e,12cf5cad338be7c0,ts-inside-payment-service,find ts.payment,client,2026-08-23T17:42:42.578665+00:00,3.739,,,,false
+75fb8ca66ede2e62ac1c157f10fcd507,UNMATCHED,,12cf5cad338be7c0,,ts-inside-payment-service,PaymentRepository.findById,internal,2026-08-23T17:42:42.560000+00:00,31.761,,,,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,8063e171cc6e760c,da86688eeda30cf6,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:58.140057+00:00,3.82,,,,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,d58bd2e82c662f27,ef6dd2bb9f9f69f6,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:58.285409+00:00,1.491,,,,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,d95892d965f3511c,5e53d50046e2c7af,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:43:58.080000+00:00,214.973,POST,/api/v1/users/login,200,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,da86688eeda30cf6,d95892d965f3511c,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:58.137513+00:00,7.457,,,,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,ef6dd2bb9f9f69f6,d95892d965f3511c,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:58.282841+00:00,5.162,,,,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,4b756cca49da48dd,d95892d965f3511c,ts-auth-service,GET,client,2026-08-23T17:43:58.088210+00:00,46.009,GET,,200,false
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,597b8eaee9448dc1,4b756cca49da48dd,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:43:58.097000+00:00,39.475,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+7788b94ae6613e614a546dd2a20777db,search_d_train,13,d05553942d8e80e8,ae6205ca5ee5d798,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.490000+00:00,9.242,POST,/api/v1/travel2service/trips/left,200,false
+794cc85294381f831a68d05cdb530f22,UNMATCHED,,76ed4c869591b9e1,538612482d45b145,ts-consign-price-service,update ts.consign_price,client,2026-08-23T17:42:23.613133+00:00,67.027,,,,false
+794cc85294381f831a68d05cdb530f22,UNMATCHED,,538612482d45b145,,ts-consign-price-service,ConsignPriceConfigRepository.save,internal,2026-08-23T17:42:22.929000+00:00,800.628,,,,false
+7d4e9d75f24cbad292d78081ab9817c8,UNMATCHED,,9e631157648e8e58,,jaeger,/api/services,server,2026-08-23T17:31:32.028865+00:00,15.154,GET,/api/services,200,false
+80d2fbee50e6f3fd03d8bb0a9acbd1dc,search_g_train,13,575c5e319fb38d6d,9c41328fa074f00d,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.431000+00:00,4.263,POST,/api/v1/travelservice/trips/left,200,false
+84a1c37eac5ac83acab909cf5f795b9b,UNMATCHED,,3af10df33ef95322,,jaeger,/api/services,server,2026-08-23T17:31:00.933001+00:00,457.245,GET,/api/services,200,false
+8626aab9bd7ec8baa98f8a7797663d43,UNMATCHED,,7679b524f434c29a,,jaeger,/api/services,server,2026-08-23T17:32:55.104971+00:00,0.566,GET,/api/services,200,false
+86282243a242e2354203b05bd5e22912,search_g_train,17,c0d3776dea2f72b7,af3c3c8dbc71bda6,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.513000+00:00,6.72,POST,/api/v1/travelservice/trips/left,200,false
+870d481c5ff81850ca225f28b9a2ef93,UNMATCHED,,c7bb53815367fbbb,2930b886aec4848e,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.152676+00:00,5.859,,,,false
+870d481c5ff81850ca225f28b9a2ef93,UNMATCHED,,2930b886aec4848e,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.143000+00:00,15.961,,,,false
+87acf18e8e931fac36dbbe99469193dc,UNMATCHED,,8700e11a4d870b05,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.428000+00:00,16.194,,,,false
+87acf18e8e931fac36dbbe99469193dc,UNMATCHED,,edf56d900edefaa1,8700e11a4d870b05,ts-station-service,find ts.station,client,2026-08-23T17:42:34.436224+00:00,6.854,,,,false
+8875109ee7a5a96470ab7c768c6c81ad,UNMATCHED,,ea2dedb732c081c6,cecee3f3f1d2e062,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.466717+00:00,3.36,,,,false
+8875109ee7a5a96470ab7c768c6c81ad,UNMATCHED,,cecee3f3f1d2e062,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.451000+00:00,19.757,,,,false
+89b148b0bb38c5d0fa001f5c94bca044,search_d_train,12,152b61f76b0cfc2f,ec6377fbd5304614,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.473000+00:00,9.145,POST,/api/v1/travel2service/trips/left,200,false
+8af15f998b9fe276700926a62087e66c,UNMATCHED,,b144845aa533ca8f,73b0f97fa682e336,ts-price-service,find ts.price_config,client,2026-08-23T17:42:17.864351+00:00,11.897,,,,false
+8af15f998b9fe276700926a62087e66c,UNMATCHED,,73b0f97fa682e336,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:17.861000+00:00,16.187,,,,false
+8d65cba0511bdba9a51e1fb69b4b54df,UNMATCHED,,1df85f10bcbfa409,baa3d857d2d49890,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.425741+00:00,17.824,,,,false
+8d65cba0511bdba9a51e1fb69b4b54df,UNMATCHED,,baa3d857d2d49890,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.418000+00:00,30.97,,,,false
+8f043d546134798f95900d3aa63e809a,UNMATCHED,,baacc464078968c0,1e464ebea1fa1472,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.353621+00:00,7.043,,,,false
+8f043d546134798f95900d3aa63e809a,UNMATCHED,,1e464ebea1fa1472,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.349000+00:00,12.596,,,,false
+8fbf9ecf7693d5ae76018f6ffb0c57d2,UNMATCHED,,c3fb7bfd3daee0a7,4dc93262d011578d,ts-train-service,find ts.trainType,client,2026-08-23T17:42:17.328743+00:00,76.396,,,,false
+8fbf9ecf7693d5ae76018f6ffb0c57d2,UNMATCHED,,4dc93262d011578d,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:13.873000+00:00,4385.246,,,,false
+9012898a72774372cfc028a6c5a68631,UNMATCHED,,2fc2a448ff6179f4,,jaeger,/api/traces,server,2026-08-23T17:44:28.496406+00:00,1.169,GET,/api/traces,200,false
+90790768e31f559d62b16927f5b9ef48,search_d_train,15,c26a98d1ab4a630e,de31c6c89e32b428,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.518000+00:00,3.513,POST,/api/v1/travel2service/trips/left,200,false
+90c3a4b0fc7bfb11ff8a7fd39cf787ba,UNMATCHED,,aece82b130988d9b,5409db58e3a11028,ts-contacts-service,find ts.contacts,client,2026-08-23T17:42:36.460548+00:00,7.141,,,,false
+90c3a4b0fc7bfb11ff8a7fd39cf787ba,UNMATCHED,,5409db58e3a11028,,ts-contacts-service,ContactsRepository.findByAccountId,internal,2026-08-23T17:42:36.445000+00:00,24.556,,,,false
+92d00bce9e49fade1a56d263f616cc6d,UNMATCHED,,1dd854de4c6386c1,a20ff7952f5f9599,ts-train-service,find ts.trainType,client,2026-08-23T17:42:18.377746+00:00,2.096,,,,false
+92d00bce9e49fade1a56d263f616cc6d,UNMATCHED,,a20ff7952f5f9599,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:18.373000+00:00,8.253,,,,false
+93a1480e4409a449194395d7b3ca0b36,UNMATCHED,,4a7e3f36d8208a7d,28d967503e2052fe,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.341633+00:00,3.191,,,,false
+93a1480e4409a449194395d7b3ca0b36,UNMATCHED,,28d967503e2052fe,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.333000+00:00,12.346,,,,false
+965c654025075b6fc40a0232cab31a3a,UNMATCHED,,ff9c22f906cd968c,,jaeger,/api/traces,server,2026-08-23T17:44:28.437975+00:00,3.837,GET,/api/traces,200,false
+9707202653532ec2136205644e8cfc2f,UNMATCHED,,54340a0d9ede27e8,0d2df64defb1e9b4,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.723495+00:00,12.589,,,,false
+9707202653532ec2136205644e8cfc2f,UNMATCHED,,0d2df64defb1e9b4,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.712000+00:00,24.736,,,,false
+971c7ff1cb517591fcda567c5f6ef064,UNMATCHED,,4dd2eedecbe4bcc6,,ts-order-other-service,OrderOtherRepository.save,internal,2026-08-23T17:42:45.703000+00:00,377.904,,,,false
+971c7ff1cb517591fcda567c5f6ef064,UNMATCHED,,31414febe03bd99f,4dd2eedecbe4bcc6,ts-order-other-service,update ts.orders,client,2026-08-23T17:42:45.982113+00:00,44.88,,,,false
+97ab6c21eef93b2785eb92b6c6eaade8,UNMATCHED,,c2651486138dfb68,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.486000+00:00,15.445,,,,false
+97ab6c21eef93b2785eb92b6c6eaade8,UNMATCHED,,adf736b6a844e393,c2651486138dfb68,ts-station-service,find ts.station,client,2026-08-23T17:42:34.488634+00:00,2.766,,,,false
+97cb438c03aea4aa9b3d19647a458b0a,UNMATCHED,,07b16ee10d2a9a13,fcc0b0382636bd20,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.196972+00:00,147.967,,,,false
+97cb438c03aea4aa9b3d19647a458b0a,UNMATCHED,,fcc0b0382636bd20,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:15.844000+00:00,1549.341,,,,false
+9b192cd5c22c7e6c7b1e1ac31a2db800,UNMATCHED,,efcb26249fd7ad59,,ts-security-service,SecurityRepository.findByName,internal,2026-08-23T17:42:28.461000+00:00,2708.544,,,,false
+9b192cd5c22c7e6c7b1e1ac31a2db800,UNMATCHED,,009c9c692d8fa451,efcb26249fd7ad59,ts-security-service,find ts.security_config,client,2026-08-23T17:42:30.454760+00:00,122.106,,,,false
+9d2454923e50db2245f62d57c0e315b4,search_g_train,4,e88f8d7703f50404,3ef869f85040b0f4,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.184000+00:00,3.41,POST,/api/v1/travelservice/trips/left,200,false
+9d63649fae5febba656994eeeaba696a,UNMATCHED,,582533537e0b7aef,109e1d2960d651ea,ts-travel2-service,find ts.trip,client,2026-08-23T17:42:50.430481+00:00,1.636,,,,false
+9d63649fae5febba656994eeeaba696a,UNMATCHED,,109e1d2960d651ea,,ts-travel2-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.427000+00:00,6.43,,,,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,1c86283e9f4a2ab9,c146d2204e28ef07,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.339106+00:00,1.037,,,,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,5a5bb0b937476823,3a8a7a28613d417d,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.447582+00:00,1.215,,,,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,3c7800dcb700ad16,81e9b6b2e4227279,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.323000+00:00,133.949,POST,/api/v1/users/login,200,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,c146d2204e28ef07,3c7800dcb700ad16,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.337470+00:00,3.234,,,,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,3a8a7a28613d417d,3c7800dcb700ad16,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.446486+00:00,2.765,,,,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,43b7e444d8c33d4b,3c7800dcb700ad16,ts-auth-service,GET,client,2026-08-23T17:44:01.327255+00:00,8.603,GET,,200,false
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,a9103a5d4ae42717,43b7e444d8c33d4b,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.329000+00:00,7.495,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+a0671c4a2bbc1487513ae84a8e5951a6,UNMATCHED,,94e019e08f3330b0,,jaeger,/api/services,server,2026-08-23T17:33:55.869864+00:00,83.078,GET,/api/services,200,false
+a074b838bfe510ab81bf2d04a0540f2a,UNMATCHED,,ec2e38412744bb16,,jaeger,/api/traces,server,2026-08-23T17:44:28.610577+00:00,1.977,GET,/api/traces,200,false
+a09fcc960a93b490c794d3ea3e829237,UNMATCHED,,c0f1d3555838464d,,jaeger,/api/traces,server,2026-08-23T17:44:28.429771+00:00,2.843,GET,/api/traces,200,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,cad0e828b89226bd,0e3ebae3c12408d4,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.501318+00:00,0.943,,,,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,0587ba6285fdd7b8,9408a8950abb8381,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.575507+00:00,1.905,,,,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,c3750f57b6ba40d2,da24badbb531e72b,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.488000+00:00,93.109,POST,/api/v1/users/login,200,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,0e3ebae3c12408d4,c3750f57b6ba40d2,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.500009+00:00,2.667,,,,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,9408a8950abb8381,c3750f57b6ba40d2,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.574060+00:00,4.019,,,,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,e2e926bc1d4bde53,c3750f57b6ba40d2,ts-auth-service,GET,client,2026-08-23T17:44:00.491159+00:00,7.33,GET,,200,false
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,6b02c1beea7d6753,e2e926bc1d4bde53,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.494000+00:00,5.045,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+a51c0f719f599ed52429b4bfbff1d9b4,UNMATCHED,,f21744b3260903e5,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:54.944000+00:00,111.385,,,,false
+a51c0f719f599ed52429b4bfbff1d9b4,UNMATCHED,,7d38d673fa7a56bf,f21744b3260903e5,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:54.983915+00:00,45.143,,,,false
+a5fde46bbe81c60b2d2647a88c34e4f7,UNMATCHED,,ec854289a514fb3f,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:55.110000+00:00,12.107,,,,false
+a5fde46bbe81c60b2d2647a88c34e4f7,UNMATCHED,,15e887f955b7eeaa,ec854289a514fb3f,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:55.115414+00:00,6.097,,,,false
+a6dca4e4c50ca0ca5ff6494f38fccd32,UNMATCHED,,13e28d58f576cdbc,e0f1bc74e62c5701,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.654815+00:00,8.27,,,,false
+a6dca4e4c50ca0ca5ff6494f38fccd32,UNMATCHED,,e0f1bc74e62c5701,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.619000+00:00,44.461,,,,false
+a7a01aafdfb43f964716e8e35ee4e73c,UNMATCHED,,43e256de2c221147,,jaeger,/api/services,server,2026-08-23T17:33:35.342736+00:00,2.241,GET,/api/services,200,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,ee598fa35a17ef1a,9e5b1d412fe2e32d,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:01.949502+00:00,1.444,,,,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,3dec5ac9846b540f,5119b14f6f47c8f5,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:02.050730+00:00,1.359,,,,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,b62cee74fcc5ff48,26980b1045e2fcb3,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:01.935000+00:00,120.575,POST,/api/v1/users/login,200,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,9e5b1d412fe2e32d,b62cee74fcc5ff48,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:01.948422+00:00,3.305,,,,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,5119b14f6f47c8f5,b62cee74fcc5ff48,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:02.049637+00:00,3.161,,,,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,4840cd21cf1b0e3f,b62cee74fcc5ff48,ts-auth-service,GET,client,2026-08-23T17:44:01.938053+00:00,8.141,GET,,200,false
+a8b120cd2f3c951f39e2c4666de97932,login,18,bc9b2b74ba59b2f4,4840cd21cf1b0e3f,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:01.939000+00:00,8.658,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+aa112ed37aaf195d952be39c97804a84,UNMATCHED,,46c41b452157b954,7b99756a3ec92e50,ts-train-service,find ts.trainType,client,2026-08-23T17:42:18.322218+00:00,3.601,,,,false
+aa112ed37aaf195d952be39c97804a84,UNMATCHED,,7b99756a3ec92e50,,ts-train-service,TrainTypeRepository.findById,internal,2026-08-23T17:42:18.301000+00:00,26.112,,,,false
+ab78664f7fb3ab825c0974fe9bd0a57c,UNMATCHED,,55f94f86dca04c62,,jaeger,/api/services,server,2026-08-23T17:32:34.940756+00:00,0.316,GET,/api/services,200,false
+ab9800fd0e46d074f132d464498afce0,UNMATCHED,,76027923dbc11cef,793f23f2c3ad677e,ts-route-service,find ts.routes,client,2026-08-23T17:42:21.955792+00:00,118.984,,,,false
+ab9800fd0e46d074f132d464498afce0,UNMATCHED,,793f23f2c3ad677e,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:20.098000+00:00,2481.258,,,,false
+ac7a797d8232ca0b9bd23e2d410e6d0f,search_g_train,12,1d8e7ae3a06851d0,c72d03985a6eae0e,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.419000+00:00,5.011,POST,/api/v1/travelservice/trips/left,200,false
+ad46f5824b7b600aa68231b4101f23a4,UNMATCHED,,622f8a078089030c,,jaeger,/api/traces,server,2026-08-23T17:44:28.651065+00:00,0.887,GET,/api/traces,200,false
+ae85096100cdf70dcf64afbc9562478f,UNMATCHED,,392c2bc12bcced6f,374cfef63cce4e3d,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.135595+00:00,5.674,,,,false
+ae85096100cdf70dcf64afbc9562478f,UNMATCHED,,374cfef63cce4e3d,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.118000+00:00,24.275,,,,false
+b20bee7936323ae8fc9f675ef7fb02c2,UNMATCHED,,43b57a2d70a0013a,,jaeger,/api/services,server,2026-08-23T17:31:11.937918+00:00,2.227,GET,/api/services,200,false
+b45c9a19fbb326b5ebe7d7960e650ed9,UNMATCHED,,7d00bc5ebbbb33e5,,jaeger,/api/services,server,2026-08-23T17:33:45.845865+00:00,1.226,GET,/api/services,200,false
+b8362780fd0b6360efa8963e0496f5dd,UNMATCHED,,c62d8253a06a3fab,3ae8a5eb398c86d0,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:23:58.074780+00:00,1.349,,,,false
+b8362780fd0b6360efa8963e0496f5dd,UNMATCHED,,3ae8a5eb398c86d0,,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:23:58.073000+00:00,3.713,,,,false
+b8424e113fd0752a79a69dca2aab9905,UNMATCHED,,bf52d471d18ee82d,50fc8bd2a0be531e,ts-price-service,find ts.price_config,client,2026-08-23T17:42:18.353424+00:00,47.28,,,,false
+b8424e113fd0752a79a69dca2aab9905,UNMATCHED,,50fc8bd2a0be531e,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:18.209000+00:00,192.717,,,,false
+b8621dbe44350289a54df721eecd4971,UNMATCHED,,1b35f5da434e9a2d,,ts-food-map-service,TrainFoodRepository.findById,internal,2026-08-23T17:41:55.444000+00:00,15.418,,,,false
+b8621dbe44350289a54df721eecd4971,UNMATCHED,,0d2712022c9da136,1b35f5da434e9a2d,ts-food-map-service,find ts.trainfoods,client,2026-08-23T17:41:55.452346+00:00,6.587,,,,false
+b9034d427c34f230959398f0d4c89ae1,UNMATCHED,,6ce84442cb629e33,,jaeger,/api/services,server,2026-08-23T17:31:52.124629+00:00,0.341,GET,/api/services,200,false
+bb98e50a3542277162852933e68219c5,UNMATCHED,,1ebe94c8ba631be1,,jaeger,/api/traces,server,2026-08-23T17:44:28.398998+00:00,6.043,GET,/api/traces,200,false
+bc5b414cbc0fd4409c7c9d7e56168c2a,search_g_train,6,608fe72e30a048ce,f1326af9dd4e4e66,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.246000+00:00,5.057,POST,/api/v1/travelservice/trips/left,200,false
+bca94f08e4ddc72711be0416da92bb66,UNMATCHED,,89246a4126f58785,e37439bd69347359,ts-price-service,update ts.price_config,client,2026-08-23T17:42:18.470954+00:00,11.305,,,,false
+bca94f08e4ddc72711be0416da92bb66,UNMATCHED,,e37439bd69347359,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:18.402000+00:00,80.811,,,,false
+bd707365dc8eb86307eddb23ec27597d,UNMATCHED,,c5dd473969085d6d,23a064aa26cc930e,ts-payment-service,find ts.payment,client,2026-08-23T17:42:30.653285+00:00,60.921,,,,false
+bd707365dc8eb86307eddb23ec27597d,UNMATCHED,,23a064aa26cc930e,,ts-payment-service,PaymentRepository.findById,internal,2026-08-23T17:42:28.604000+00:00,2605.482,,,,false
+be96263142f847c8e033540ab554203b,UNMATCHED,,201ad83a1bf64880,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:55.192000+00:00,10.674,,,,false
+be96263142f847c8e033540ab554203b,UNMATCHED,,a7f616baf3bcf476,201ad83a1bf64880,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:55.195851+00:00,4.489,,,,false
+c23998adf6d08af060ff65ba04c63e4d,UNMATCHED,,a7c0dcdc3c600df4,e8c28f665370ce33,ts-travel2-service,find ts.trip,client,2026-08-23T17:42:50.422156+00:00,2.7,,,,false
+c23998adf6d08af060ff65ba04c63e4d,UNMATCHED,,e8c28f665370ce33,,ts-travel2-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.419000+00:00,7.105,,,,false
+c2ffee9a72ab486e6b1252dd8229982e,UNMATCHED,,b3a05f910017a168,8249fd302edccb89,ts-price-service,find ts.price_config,client,2026-08-23T17:42:14.931220+00:00,129.997,,,,false
+c2ffee9a72ab486e6b1252dd8229982e,UNMATCHED,,8249fd302edccb89,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:10.126000+00:00,5696.792,,,,false
+c4098afc5aa18bf559542bd21b004170,login,1,7e9a638f5991b7a0,280199f3cba8d7b4,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:56.936508+00:00,33.523,,,,false
+c4098afc5aa18bf559542bd21b004170,login,1,2d4d46fc96fc652f,0a61ac88cc6600c4,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:43:57.149676+00:00,2.182,,,,false
+c4098afc5aa18bf559542bd21b004170,login,1,daf31c96c28717ee,673c44b0429a5bdf,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:43:47.640000+00:00,10096.676,POST,/api/v1/users/login,200,false
+c4098afc5aa18bf559542bd21b004170,login,1,280199f3cba8d7b4,daf31c96c28717ee,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:56.793931+00:00,199.758,,,,false
+c4098afc5aa18bf559542bd21b004170,login,1,0a61ac88cc6600c4,daf31c96c28717ee,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:43:57.147373+00:00,5.496,,,,false
+c4098afc5aa18bf559542bd21b004170,login,1,92ea7541481c9aaf,daf31c96c28717ee,ts-auth-service,GET,client,2026-08-23T17:43:51.320584+00:00,5222.658,GET,,200,false
+c4098afc5aa18bf559542bd21b004170,login,1,9bb0c72cb93b8bb7,92ea7541481c9aaf,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:43:53.207000+00:00,3530.034,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+c44e913731d7ae92f1120a11ba5439e7,UNMATCHED,,786c64a4c592bacf,,ts-food-map-service,TrainFoodRepository.findById,internal,2026-08-23T17:41:55.469000+00:00,7.055,,,,false
+c44e913731d7ae92f1120a11ba5439e7,UNMATCHED,,e955c2e1e5112765,786c64a4c592bacf,ts-food-map-service,find ts.trainfoods,client,2026-08-23T17:41:55.471272+00:00,4.413,,,,false
+c477be79f798c044ca120fcc4ade6929,UNMATCHED,,5bb60f328f9428bc,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:55.249000+00:00,30.982,,,,false
+c477be79f798c044ca120fcc4ade6929,UNMATCHED,,666d8f0abd939b38,5bb60f328f9428bc,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:55.271208+00:00,8.362,,,,false
+c5bcabcd07e4a3c13adf20b2f90ef2e6,UNMATCHED,,e8992bb59b835776,,jaeger,/api/services,server,2026-08-23T17:30:09.209317+00:00,71.178,GET,/api/services,200,false
+c6d83a3876cbbb528eb62abe4ec0146f,UNMATCHED,,d99a85117c3571ab,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:54.699000+00:00,46.297,,,,false
+c6d83a3876cbbb528eb62abe4ec0146f,UNMATCHED,,bb555d23c7be2380,d99a85117c3571ab,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:54.722365+00:00,22.466,,,,false
+c85c460155e871c654a8afa2b817ebb8,UNMATCHED,,13df8d3ef8fa1dd1,,jaeger,/api/traces,server,2026-08-23T17:44:28.476995+00:00,1.318,GET,/api/traces,200,false
+c86e4889a214d2f5ce4b7ac9368d4a02,UNMATCHED,,11e546cb0f92aa01,,jaeger,/api/traces,server,2026-08-23T17:44:28.586043+00:00,0.996,GET,/api/traces,200,false
+c9046dd18f81e79a1a2457d0a3480eb0,search_d_train,19,66479c92639bcce7,bf4b60dd2182f910,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.612000+00:00,12.451,POST,/api/v1/travel2service/trips/left,200,false
+c90ba7c3e435069830902f38fe12316d,UNMATCHED,,868424a9cc05702e,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.298000+00:00,37.425,,,,false
+c90ba7c3e435069830902f38fe12316d,UNMATCHED,,aa56d0d04e8856cf,868424a9cc05702e,ts-station-service,find ts.station,client,2026-08-23T17:42:34.319076+00:00,15.412,,,,false
+cb10fa7e92ba9161a8fc27694b292485,UNMATCHED,,1fd5913d3ad6c876,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:32.076000+00:00,2170.38,,,,false
+cb10fa7e92ba9161a8fc27694b292485,UNMATCHED,,057dcce8e12ba63b,1fd5913d3ad6c876,ts-station-service,find ts.station,client,2026-08-23T17:42:33.575868+00:00,51.811,,,,false
+cc1bc76aa60c8a466085dbff5cf2d4c3,UNMATCHED,,7e031e242eec4900,14bb950c5ae5965f,ts-inside-payment-service,find ts.addMoney,client,2026-08-23T17:42:42.161262+00:00,82.893,,,,false
+cc1bc76aa60c8a466085dbff5cf2d4c3,UNMATCHED,,14bb950c5ae5965f,,ts-inside-payment-service,AddMoneyRepository.findByUserId,internal,2026-08-23T17:42:41.121000+00:00,1427.06,,,,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,c7d1098b89670876,a25bbf9c3c0a2da3,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.399317+00:00,0.74,,,,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,c343a4b3420463c2,6ac2bab28ec43c6b,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:00.470195+00:00,1.98,,,,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,452f60245c6ce976,f2645f194a75fdf0,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:00.380000+00:00,96.97,POST,/api/v1/users/login,200,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,a25bbf9c3c0a2da3,452f60245c6ce976,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.398342+00:00,2.143,,,,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,6ac2bab28ec43c6b,452f60245c6ce976,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:00.468890+00:00,4.631,,,,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,599632686db41cb0,452f60245c6ce976,ts-auth-service,GET,client,2026-08-23T17:44:00.383987+00:00,13.058,GET,,200,false
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,4ccc42311e156f7d,599632686db41cb0,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:00.385000+00:00,11.759,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+ccee56f1106040dbe4e4a1e24cf1616c,UNMATCHED,,f09b0d35be3dc2ee,,jaeger,/api/traces,server,2026-08-23T17:44:28.632428+00:00,0.461,GET,/api/traces,200,false
+cd049b4c1bbe14ede49f0d76fddc5ef9,UNMATCHED,,11d5011941f34f3a,30fd1ba8455442aa,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.327151+00:00,4.839,,,,false
+cd049b4c1bbe14ede49f0d76fddc5ef9,UNMATCHED,,30fd1ba8455442aa,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.308000+00:00,24.841,,,,false
+cd9023e4fe5c2e68cd0a56578c4cc450,UNMATCHED,,90140325a1886581,8dfcd91b78b9e337,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.524428+00:00,3.607,,,,false
+cd9023e4fe5c2e68cd0a56578c4cc450,UNMATCHED,,8dfcd91b78b9e337,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.443000+00:00,85.632,,,,false
+cdec3c65630690f86ba492324e8e94d7,UNMATCHED,,c4ae61eb8f9d74c2,17b25a1e29990227,ts-price-service,update ts.price_config,client,2026-08-23T17:42:17.905733+00:00,5.474,,,,false
+cdec3c65630690f86ba492324e8e94d7,UNMATCHED,,17b25a1e29990227,,ts-price-service,PriceConfigRepository.save,internal,2026-08-23T17:42:17.878000+00:00,33.688,,,,false
+cf103eb77766b9f9d10aa3ad5187e999,UNMATCHED,,31e53b910d745f62,f6a916ede2a0cc73,ts-travel2-service,find ts.trip,client,2026-08-23T17:42:50.413360+00:00,3.264,,,,false
+cf103eb77766b9f9d10aa3ad5187e999,UNMATCHED,,f6a916ede2a0cc73,,ts-travel2-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.409000+00:00,8.636,,,,false
+cfa57ede6f469f7de80ad0f76999cc6d,UNMATCHED,,135d755caf7d2118,,jaeger,/api/traces,server,2026-08-23T17:44:28.647730+00:00,0.322,GET,/api/traces,200,false
+d1bc76be7ad2f6faff7886ab91575360,search_d_train,10,cf297430db2372ec,6a83565df44dcb4b,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.430000+00:00,6.034,POST,/api/v1/travel2service/trips/left,200,false
+d8b7942ee12b7f165532542c8ac113af,UNMATCHED,,8e766daf87a0800f,,jaeger,/api/services,server,2026-08-23T17:32:24.854261+00:00,1.108,GET,/api/services,200,false
+d8f6f7290af1117bfeae91c5e3ae4506,UNMATCHED,,d3b0b01cb202afb9,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:55.084000+00:00,22.859,,,,false
+d8f6f7290af1117bfeae91c5e3ae4506,UNMATCHED,,a9cb53349970169c,d3b0b01cb202afb9,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:55.098026+00:00,4.957,,,,false
+dc4dbc8830e2b8d0cac1b75b32e4c165,UNMATCHED,,c5ee3fd5f4596761,76cbb2faaef50978,ts-travel-service,find ts.trip,client,2026-08-23T17:42:50.488031+00:00,26.673,,,,false
+dc4dbc8830e2b8d0cac1b75b32e4c165,UNMATCHED,,76cbb2faaef50978,,ts-travel-service,TripRepository.findByTripId,internal,2026-08-23T17:42:49.878000+00:00,728.195,,,,false
+dcd90872df8974b00f69e17272aaf638,search_d_train,11,f3b1c8b638efcc24,d663c084e63be94f,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.459000+00:00,7.295,POST,/api/v1/travel2service/trips/left,200,false
+de0600038941c11392d14ecee523520e,UNMATCHED,,5a9a8d6a1d2455f1,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.260000+00:00,6.508,,,,false
+de0600038941c11392d14ecee523520e,UNMATCHED,,c085b3b70d974384,5a9a8d6a1d2455f1,ts-station-service,find ts.station,client,2026-08-23T17:42:34.263332+00:00,1.961,,,,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,c5f40348add96bba,af35a51453e44c2d,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:02.212016+00:00,1.287,,,,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,8028c8432dd8f7e3,48c636859f168986,ts-auth-service,find ts-auth-mongo.user,client,2026-08-23T17:44:02.301866+00:00,0.861,,,,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,78132c40f4ec81ac,85422d828be406e8,ts-auth-service,POST /api/v1/users/login,server,2026-08-23T17:44:02.198000+00:00,108.309,POST,/api/v1/users/login,200,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,af35a51453e44c2d,78132c40f4ec81ac,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:02.210381+00:00,3.492,,,,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,48c636859f168986,78132c40f4ec81ac,ts-auth-service,UserRepository.findByUsername,internal,2026-08-23T17:44:02.300954+00:00,2.189,,,,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,a89e2ee77f6fec69,78132c40f4ec81ac,ts-auth-service,GET,client,2026-08-23T17:44:02.200735+00:00,7.085,GET,,200,false
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,e365f789d79eff29,a89e2ee77f6fec69,ts-verification-code-service,GET /api/v1/verifycode/verify/{verifyCode},server,2026-08-23T17:44:02.202000+00:00,5.946,GET,/api/v1/verifycode/verify/{verifyCode},200,false
+e35f25e1f61a0dfbf0e50109a8ddc2aa,UNMATCHED,,fa9620f4b8caf1af,,ts-food-map-service,FoodStoreRepository.findById,internal,2026-08-23T17:41:55.067000+00:00,17.13,,,,false
+e35f25e1f61a0dfbf0e50109a8ddc2aa,UNMATCHED,,e405f9103d013869,fa9620f4b8caf1af,ts-food-map-service,find ts.stores,client,2026-08-23T17:41:55.081550+00:00,2.125,,,,false
+e385b3384827c89ba0720f9e9ca0ce8f,UNMATCHED,,ba7f54a2aba8474f,,ts-food-map-service,TrainFoodRepository.save,internal,2026-08-23T17:41:55.435000+00:00,6.754,,,,false
+e385b3384827c89ba0720f9e9ca0ce8f,UNMATCHED,,5fbbfafb84e3926d,ba7f54a2aba8474f,ts-food-map-service,update ts.trainfoods,client,2026-08-23T17:41:55.439316+00:00,1.827,,,,false
+e3c02ef256a9813130f7670544f98e83,UNMATCHED,,48397f0e719fa6db,dc344c66bb70ee93,ts-order-service,find ts.orders,client,2026-08-23T17:42:43.444530+00:00,74.939,,,,false
+e3c02ef256a9813130f7670544f98e83,UNMATCHED,,dc344c66bb70ee93,,ts-order-service,OrderRepository.findById,internal,2026-08-23T17:42:42.701000+00:00,1224.486,,,,false
+e497e0f842f7f648f5c5abb958a3ed96,UNMATCHED,,9e3e84e1af4def29,c317d13ce756a02e,ts-consign-price-service,find ts.consign_price,client,2026-08-23T17:42:22.888865+00:00,24.739,,,,false
+e497e0f842f7f648f5c5abb958a3ed96,UNMATCHED,,c317d13ce756a02e,,ts-consign-price-service,ConsignPriceConfigRepository.findByIndex,internal,2026-08-23T17:42:22.876000+00:00,38.762,,,,false
+e59f0bc3c650ad7f8704ff976c5f0b39,UNMATCHED,,bb779084e2e959b5,4f0a3d086a71ac15,ts-route-service,update ts.routes,client,2026-08-23T17:42:23.407626+00:00,2.593,,,,false
+e59f0bc3c650ad7f8704ff976c5f0b39,UNMATCHED,,4f0a3d086a71ac15,,ts-route-service,RouteRepository.save,internal,2026-08-23T17:42:23.400000+00:00,10.991,,,,false
+e626cabc0e26f3f35126a446f7f4d3e3,UNMATCHED,,a9d4f1a1372e1a90,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:55.123000+00:00,28.52,,,,false
+e626cabc0e26f3f35126a446f7f4d3e3,UNMATCHED,,56e47a4e82a0b18f,a9d4f1a1372e1a90,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:55.140297+00:00,8.164,,,,false
+e7622812cdcc8912f3178d76083e3ea4,UNMATCHED,,798b8eb8c9d5cec7,,ts-food-map-service,FoodStoreRepository.save,internal,2026-08-23T17:41:55.167000+00:00,23.617,,,,false
+e7622812cdcc8912f3178d76083e3ea4,UNMATCHED,,fc9504ca38961d64,798b8eb8c9d5cec7,ts-food-map-service,update ts.stores,client,2026-08-23T17:41:55.175796+00:00,14.289,,,,false
+e7961e3a1e63bd443e527e4b51d967d5,search_g_train,16,65a0ee2bdd738bc1,007a279677b49e07,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.488000+00:00,4.311,POST,/api/v1/travelservice/trips/left,200,false
+e892b53972ccbf057e07f8bf7fa313a1,search_d_train,2,10aa9216229cf133,b8e5874f2edd2944,ts-travel2-service,POST /api/v1/travel2service/trips/left,server,2026-08-23T17:44:04.259000+00:00,9.257,POST,/api/v1/travel2service/trips/left,200,false
+e9c97c7a3641264da58fdc958e1ecd30,UNMATCHED,,d60c2a081ea24e59,,jaeger,/api/services,server,2026-08-23T17:24:02.133373+00:00,0.223,GET,/api/services,200,false
+ec81c7a91f426a0a15acae024033baa9,UNMATCHED,,4aa86fb0298b6529,42e8ae422b250d8c,ts-route-service,find ts.routes,client,2026-08-23T17:42:23.390437+00:00,4.448,,,,false
+ec81c7a91f426a0a15acae024033baa9,UNMATCHED,,42e8ae422b250d8c,,ts-route-service,RouteRepository.findById,internal,2026-08-23T17:42:23.382000+00:00,16.808,,,,false
+eceee717a984561d3638cc08125134e3,UNMATCHED,,3dd219c8acd68f55,209d4ec6567e97fb,ts-travel2-service,find ts.trip,client,2026-08-23T17:42:50.404757+00:00,1.718,,,,false
+eceee717a984561d3638cc08125134e3,UNMATCHED,,209d4ec6567e97fb,,ts-travel2-service,TripRepository.findByTripId,internal,2026-08-23T17:42:50.400000+00:00,8.154,,,,false
+ed06fc9ce70e4a45c83d2b78eda10cb9,UNMATCHED,,ade67608f9a810fb,,jaeger,/api/services,server,2026-08-23T17:34:16.169480+00:00,8.129,GET,/api/services,200,false
+edb31f95eaa10c0dc43405902d2a8d87,UNMATCHED,,ef72fae60b9e5537,,ts-station-service,StationRepository.findById,internal,2026-08-23T17:42:34.512000+00:00,29.081,,,,false
+edb31f95eaa10c0dc43405902d2a8d87,UNMATCHED,,4bd1f92693b570f7,ef72fae60b9e5537,ts-station-service,find ts.station,client,2026-08-23T17:42:34.522946+00:00,4.253,,,,false
+ef0bac199e003cb5306f67054a06723d,search_g_train,1,091a12005c981688,04a54f8dfbd32c4a,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:02.501000+00:00,621.224,POST,/api/v1/travelservice/trips/left,200,false
+f30d029ef2160123f0e5c8e0cc80df8c,UNMATCHED,,83ef6f15d35786ce,c786a29c958e5933,ts-travel2-service,find ts.trip,client,2026-08-23T17:42:50.260034+00:00,28.626,,,,false
+f30d029ef2160123f0e5c8e0cc80df8c,UNMATCHED,,c786a29c958e5933,,ts-travel2-service,TripRepository.findByTripId,internal,2026-08-23T17:42:49.611000+00:00,783.881,,,,false
+f5041f79029504404af3c36687e994cb,UNMATCHED,,84e0f9d29ec49d0c,,jaeger,/api/traces,server,2026-08-23T17:44:28.616106+00:00,1.894,GET,/api/traces,200,false
+f588e0b91234a12238b9aac273690986,UNMATCHED,,be36f2ef273ae1c7,,jaeger,/api/traces,server,2026-08-23T17:44:28.679439+00:00,4.215,GET,/api/traces,200,false
+f5ab12a869f5b8ca870aacf7f5e3ec4d,UNMATCHED,,1bd768814a544170,,ts-user-service,UserRepository.findByUserName,internal,2026-08-23T17:41:04.119000+00:00,14829.894,,,,false
+f5ab12a869f5b8ca870aacf7f5e3ec4d,UNMATCHED,,6c12fb8e676f6740,1bd768814a544170,ts-user-service,find ts-user-mongo.user,client,2026-08-23T17:41:15.780608+00:00,530.614,,,,false
+f641291fa1f110cce3e1f3e6327fea7f,UNMATCHED,,79568512a177ed9f,924a52508117466b,ts-price-service,find ts.price_config,client,2026-08-23T17:42:18.103670+00:00,7.072,,,,false
+f641291fa1f110cce3e1f3e6327fea7f,UNMATCHED,,924a52508117466b,,ts-price-service,PriceConfigRepository.findById,internal,2026-08-23T17:42:18.101000+00:00,10.72,,,,false
+f7dae285214d6243284c0a2d505be68e,search_g_train,14,84b4dec8e20bc46d,80d808c9a915eaeb,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.449000+00:00,3.383,POST,/api/v1/travelservice/trips/left,200,false
+f9ab6b035410b2c283b4e1b20f2c1c08,search_g_train,10,a77cbbd33a543e13,9b180f7ee32799be,ts-travel-service,POST /api/v1/travelservice/trips/left,server,2026-08-23T17:44:03.363000+00:00,8.439,POST,/api/v1/travelservice/trips/left,200,false
+fb94e6edfd3c75931be7a9b0afec19fd,UNMATCHED,,347491b24439abfa,,ts-food-map-service,TrainFoodRepository.findById,internal,2026-08-23T17:41:55.426000+00:00,8.41,,,,false
+fb94e6edfd3c75931be7a9b0afec19fd,UNMATCHED,,ded1e4c8db754799,347491b24439abfa,ts-food-map-service,find ts.trainfoods,client,2026-08-23T17:41:55.427945+00:00,5.502,,,,false
+ffbd8cd319f2167d585e14556e335f65,UNMATCHED,,cd47206e5b332ebd,6683cd6c8966dbb0,ts-config-service,find ts.config,client,2026-08-23T17:42:23.411546+00:00,86.078,,,,false
+ffbd8cd319f2167d585e14556e335f65,UNMATCHED,,6683cd6c8966dbb0,,ts-config-service,ConfigRepository.findByName,internal,2026-08-23T17:42:22.124000+00:00,1747.731,,,,false

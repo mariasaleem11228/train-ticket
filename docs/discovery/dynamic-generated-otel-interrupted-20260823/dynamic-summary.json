@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "collection_started_utc": "2026-08-23T18:02:18.817710+00:00",
+  "collection_finished_utc": "2026-08-27T17:25:00.327145+00:00",
+  "compose_project": "train-ticket",
+  "running_containers": 70,
+  "application_containers": 44,
+  "infrastructure_containers": 26,
+  "containers_with_restarts": 1,
+  "observed_tcp_edges": 1,
+  "dependency_classifications": {
+    "NOT_EXERCISED": 90,
+    "RUNTIME_ONLY": 1
+  },
+  "scenario_requests": 60,
+  "scenario_failures": 6,
+  "methodological_limits": [
+    "Runtime connections are live TCP socket observations, not HTTP request counts.",
+    "A missing edge means NOT_EXERCISED/NOT_OBSERVED under this workload, not unused.",
+    "Scenario latency is gateway-observed end-to-end latency, not per-service span latency.",
+    "Spring startup duration is available only when a matching startup log remains available."
+  ]
+}

@@ -1,0 +1,61 @@
+trace_id,scenario,iteration,services,service_count,span_count,trace_duration_ms,error_spans
+00ca37f4a643e8cb0dd036e3a4e32706,login,5,ts-auth-service -> ts-verification-code-service,2,7,105.445,0
+00e6aee41a5234bd08dbcb72bebc1256,login,12,ts-auth-service -> ts-verification-code-service,2,7,136.058,0
+027a79c5411f04c39668d9712791e8b6,login,15,ts-auth-service -> ts-verification-code-service,2,7,132.294,0
+0445896a7a46440bcd19ef0a8ee14da5,search_d_train,14,ts-travel2-service,1,1,5.526,0
+0a73ba517cb8c631724289175bf86f40,search_d_train,9,ts-travel2-service,1,1,7.852,0
+0c57c76cb2fd8e1cfdcdc399e9a322e8,login,6,ts-auth-service -> ts-verification-code-service,2,7,163.705,0
+0fdf03eacfd6d7bd363ecb59eb6445e8,login,9,ts-auth-service -> ts-verification-code-service,2,7,112.685,0
+14311b5f19fba03d1d441e05b7a49fab,search_d_train,3,ts-travel2-service,1,1,6.744,0
+158be9f7dcf6d1866a169d5a4224ec63,login,16,ts-auth-service -> ts-verification-code-service,2,7,149.818,0
+18ad4b3bb6b4ddfe0c51908da4bb8c08,login,19,ts-auth-service -> ts-verification-code-service,2,7,112.241,0
+1bf3d58d8bc5041b01d7878b6e0948e4,search_d_train,1,ts-travel2-service,1,1,514.081,0
+1c7fd48571ad242ccc13779d9216af9e,search_d_train,18,ts-travel2-service,1,1,10.582,0
+20663b40b54822e48ffe46e5a1b2afc1,login,11,ts-auth-service -> ts-verification-code-service,2,7,157.472,0
+21dd9d0cf0b2fcd88a6faf77bf5b5357,login,17,ts-auth-service -> ts-verification-code-service,2,7,120.477,0
+25eb598ce891aa74a006a2b39318a925,search_g_train,8,ts-travel-service,1,1,6.31,0
+273da52205019be9bdf56ff1289bcc3c,search_g_train,2,ts-travel-service,1,1,7.786,0
+2b29836d3e463213aab9f7db3bbe1458,search_d_train,17,ts-travel2-service,1,1,13.079,0
+360e149cf49cd1dd8d0e86b188c6ca44,search_g_train,5,ts-travel-service,1,1,3.855,0
+3887552c3ec3d73a202e2e6c60828ef3,search_d_train,8,ts-travel2-service,1,1,7.939,0
+3aaa2f82a83c8dc0f493bc91edc5834b,search_g_train,20,ts-travel-service,1,1,2.861,0
+3b6f86fe3109d4d01ce4de7490ffc322,search_g_train,3,ts-travel-service,1,1,5.096,0
+3ceea2abd2dcbf51dc76b458160de36c,login,10,ts-auth-service -> ts-verification-code-service,2,7,115.906,0
+3eecabb1f9eb1c201c3ca35e5dc13763,search_d_train,20,ts-travel2-service,1,1,6.834,0
+42a541d4d8412424510897fb28f9dea6,search_g_train,9,ts-travel-service,1,1,9.496,0
+45d2433f9bb0f4538ded7af8a23c1e47,search_g_train,19,ts-travel-service,1,1,4.136,0
+4b3c2eb07ceef47dc715f70143d9da61,search_g_train,18,ts-travel-service,1,1,4.242,0
+4c8bd2c0f52deb1f46e55ee68c95efa7,login,13,ts-auth-service -> ts-verification-code-service,2,7,139.991,0
+4d4ceb38ed10bbec6b0f98a0abe65311,search_d_train,4,ts-travel2-service,1,1,6.555,0
+56e75cfebfb9d392d45e6fda90762706,search_d_train,16,ts-travel2-service,1,1,20.992,0
+5f2b382504f2c891d7de35170341c978,search_d_train,5,ts-travel2-service,1,1,7.002,0
+681c9682641ac274dea009105ac3545a,search_g_train,7,ts-travel-service,1,1,4.388,0
+68aadaaf4c157f131dc54ba735617694,search_g_train,15,ts-travel-service,1,1,2.786,0
+68c25a92ff5257ae6a18bd2a9a6ef1e5,login,4,ts-auth-service -> ts-verification-code-service,2,7,1725.126,0
+6b1a5d5fc0d3bfff5b89719ad068cf61,search_d_train,6,ts-travel2-service,1,1,11.142,0
+6df0ae24f915486a48193b504b79d737,search_g_train,11,ts-travel-service,1,1,4.675,0
+7271d7495a0a7339855a1b556b535b09,login,2,ts-auth-service -> ts-verification-code-service,2,7,200.165,0
+75d27ac2b5101c51f91f77aec970d2d5,search_d_train,7,ts-travel2-service,1,1,6.68,0
+76c4bde6b8e05591a4bd5d6a3309bc84,login,3,ts-auth-service -> ts-verification-code-service,2,7,214.973,0
+7788b94ae6613e614a546dd2a20777db,search_d_train,13,ts-travel2-service,1,1,9.242,0
+80d2fbee50e6f3fd03d8bb0a9acbd1dc,search_g_train,13,ts-travel-service,1,1,4.263,0
+86282243a242e2354203b05bd5e22912,search_g_train,17,ts-travel-service,1,1,6.72,0
+89b148b0bb38c5d0fa001f5c94bca044,search_d_train,12,ts-travel2-service,1,1,9.145,0
+90790768e31f559d62b16927f5b9ef48,search_d_train,15,ts-travel2-service,1,1,3.513,0
+9d2454923e50db2245f62d57c0e315b4,search_g_train,4,ts-travel-service,1,1,3.41,0
+9eeceae769f0f4eb8b0b7e86fe213e43,login,14,ts-auth-service -> ts-verification-code-service,2,7,133.949,0
+a24b8ba6bc9697b8abf2f8bd34961547,login,8,ts-auth-service -> ts-verification-code-service,2,7,93.109,0
+a8b120cd2f3c951f39e2c4666de97932,login,18,ts-auth-service -> ts-verification-code-service,2,7,120.575,0
+ac7a797d8232ca0b9bd23e2d410e6d0f,search_g_train,12,ts-travel-service,1,1,5.011,0
+bc5b414cbc0fd4409c7c9d7e56168c2a,search_g_train,6,ts-travel-service,1,1,5.057,0
+c4098afc5aa18bf559542bd21b004170,login,1,ts-auth-service -> ts-verification-code-service,2,7,10096.676,0
+c9046dd18f81e79a1a2457d0a3480eb0,search_d_train,19,ts-travel2-service,1,1,12.451,0
+cc2a39bc455655d3772cbb5b33bd9aba,login,7,ts-auth-service -> ts-verification-code-service,2,7,96.97,0
+d1bc76be7ad2f6faff7886ab91575360,search_d_train,10,ts-travel2-service,1,1,6.034,0
+dcd90872df8974b00f69e17272aaf638,search_d_train,11,ts-travel2-service,1,1,7.295,0
+e2f33ff4fea9bfa6fe11c221d6957b58,login,20,ts-auth-service -> ts-verification-code-service,2,7,108.309,0
+e7961e3a1e63bd443e527e4b51d967d5,search_g_train,16,ts-travel-service,1,1,4.311,0
+e892b53972ccbf057e07f8bf7fa313a1,search_d_train,2,ts-travel2-service,1,1,9.257,0
+ef0bac199e003cb5306f67054a06723d,search_g_train,1,ts-travel-service,1,1,621.224,0
+f7dae285214d6243284c0a2d505be68e,search_g_train,14,ts-travel-service,1,1,3.383,0
+f9ab6b035410b2c283b4e1b20f2c1c08,search_g_train,10,ts-travel-service,1,1,8.439,0

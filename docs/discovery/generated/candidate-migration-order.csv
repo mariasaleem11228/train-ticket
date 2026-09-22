@@ -1,0 +1,41 @@
+﻿candidate_rank,service,candidate_context,observed_degree,rationale,status
+1,ts-delivery-service,Food and delivery,0,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+2,ts-consign-price-service,Consignment,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+3,ts-notification-service,Customer communication,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+4,ts-payment-service,Payment and assurance,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+5,ts-train-food-service,Food and delivery,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+6,ts-verification-code-service,Identity and customer,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+7,ts-admin-user-service,Administration,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+8,ts-food-delivery-service,Food and delivery,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+9,ts-wait-order-service,Booking and order lifecycle,1,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+10,ts-assurance-service,Payment and assurance,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+11,ts-config-service,Unclassified,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+12,ts-price-service,Rail network and timetable,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+13,ts-station-food-service,Food and delivery,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+14,ts-auth-service,Identity and customer,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+15,ts-admin-order-service,Administration,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+16,ts-admin-route-service,Administration,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+17,ts-execute-service,Booking and order lifecycle,2,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+18,ts-contacts-service,Identity and customer,3,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+19,ts-consign-service,Consignment,3,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+20,ts-security-service,Identity and customer,4,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+21,ts-route-plan-service,Rail network and timetable,4,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+22,ts-user-service,Identity and customer,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+23,ts-food-service,Food and delivery,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+24,ts-inside-payment-service,Payment and assurance,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+25,ts-admin-basic-info-service,Administration,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+26,ts-admin-travel-service,Administration,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+27,ts-cancel-service,Booking and order lifecycle,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+28,ts-travel-plan-service,Rail network and timetable,5,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+29,ts-route-service,Rail network and timetable,7,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+30,ts-train-service,Rail network and timetable,7,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+31,ts-station-service,Rail network and timetable,8,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+32,ts-basic-service,Rail network and timetable,8,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+33,ts-rebook-service,Booking and order lifecycle,8,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+34,ts-order-other-service,Booking and order lifecycle,9,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+35,ts-order-service,Booking and order lifecycle,9,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+36,ts-seat-service,Rail network and timetable,9,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+37,ts-travel2-service,Rail network and timetable,9,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+38,ts-travel-service,Rail network and timetable,10,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+39,ts-preserve-other-service,Booking and order lifecycle,11,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
+40,ts-preserve-service,Booking and order lifecycle,12,lower observed static HTTP coupling first,INFERRED_REQUIRES_REVIEW
