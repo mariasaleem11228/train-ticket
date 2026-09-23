@@ -1,0 +1,79 @@
+# Local JVM settings to run the microservice stack on Docker Desktop.
+x-java-environment: &java-environment
+  JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -XX:TieredStopAtLevel=1 -Xss256k"
+
+services:
+  ts-execute-service:
+    environment: *java-environment
+  ts-travel2-service:
+    environment: *java-environment
+  ts-admin-route-service:
+    environment: *java-environment
+  ts-food-map-service:
+    environment: *java-environment
+  ts-inside-payment-service:
+    environment: *java-environment
+  ts-cancel-service:
+    environment: *java-environment
+  ts-food-service:
+    environment: *java-environment
+  ts-notification-service:
+    environment: *java-environment
+  ts-station-service:
+    environment: *java-environment
+  ts-admin-order-service:
+    environment: *java-environment
+  ts-admin-travel-service:
+    environment: *java-environment
+  ts-auth-service:
+    environment: *java-environment
+  ts-preserve-service:
+    environment: *java-environment
+  ts-seat-service:
+    environment: *java-environment
+  ts-consign-price-service:
+    environment: *java-environment
+  ts-order-service:
+    environment: *java-environment
+  ts-verification-code-service:
+    environment: *java-environment
+  ts-train-service:
+    environment: *java-environment
+  ts-ticketinfo-service:
+    environment: *java-environment
+  ts-admin-user-service:
+    environment: *java-environment
+  ts-contacts-service:
+    environment: *java-environment
+  ts-price-service:
+    environment: *java-environment
+  ts-order-other-service:
+    environment: *java-environment
+  ts-travel-plan-service:
+    environment: *java-environment
+  ts-admin-basic-info-service:
+    environment: *java-environment
+  ts-consign-service:
+    environment: *java-environment
+  ts-travel-service:
+    environment: *java-environment
+  ts-user-service:
+    environment: *java-environment
+  ts-route-service:
+    environment: *java-environment
+  ts-security-service:
+    environment: *java-environment
+  ts-basic-service:
+    environment: *java-environment
+  ts-config-service:
+    environment: *java-environment
+  ts-preserve-other-service:
+    environment: *java-environment
+  ts-route-plan-service:
+    environment: *java-environment
+  ts-assurance-service:
+    environment: *java-environment
+  ts-payment-service:
+    environment: *java-environment
+  ts-rebook-service:
+    environment: *java-environment
