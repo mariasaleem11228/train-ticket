@@ -1,0 +1,9 @@
+FROM eclipse-temurin:21-jre AS java
+FROM codewisdom/ts-avatar-service:0.2.0
+COPY --from=java /opt/java/openjdk /opt/java/openjdk
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+COPY target/ts-modulith-0.1.0.jar /modulith/app.jar
+COPY avatar_worker.py /app/avatar_worker.py
+EXPOSE 18080
+ENTRYPOINT ["java", "-XX:+UseSerialGC", "-Xmx256m", "-jar", "/modulith/app.jar"]

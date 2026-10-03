@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:route-candidate
+    environment:
+      ROUTE_ENABLED: "true"
+      ROUTE_MONGO_URI: mongodb://ts-route-mongo:27017/ts
+      ROUTE_WRITES_ENABLED: "true"
+  route-legacy:
+    image: train-ticket/route-legacy-no-seed:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

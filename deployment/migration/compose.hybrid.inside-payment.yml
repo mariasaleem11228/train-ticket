@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:inside-payment-candidate
+    environment:
+      INSIDE_PAYMENT_ENABLED: "true"
+      INSIDE_PAYMENT_WRITES_ENABLED: "true"
+      INSIDE_PAYMENT_MONGO_URI: mongodb://ts-inside-payment-mongo:27017/ts
+  inside-payment-legacy:
+    image: codewisdom/ts-inside-payment-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

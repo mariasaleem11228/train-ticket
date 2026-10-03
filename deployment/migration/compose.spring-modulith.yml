@@ -1,0 +1,17 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:spring-modulith-1.4
+  framework-candidate:
+    image: train-ticket/ts-modulith:spring-modulith-1.4
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      ORDERS_ENABLED: "true"
+      ORDER_MONGO_URI: mongodb://ts-order-mongo:27017/ts
+      ORDER_WRITES_ENABLED: "false"
+      ORDER_OTHER_ENABLED: "true"
+      ORDER_OTHER_MONGO_URI: mongodb://ts-order-other-mongo:27017/ts
+      ORDER_OTHER_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18086:18080"]
+    networks: [legacy]

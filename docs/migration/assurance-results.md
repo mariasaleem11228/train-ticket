@@ -1,0 +1,11 @@
+# Assurance migration checkpoint
+
+Assurance is the twenty-third Spring Modulith business module. The compatibility route at port 18888 now serves the shared host and identifies it with `X-Assurance-Backend: module`. Its Mongo `assurance` collection remains in the existing Assurance database. The module has no dependency on another business module, and its write ownership can switch independently of the other 22 routes.
+
+The deployed `codewisdom/ts-assurance-service:0.2.0` JAR uses MongoDB and Java legacy UUID encoding, unlike the checked-out MySQL configuration. Its API requires the USER role, including for welcome and insurance types. The port follows those deployed contracts. An isolated candidate used a copied collection in `assurance_candidate` and passed 22 checks for authentication, existing records, missing records, insurance types, create, duplicate create, modify and delete. The live collection was backed up to ignored `deployment/migration/.state/backups/assurance.archive` before cutover.
+
+The live checkpoint passed for all 23 modules. A rollback rehearsal routed Assurance to the old container, verified that it could read a record created by the module, proved the inactive module rejected a write, deleted the synthetic record through legacy, then returned to module mode and confirmed the deletion remained visible. The UI route at port 8080 returned insurance types with `X-Assurance-Backend: module`.
+
+To check in the browser, open **Ticket Reserve** while logged in and inspect `GET /api/v1/assuranceservice/assurances/types` in Developer Tools. It should return HTTP 200, the traffic accident insurance option, and `X-Assurance-Backend: module`. To run the automated checks, use `python docs/migration/verify_checkpoint.py` and `python docs/migration/verify_assurance_rollback.py`. Switch this route with `python docs/migration/hybrid_routing.py legacy assurance` or `python docs/migration/hybrid_routing.py module assurance`.
+
+Preserve and PreserveOther still reach Assurance through its compatibility route. A later internal integration should replace those HTTP calls with the published Assurance API and test the full insured booking workflow. WaitOrder also remains pending because its service and database are absent from the running stack.

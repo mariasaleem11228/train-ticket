@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:user-candidate
+    environment:
+      USER_ENABLED: "true"
+      USER_WRITES_ENABLED: "true"
+  user-legacy:
+    image: codewisdom/ts-user-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

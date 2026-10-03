@@ -1,0 +1,44 @@
+services:
+  station-test-mongo:
+    image: mongo:4.4
+    command: ["mongod", "--wiredTigerCacheSizeGB", "0.25"]
+    networks: [migration-test]
+  station-legacy-test:
+    image: codewisdom/ts-station-service@sha256:1e9ea348b30926c3a31dde87f063a4325f854b123e70c307abe33ea17137f0ea
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:22345:12345"]
+    networks:
+      migration-test:
+        aliases: [ts-station-service]
+  station-module-test:
+    image: train-ticket/ts-modulith:station-pilot
+    environment:
+      STATION_MONGO_URI: mongodb://station-test-mongo:27017/module
+      STATION_WRITES_ENABLED: "true"
+    ports: ["127.0.0.1:18081:18080"]
+    networks: [migration-test]
+  modulith:
+    image: train-ticket/ts-modulith:station-pilot
+    restart: unless-stopped
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: ${STATION_WRITES_ENABLED:-false}
+    ports: ["127.0.0.1:18080:18080"]
+    networks:
+      legacy:
+        aliases: [ts-modulith]
+  station-legacy:
+    image: codewisdom/ts-station-service@sha256:1e9ea348b30926c3a31dde87f063a4325f854b123e70c307abe33ea17137f0ea
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]
+networks:
+  migration-test: {}
+  legacy:
+    external: true
+    name: train-ticket_my-network

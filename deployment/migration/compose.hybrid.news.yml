@@ -1,0 +1,10 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:news-candidate
+    environment:
+      NEWS_ENABLED: "true"
+  news-legacy:
+    image: codewisdom/ts-news-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    networks: [legacy]

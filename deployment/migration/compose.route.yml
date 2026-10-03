@@ -1,0 +1,31 @@
+services:
+  route-legacy-test:
+    image: train-ticket/route-legacy-no-seed:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy-route
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:21178:11178"]
+    networks: [migration-test, legacy]
+  route-module-test:
+    image: train-ticket/ts-modulith:route-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      ROUTE_ENABLED: "true"
+      ROUTE_MONGO_URI: mongodb://station-test-mongo:27017/module-route
+      ROUTE_WRITES_ENABLED: "true"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18094:18080"]
+    networks: [migration-test, legacy]
+  route-candidate:
+    image: train-ticket/ts-modulith:route-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      ROUTE_ENABLED: "true"
+      ROUTE_MONGO_URI: mongodb://ts-route-mongo:27017/ts
+      ROUTE_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18093:18080"]
+    networks: [legacy]

@@ -1,0 +1,30 @@
+services:
+  config-legacy-test:
+    image: codewisdom/ts-config-service:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy-config
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:25679:15679"]
+    networks: [migration-test]
+  config-module-test:
+    image: train-ticket/ts-modulith:config-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://station-test-mongo:27017/module
+      STATION_WRITES_ENABLED: "false"
+      CONFIG_ENABLED: "true"
+      CONFIG_MONGO_URI: mongodb://station-test-mongo:27017/module-config
+      CONFIG_WRITES_ENABLED: "true"
+    ports: ["127.0.0.1:18087:18080"]
+    networks: [migration-test]
+  config-candidate:
+    image: train-ticket/ts-modulith:config-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      CONFIG_ENABLED: "true"
+      CONFIG_MONGO_URI: mongodb://ts-config-mongo:27017/ts
+      CONFIG_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18086:18080"]
+    networks: [legacy]

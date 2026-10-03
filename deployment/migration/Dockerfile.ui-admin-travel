@@ -1,0 +1,4 @@
+FROM codewisdom/ts-ui-dashboard:0.2.0
+COPY ts-ui-dashboard/static/assets/js/client_order_list.js /usr/share/nginx/html/assets/js/client_order_list.js
+COPY ts-ui-dashboard/static/admin_travel.html /usr/share/nginx/html/admin_travel.html
+COPY ts-ui-dashboard/static/assets/js/admin_travel.js /usr/share/nginx/html/assets/js/admin_travel.js

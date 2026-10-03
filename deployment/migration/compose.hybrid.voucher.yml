@@ -1,0 +1,11 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:voucher-candidate
+    environment:
+      VOUCHER_ENABLED: "true"
+      VOUCHER_WRITES_ENABLED: "true"
+  voucher-legacy:
+    image: codewisdom/ts-voucher-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    networks: [legacy]

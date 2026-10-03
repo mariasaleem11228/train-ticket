@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:travel-candidate
+    environment:
+      TRAVEL_ENABLED: "true"
+      TRAVEL_MONGO_URI: mongodb://ts-travel-mongo:27017/ts
+      TRAVEL_WRITES_ENABLED: "true"
+  travel-legacy:
+    image: train-ticket/travel-legacy-no-seed:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

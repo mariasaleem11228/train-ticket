@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:payment-candidate
+    environment:
+      PAYMENT_ENABLED: "true"
+      PAYMENT_WRITES_ENABLED: "true"
+      PAYMENT_MONGO_URI: mongodb://ts-payment-mongo:27017/ts
+  payment-legacy:
+    image: codewisdom/ts-payment-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

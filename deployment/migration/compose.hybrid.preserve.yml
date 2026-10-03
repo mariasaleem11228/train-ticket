@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:preserve-candidate
+    environment:
+      PRESERVE_ENABLED: "true"
+      PRESERVE_WRITES_ENABLED: "true"
+  preserve-legacy:
+    image: codewisdom/ts-preserve-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

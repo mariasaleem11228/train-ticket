@@ -1,0 +1,5 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:ticketinfo-candidate
+    environment:
+      TICKETINFO_ENABLED: "true"

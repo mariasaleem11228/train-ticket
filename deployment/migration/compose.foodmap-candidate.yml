@@ -1,0 +1,13 @@
+services:
+  foodmap-candidate:
+    image: train-ticket/ts-modulith:foodmap-candidate
+    environment:
+      FOODMAP_ENABLED: "true"
+      FOODMAP_MONGO_URI: mongodb://ts-food-map-mongo:27017/ts
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+    ports: ["127.0.0.1:18117:18080"]
+    networks: [legacy]
+networks:
+  legacy:
+    external: true
+    name: train-ticket_my-network

@@ -211,11 +211,11 @@
                                                 </div>
                                             </td>
                                             <td>{{record.trip.tripId.type + "" + record.trip.tripId.number}}</td>
-                                            <td>{{record.trainType.name}}</td>
+                                            <td>{{record.trainType.id}}</td>
                                             <td>{{record.trip.routeId}}</td>
-                                            <td>{{record.trip.startTime}}</td>
-                                            <td>{{record.trip.startStationName}}</td>
-                                            <td>{{record.trip.terminalStationName}}</td>
+                                            <td>{{record.trip.startingTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                                            <td>{{record.trip.startingStationId}}</td>
+                                            <td>{{record.trip.terminalStationId}}</td>
                                             <td>{{record.route.stations}}</td>
                                             <td>{{record.route.distances}}</td>
                                             <td>{{record.trainType.economyClass}}</td>

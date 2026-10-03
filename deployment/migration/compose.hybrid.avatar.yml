@@ -1,0 +1,10 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:avatar-candidate
+    environment:
+      AVATAR_ENABLED: "true"
+  avatar-legacy:
+    image: codewisdom/ts-avatar-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    networks: [legacy]

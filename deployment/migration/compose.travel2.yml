@@ -1,0 +1,42 @@
+x-travel2-dependencies: &travel2-dependencies
+  STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+  ORDERS_ENABLED: "true"
+  ORDER_MONGO_URI: mongodb://ts-order-mongo:27017/ts
+  ORDER_OTHER_ENABLED: "true"
+  ORDER_OTHER_MONGO_URI: mongodb://ts-order-other-mongo:27017/ts
+  CONFIG_ENABLED: "true"
+  CONFIG_MONGO_URI: mongodb://ts-config-mongo:27017/ts
+  SEAT_ENABLED: "true"
+  TRAIN_ENABLED: "true"
+  TRAIN_MONGO_URI: mongodb://ts-train-mongo:27017/ts
+  ROUTE_ENABLED: "true"
+  ROUTE_MONGO_URI: mongodb://ts-route-mongo:27017/ts
+  TRAVEL_ENABLED: "true"
+  TRAVEL_MONGO_URI: mongodb://ts-travel-mongo:27017/ts
+  TRAVEL_WRITES_ENABLED: "false"
+  TRAVEL2_ENABLED: "true"
+  TRAVEL2_MONGO_URI: mongodb://ts-travel2-mongo:27017/ts
+  TRAVEL2_WRITES_ENABLED: "false"
+  TZ: Asia/Shanghai
+services:
+  travel2-legacy-test:
+    image: train-ticket/travel2-legacy-no-seed:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy-travel2
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:26346:16346"]
+    networks: [migration-test, legacy]
+  travel2-module-test:
+    image: train-ticket/ts-modulith:travel2-candidate
+    environment:
+      <<: *travel2-dependencies
+      TRAVEL2_MONGO_URI: mongodb://station-test-mongo:27017/module-travel2
+      TRAVEL2_WRITES_ENABLED: "true"
+    ports: ["127.0.0.1:18101:18080"]
+    networks: [migration-test, legacy]
+  travel2-candidate:
+    image: train-ticket/ts-modulith:travel2-candidate
+    environment: *travel2-dependencies
+    ports: ["127.0.0.1:18100:18080"]
+    networks: [legacy]

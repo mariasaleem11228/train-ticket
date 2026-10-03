@@ -1,0 +1,3 @@
+services:
+  ts-ui-dashboard:
+    image: train-ticket/ts-ui-dashboard:admin-travel-ui

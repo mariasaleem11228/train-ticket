@@ -1,0 +1,19 @@
+services:
+  basic-candidate:
+    image: train-ticket/ts-modulith:basic-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      TRAIN_ENABLED: "true"
+      TRAIN_MONGO_URI: mongodb://ts-train-mongo:27017/ts
+      TRAIN_WRITES_ENABLED: "false"
+      ROUTE_ENABLED: "true"
+      ROUTE_MONGO_URI: mongodb://ts-route-mongo:27017/ts
+      ROUTE_WRITES_ENABLED: "false"
+      PRICE_ENABLED: "true"
+      PRICE_MONGO_URI: mongodb://ts-price-mongo:27017/ts
+      PRICE_WRITES_ENABLED: "false"
+      BASIC_ENABLED: "true"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18097:18080"]
+    networks: [legacy]

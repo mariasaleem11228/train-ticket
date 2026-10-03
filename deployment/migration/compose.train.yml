@@ -1,0 +1,31 @@
+services:
+  train-legacy-test:
+    image: codewisdom/ts-train-service:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy-train
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:24567:14567"]
+    networks: [migration-test, legacy]
+  train-module-test:
+    image: train-ticket/ts-modulith:train-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      TRAIN_ENABLED: "true"
+      TRAIN_MONGO_URI: mongodb://station-test-mongo:27017/module-train
+      TRAIN_WRITES_ENABLED: "true"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18092:18080"]
+    networks: [migration-test, legacy]
+  train-candidate:
+    image: train-ticket/ts-modulith:train-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      TRAIN_ENABLED: "true"
+      TRAIN_MONGO_URI: mongodb://ts-train-mongo:27017/ts
+      TRAIN_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18091:18080"]
+    networks: [legacy]

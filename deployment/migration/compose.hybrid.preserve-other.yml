@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:preserve-other-ui-fix
+    environment:
+      PRESERVE_OTHER_ENABLED: "true"
+      PRESERVE_OTHER_WRITES_ENABLED: "true"
+  preserve-other-legacy:
+    image: codewisdom/ts-preserve-other-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

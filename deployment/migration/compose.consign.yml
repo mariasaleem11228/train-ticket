@@ -1,0 +1,24 @@
+services:
+  consign-candidate:
+    image: train-ticket/ts-modulith:consign-candidate
+    environment:
+      CONSIGN_ENABLED: "true"
+      CONSIGN_WRITES_ENABLED: "true"
+      CONSIGN_MONGO_URI: mongodb://ts-consign-mongo:27017/consign_candidate
+      CONSIGN_PRICE_ENABLED: "true"
+      CONSIGN_PRICE_MONGO_URI: mongodb://ts-consign-price-mongo:27017/ts
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+    ports: ["127.0.0.1:18116:18080"]
+    networks: [legacy]
+  consign-legacy-test:
+    image: codewisdom/ts-consign-service:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: ts-consign-mongo
+      SPRING_DATA_MONGODB_DATABASE: consign_legacy_test
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:26111:16111"]
+    networks: [legacy]
+networks:
+  legacy:
+    external: true
+    name: train-ticket_my-network

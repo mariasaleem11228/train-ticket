@@ -1,0 +1,14 @@
+services:
+  assurance-candidate:
+    image: train-ticket/ts-modulith:assurance-candidate
+    environment:
+      ASSURANCE_ENABLED: "true"
+      ASSURANCE_WRITES_ENABLED: "true"
+      ASSURANCE_MONGO_URI: mongodb://ts-assurance-mongo:27017/assurance_candidate
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+    ports: ["127.0.0.1:18114:18080"]
+    networks: [legacy]
+networks:
+  legacy:
+    external: true
+    name: train-ticket_my-network

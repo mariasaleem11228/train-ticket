@@ -1,0 +1,22 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:delivery-candidate
+    environment:
+      DELIVERY_ENABLED: "true"
+      DELIVERY_WRITES_ENABLED: "true"
+      DELIVERY_QUEUE: food_delivery
+      DELIVERY_JDBC_URL: jdbc:mysql://ts-delivery-mysql:3306/deliveryservice
+      DELIVERY_DB_USER: root
+      DELIVERY_DB_PASSWORD: root
+  delivery-mysql:
+    image: mysql@sha256:66aec17cd21a956029b83f083b813073859e8355dc1a00e55df6ba02f0e32345
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: deliveryservice
+    volumes: [delivery-data:/var/lib/mysql]
+    networks:
+      legacy:
+        aliases: [ts-delivery-mysql]
+volumes:
+  delivery-data: {}

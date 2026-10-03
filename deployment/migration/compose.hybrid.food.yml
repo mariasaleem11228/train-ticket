@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:food-candidate
+    environment:
+      FOOD_ENABLED: "true"
+      FOOD_WRITES_ENABLED: "true"
+  food-legacy:
+    image: codewisdom/ts-food-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

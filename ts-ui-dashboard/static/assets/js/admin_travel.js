@@ -103,13 +103,13 @@ app.controller('indexCtrl', function ($scope, $http, $window, loadDataService) {
                     withCredentials: true,
                     data: {
                         tripId: $scope.add_travel_id,
-                        trainTypeName: $('#add_travel_train_type_id').find("option:selected").val(),
+                        trainTypeId: $('#add_travel_train_type_id').val(),
                         routeId: $('#add_travel_route_id').find("option:selected").val(),
-                        startStationName: $('#add_travel_start_station').find("option:selected").val(),
-                        stationsName: $('#add_travel_station_name').find("option:selected").val(),
-                        terminalStationName: $('#add_travel_terminal_station').find("option:selected").val(),
-                        startTime: $('#add_travel_start_time').val(),
-                        endTime: $('#add_travel_end_time').val(),
+                        startingStationId: $('#add_travel_start_station').val(),
+                        stationsId: $('#add_travel_station_name').val(),
+                        terminalStationId: $('#add_travel_terminal_station').val(),
+                        startingTime: selectedTime('#add_travel_start_time'),
+                        endTime: selectedTime('#add_travel_end_time'),
                     }
                 }).success(function (data, status, headers, config) {
                     if (data.status) {
@@ -134,11 +134,12 @@ app.controller('indexCtrl', function ($scope, $http, $window, loadDataService) {
         $scope.update_travel_id = record.trip.tripId.type + "" + record.trip.tripId.number;
         $scope.update_travel_train_type_id = record.trip.trainTypeId;
         $scope.update_travel_route_id = record.trip.routeId;
-        $scope.update_travel_start_station = record.trip.startStationName;
-        $scope.update_travel_station_name = record.trip.stationsName;
-        $scope.update_travel_terminal_station = record.trip.terminalStationName;
-        $scope.update_travel_start_time = record.trip.startTime;
+        $scope.update_travel_start_station = record.trip.startingStationId;
+        $scope.update_travel_station_name = record.trip.stationsId;
+        $scope.update_travel_terminal_station = record.trip.terminalStationId;
+        $scope.update_travel_start_time = record.trip.startingTime;
         $scope.update_travel_end_time = record.trip.endTime;
+        $('#update_travel_train_type_id').val(record.trip.trainTypeId);
 
         $("#update_travel_start_time").datetimepicker('setDate',new Date($scope.update_travel_start_time));
         $("#update_travel_end_time").datetimepicker('setDate',new Date($scope.update_travel_end_time));
@@ -153,13 +154,13 @@ app.controller('indexCtrl', function ($scope, $http, $window, loadDataService) {
                     withCredentials: true,
                     data: {
                         tripId: $scope.update_travel_id,
-                        trainTypeName: $('#update_travel_train_type_id').find("option:selected").val(),
+                        trainTypeId: $('#update_travel_train_type_id').val(),
                         routeId: $scope.update_travel_route_id,
-                        startStationName: $scope.update_travel_start_station,
-                        stationsName: $scope.update_travel_station_name,
-                        terminalStationName: $scope.update_travel_terminal_station,
-                        startTime: $('#update_travel_start_time').val(),
-                        endTime: $('#update_travel_end_time').val()
+                        startingStationId: $scope.update_travel_start_station,
+                        stationsId: $scope.update_travel_station_name,
+                        terminalStationId: $scope.update_travel_terminal_station,
+                        startingTime: selectedTime('#update_travel_start_time'),
+                        endTime: selectedTime('#update_travel_end_time')
                     }
                 }).success(function (data, status, headers, config) {
                     if (data.status == 1) {
@@ -234,8 +235,8 @@ function getTrainTypes(){
                 //use data to build options
                 for (var i = 0, l = obj.length; i < l; i++) {
                     var opt = document.createElement("option");
-                    opt.value = obj[i]["name"];
-                    opt.innerText = obj[i]["name"];
+                    opt.value = obj[i]["id"];
+                    opt.innerText = obj[i]["id"];
                     add_travel_train_type.appendChild(opt);
                     update_travel_train_type.appendChild(opt.cloneNode(true));
                 }
@@ -311,7 +312,7 @@ function getStationList(){
                 //use data to build options
                 for (var i = 0, l = obj.length; i < l; i++) {
                     var opt = document.createElement("option");
-                    opt.value = obj[i]["name"];
+                    opt.value = obj[i]["id"];
                     opt.innerText = obj[i]["name"];
                     start_station.appendChild(opt);
                     station_name.appendChild(opt.cloneNode(true));
@@ -372,6 +373,11 @@ update_travel_end_time.datetimepicker({
 
 add_travel_start_time.datetimepicker('setDate',new Date());
 add_travel_end_time.datetimepicker('setDate',new Date());
+
+function selectedTime(selector) {
+    var date = $(selector).datetimepicker('getDate');
+    return date ? date.getTime() : null;
+}
 
 function parseTime(timeNumber){
     var temp=timeNumber.split('T');

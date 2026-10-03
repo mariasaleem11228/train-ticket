@@ -1,0 +1,12 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:admin-order-candidate
+    environment:
+      ADMIN_ORDER_ENABLED: "true"
+  admin-order-legacy:
+    image: codewisdom/ts-admin-order-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

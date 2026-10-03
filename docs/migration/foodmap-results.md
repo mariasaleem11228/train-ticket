@@ -1,0 +1,11 @@
+# Food Map migration checkpoint
+
+Food Map is the twenty-sixth live Spring Modulith business module. The running release combines the planned Station Food and Train Food catalogue providers in `ts-food-map-service`; those two separate services are absent from the running stack. Food Map owns the existing Mongo `stores` and `trainfoods` collections and exposes both catalogues through `/api/v1/foodmapservice`. Its module has no dependencies on other business modules.
+
+The isolated candidate matched the deployed service on 15 checks: both welcome routes, full catalogues, trip and station filters, missing results, and batch station lookup. The collections were backed up before cutover (36 stores and 20 train-food documents). Maven tests, including Spring Modulith boundary verification, passed. The live checkpoint passed with 26 modules.
+
+The still-separate Food service calls Food Map through its existing hostname and port 18855. With the route on the module, a composed menu for trip `D1345` returned HTTP 200 and exactly matched the pre-cutover response. A rollback rehearsal switched Food Map alone to legacy, checked both catalogues, and switched back. The legacy image seeds 9 stores and 5 train-food rows every time it starts. The rehearsal snapshots IDs just before the restart and removes exactly those new rows; both collections returned to their original counts. The initial rows added during proxy installation were removed using the pre-cutover backup.
+
+To verify directly, request `http://localhost:18855/api/v1/foodmapservice/trainfoods/D1345` and inspect `X-FoodMap-Backend: module`. In the browser, **Ticket Reserve → Booking → Need Food** calls the separate Food service at `/api/v1/foodservice/foods/{date}/{start}/{end}/{tripId}`; the Food service then calls Food Map internally, so that browser response carries the Food service's headers. Run `python docs/migration/verify_foodmap_integration.py` to check the internal path and the pre-cutover response.
+
+Checks: `python docs/migration/verify_checkpoint.py`, `python docs/migration/verify_foodmap_rollback.py`, `python docs/migration/verify_foodmap_integration.py`. Food was migrated in the next checkpoint; see the [Food results](food-results.md).

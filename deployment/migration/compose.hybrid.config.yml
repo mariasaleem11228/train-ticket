@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:config-candidate
+    environment:
+      CONFIG_ENABLED: "true"
+      CONFIG_MONGO_URI: mongodb://ts-config-mongo:27017/ts
+      CONFIG_WRITES_ENABLED: "true"
+  config-legacy:
+    image: codewisdom/ts-config-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

@@ -1,0 +1,12 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:travel-plan-candidate
+    environment:
+      TRAVEL_PLAN_ENABLED: "true"
+  travel-plan-legacy:
+    image: codewisdom/ts-travel-plan-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

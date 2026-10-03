@@ -1,0 +1,212 @@
+server:
+  port: 18080
+spring:
+  modulith:
+    detection-strategy: explicitly-annotated
+    runtime:
+      verification-enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  application:
+    name: ts-modulith
+  data:
+    mongodb:
+      uri: ${STATION_MONGO_URI:mongodb://localhost:27017/ts}
+  rabbitmq:
+    host: ${FOOD_RABBIT_HOST:migration-rabbitmq}
+    port: ${FOOD_RABBIT_PORT:5672}
+    username: ${FOOD_RABBIT_USER:migration}
+    password: ${FOOD_RABBIT_PASSWORD:local-benchmark-only}
+  mail:
+    host: ${NOTIFICATION_SMTP_HOST:migration-mailpit}
+    port: ${NOTIFICATION_SMTP_PORT:1025}
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.ssl.enable: false
+      mail.smtp.starttls.enable: false
+      mail.smtp.connectiontimeout: 3000
+      mail.smtp.timeout: 3000
+      mail.smtp.writetimeout: 3000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,modulith
+  endpoint:
+    health:
+      show-details: never
+modulith:
+  wait-order:
+    enabled: ${WAIT_ORDER_ENABLED:false}
+    writes-enabled: ${WAIT_ORDER_WRITES_ENABLED:false}
+    jdbc-url: ${WAIT_ORDER_JDBC_URL:jdbc:mysql://ts-wait-order-mysql:3306/waitorderservice}
+    username: ${WAIT_ORDER_DB_USER:root}
+    password: ${WAIT_ORDER_DB_PASSWORD:root}
+  ticketinfo:
+    enabled: ${TICKETINFO_ENABLED:false}
+  fooddelivery:
+    enabled: ${FOOD_DELIVERY_ENABLED:false}
+    writes-enabled: ${FOOD_DELIVERY_WRITES_ENABLED:false}
+    jdbc-url: ${FOOD_DELIVERY_JDBC_URL:jdbc:mysql://ts-food-delivery-mysql:3306/fooddeliveryservice}
+    username: ${FOOD_DELIVERY_DB_USER:root}
+    password: ${FOOD_DELIVERY_DB_PASSWORD:root}
+  delivery:
+    enabled: ${DELIVERY_ENABLED:false}
+    writes-enabled: ${DELIVERY_WRITES_ENABLED:false}
+    queue: ${DELIVERY_QUEUE:food_delivery}
+    jdbc-url: ${DELIVERY_JDBC_URL:jdbc:mysql://ts-delivery-mysql:3306/deliveryservice}
+    username: ${DELIVERY_DB_USER:root}
+    password: ${DELIVERY_DB_PASSWORD:root}
+  avatar:
+    enabled: ${AVATAR_ENABLED:false}
+    worker: ${AVATAR_WORKER:/app/avatar_worker.py}
+  voucher:
+    enabled: ${VOUCHER_ENABLED:false}
+    writes-enabled: ${VOUCHER_WRITES_ENABLED:false}
+    jdbc-url: ${VOUCHER_JDBC_URL:jdbc:mysql://ts-voucher-mysql:3306/voucherservice}
+    username: ${VOUCHER_DB_USER:root}
+    password: ${VOUCHER_DB_PASSWORD:root}
+  news:
+    enabled: ${NEWS_ENABLED:false}
+  ticketoffice:
+    enabled: ${TICKET_OFFICE_ENABLED:false}
+    writes-enabled: ${TICKET_OFFICE_WRITES_ENABLED:false}
+    mongo-uri: ${TICKET_OFFICE_MONGO_URI:mongodb://ts-ticket-office-mongo:27017/ticket-office}
+  adminuser:
+    enabled: ${ADMIN_USER_ENABLED:false}
+  adminorder:
+    enabled: ${ADMIN_ORDER_ENABLED:false}
+  admintravel:
+    enabled: ${ADMIN_TRAVEL_ENABLED:false}
+  adminroute:
+    enabled: ${ADMIN_ROUTE_ENABLED:false}
+  adminbasic:
+    enabled: ${ADMIN_BASIC_ENABLED:false}
+  user:
+    enabled: ${USER_ENABLED:false}
+    writes-enabled: ${USER_WRITES_ENABLED:false}
+    mongo-uri: ${USER_MONGO_URI:mongodb://ts-user-mongo:27017/ts-user-mongo}
+  identity:
+    enabled: ${AUTH_ENABLED:false}
+    writes-enabled: ${AUTH_WRITES_ENABLED:false}
+    mongo-uri: ${AUTH_MONGO_URI:mongodb://ts-auth-mongo:27017/ts-auth-mongo}
+    verify-url: ${AUTH_VERIFY_URL:http://ts-verification-code-service:15678}
+  verifycode:
+    enabled: ${VERIFYCODE_ENABLED:false}
+  notification:
+    enabled: ${NOTIFICATION_ENABLED:false}
+    writes-enabled: ${NOTIFICATION_WRITES_ENABLED:false}
+    mongo-uri: ${NOTIFICATION_MONGO_URI:mongodb://ts-notification-mongo:27017/ts}
+    queue: ${NOTIFICATION_QUEUE:email}
+    from: ${NOTIFICATION_FROM:trainticket_notify@163.com}
+    test-to: ${NOTIFICATION_TEST_TO:trainticket_notify@163.com}
+  food:
+    enabled: ${FOOD_ENABLED:false}
+    writes-enabled: ${FOOD_WRITES_ENABLED:false}
+    mongo-uri: ${FOOD_MONGO_URI:mongodb://ts-food-mongo:27017/ts}
+    delivery-queue: ${FOOD_DELIVERY_QUEUE:food_delivery}
+  foodmap:
+    enabled: ${FOODMAP_ENABLED:false}
+    mongo-uri: ${FOODMAP_MONGO_URI:mongodb://ts-food-map-mongo:27017/ts}
+  consign:
+    enabled: ${CONSIGN_ENABLED:false}
+    writes-enabled: ${CONSIGN_WRITES_ENABLED:false}
+    mongo-uri: ${CONSIGN_MONGO_URI:mongodb://ts-consign-mongo:27017/ts}
+  consign-price:
+    enabled: ${CONSIGN_PRICE_ENABLED:false}
+    writes-enabled: ${CONSIGN_PRICE_WRITES_ENABLED:false}
+    mongo-uri: ${CONSIGN_PRICE_MONGO_URI:mongodb://ts-consign-price-mongo:27017/ts}
+  assurance:
+    enabled: ${ASSURANCE_ENABLED:false}
+    writes-enabled: ${ASSURANCE_WRITES_ENABLED:false}
+    mongo-uri: ${ASSURANCE_MONGO_URI:mongodb://ts-assurance-mongo:27017/ts}
+  cancel:
+    enabled: ${CANCEL_ENABLED:false}
+    writes-enabled: ${CANCEL_WRITES_ENABLED:false}
+    user-url: ${CANCEL_USER_URL:http://ts-user-service:12342}
+  rebook:
+    enabled: ${REBOOK_ENABLED:false}
+    writes-enabled: ${REBOOK_WRITES_ENABLED:false}
+  inside-payment:
+    enabled: ${INSIDE_PAYMENT_ENABLED:false}
+    writes-enabled: ${INSIDE_PAYMENT_WRITES_ENABLED:false}
+    mongo-uri: ${INSIDE_PAYMENT_MONGO_URI:mongodb://ts-inside-payment-mongo:27017/ts}
+  payment:
+    enabled: ${PAYMENT_ENABLED:false}
+    writes-enabled: ${PAYMENT_WRITES_ENABLED:false}
+    mongo-uri: ${PAYMENT_MONGO_URI:mongodb://ts-payment-mongo:27017/ts}
+  execute:
+    enabled: ${EXECUTE_ENABLED:false}
+    writes-enabled: ${EXECUTE_WRITES_ENABLED:false}
+  preserve-other:
+    enabled: ${PRESERVE_OTHER_ENABLED:false}
+    writes-enabled: ${PRESERVE_OTHER_WRITES_ENABLED:false}
+    ticket-info-url: ${PRESERVE_OTHER_TICKET_INFO_URL:http://ts-ticketinfo-service:15681}
+    user-url: ${PRESERVE_OTHER_USER_URL:http://ts-user-service:12342}
+    assurance-url: ${PRESERVE_OTHER_ASSURANCE_URL:http://ts-assurance-service:18888}
+    food-url: ${PRESERVE_OTHER_FOOD_URL:http://ts-food-service:18856}
+    consign-url: ${PRESERVE_OTHER_CONSIGN_URL:http://ts-consign-service:16111}
+  preserve:
+    enabled: ${PRESERVE_ENABLED:false}
+    writes-enabled: ${PRESERVE_WRITES_ENABLED:false}
+    ticket-info-url: ${PRESERVE_TICKET_INFO_URL:http://ts-ticketinfo-service:15681}
+    user-url: ${PRESERVE_USER_URL:http://ts-user-service:12342}
+    assurance-url: ${PRESERVE_ASSURANCE_URL:http://ts-assurance-service:18888}
+    food-url: ${PRESERVE_FOOD_URL:http://ts-food-service:18856}
+    consign-url: ${PRESERVE_CONSIGN_URL:http://ts-consign-service:16111}
+  contacts:
+    enabled: ${CONTACTS_ENABLED:false}
+    mongo-uri: ${CONTACTS_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${CONTACTS_WRITES_ENABLED:false}
+  travel-plan:
+    enabled: ${TRAVEL_PLAN_ENABLED:false}
+  route-plan:
+    enabled: ${ROUTE_PLAN_ENABLED:false}
+  travel2:
+    enabled: ${TRAVEL2_ENABLED:false}
+    mongo-uri: ${TRAVEL2_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${TRAVEL2_WRITES_ENABLED:false}
+    ticket-info-url: ${TRAVEL2_TICKET_INFO_URL:http://ts-ticketinfo-service:15681}
+  travel:
+    enabled: ${TRAVEL_ENABLED:false}
+    mongo-uri: ${TRAVEL_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${TRAVEL_WRITES_ENABLED:false}
+    ticket-info-url: ${TRAVEL_TICKET_INFO_URL:http://ts-ticketinfo-service:15681}
+  basic:
+    enabled: ${BASIC_ENABLED:false}
+  price:
+    enabled: ${PRICE_ENABLED:false}
+    mongo-uri: ${PRICE_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${PRICE_WRITES_ENABLED:false}
+  route:
+    enabled: ${ROUTE_ENABLED:false}
+    mongo-uri: ${ROUTE_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${ROUTE_WRITES_ENABLED:false}
+  train:
+    enabled: ${TRAIN_ENABLED:false}
+    mongo-uri: ${TRAIN_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${TRAIN_WRITES_ENABLED:false}
+  security:
+    enabled: ${SECURITY_ENABLED:false}
+    mongo-uri: ${SECURITY_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${SECURITY_WRITES_ENABLED:false}
+  seat:
+    enabled: ${SEAT_ENABLED:false}
+    travel-url: ${SEAT_TRAVEL_URL:http://ts-travel-service:12346}
+    travel2-url: ${SEAT_TRAVEL2_URL:http://ts-travel2-service:16346}
+  config:
+    enabled: ${CONFIG_ENABLED:false}
+    mongo-uri: ${CONFIG_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${CONFIG_WRITES_ENABLED:false}
+  order-other:
+    enabled: ${ORDER_OTHER_ENABLED:false}
+    mongo-uri: ${ORDER_OTHER_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${ORDER_OTHER_WRITES_ENABLED:false}
+  orders:
+    enabled: ${ORDERS_ENABLED:false}
+    mongo-uri: ${ORDER_MONGO_URI:mongodb://localhost:27017/ts}
+    writes-enabled: ${ORDER_WRITES_ENABLED:false}
+  station:
+    # Candidate cannot write until explicitly enabled for isolated tests or cutover.
+    writes-enabled: ${STATION_WRITES_ENABLED:false}

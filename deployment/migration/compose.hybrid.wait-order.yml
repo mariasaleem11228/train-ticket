@@ -1,0 +1,21 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:wait-order-candidate
+    environment:
+      WAIT_ORDER_ENABLED: "true"
+      WAIT_ORDER_WRITES_ENABLED: "true"
+      WAIT_ORDER_JDBC_URL: jdbc:mysql://ts-wait-order-mysql:3306/waitorderservice
+      WAIT_ORDER_DB_USER: root
+      WAIT_ORDER_DB_PASSWORD: root
+  wait-order-mysql:
+    image: mysql@sha256:66aec17cd21a956029b83f083b813073859e8355dc1a00e55df6ba02f0e32345
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: waitorderservice
+    volumes: [wait-order-data:/var/lib/mysql]
+    networks:
+      legacy:
+        aliases: [ts-wait-order-mysql]
+volumes:
+  wait-order-data: {}

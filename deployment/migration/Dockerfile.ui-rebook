@@ -1,0 +1,2 @@
+FROM codewisdom/ts-ui-dashboard:0.2.0
+COPY ts-ui-dashboard/static/assets/js/client_order_list.js /usr/share/nginx/html/assets/js/client_order_list.js

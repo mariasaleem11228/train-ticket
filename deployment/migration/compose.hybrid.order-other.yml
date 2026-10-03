@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:order-other-pilot
+    environment:
+      ORDER_OTHER_ENABLED: "true"
+      ORDER_OTHER_MONGO_URI: mongodb://ts-order-other-mongo:27017/ts
+      ORDER_OTHER_WRITES_ENABLED: "true"
+  order-other-legacy:
+    image: train-ticket/order-other-legacy-no-seed:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

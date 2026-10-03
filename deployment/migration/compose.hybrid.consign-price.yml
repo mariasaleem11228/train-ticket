@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:consign-price-candidate
+    environment:
+      CONSIGN_PRICE_ENABLED: "true"
+      CONSIGN_PRICE_WRITES_ENABLED: "true"
+  consign-price-legacy:
+    image: codewisdom/ts-consign-price-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

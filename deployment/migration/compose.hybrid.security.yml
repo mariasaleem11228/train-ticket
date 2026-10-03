@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:security-candidate
+    environment:
+      SECURITY_ENABLED: "true"
+      SECURITY_MONGO_URI: mongodb://ts-security-mongo:27017/ts
+      SECURITY_WRITES_ENABLED: "true"
+  security-legacy:
+    image: codewisdom/ts-security-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

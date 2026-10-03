@@ -205,6 +205,7 @@ var appConsign = new Vue({
                 onConfirm: function (e) {
                     var rebookInfo = new Object();
                     rebookInfo.orderId = that.selectedOrderId;
+                    rebookInfo.loginId = sessionStorage.getItem("client_id");
                     rebookInfo.oldTripId = that.oldTripId;
                     rebookInfo.tripId = that.newTripId;
                     rebookInfo.seatType = that.selectedSeats[index];
@@ -212,7 +213,7 @@ var appConsign = new Vue({
                     var data = JSON.stringify(rebookInfo);
                     $.ajax({
                         type: "post",
-                        url: "/api/v1/rebookservice/rebook ",
+                        url: "/api/v1/rebookservice/rebook",
                         contentType: "application/json",
                         headers: {"Authorization": "Bearer " + sessionStorage.getItem("client_token")},
                         dataType: "json",

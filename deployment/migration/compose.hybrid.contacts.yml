@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:contacts-candidate
+    environment:
+      CONTACTS_ENABLED: "true"
+      CONTACTS_MONGO_URI: mongodb://ts-contacts-mongo:27017/ts
+      CONTACTS_WRITES_ENABLED: "true"
+  contacts-legacy:
+    image: codewisdom/ts-contacts-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

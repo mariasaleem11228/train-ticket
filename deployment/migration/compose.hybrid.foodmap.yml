@@ -1,0 +1,12 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:foodmap-candidate
+    environment:
+      FOODMAP_ENABLED: "true"
+  foodmap-legacy:
+    image: codewisdom/ts-food-map-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

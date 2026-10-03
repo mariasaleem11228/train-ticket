@@ -1,0 +1,13 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:execute-candidate
+    environment:
+      EXECUTE_ENABLED: "true"
+      EXECUTE_WRITES_ENABLED: "true"
+  execute-legacy:
+    image: codewisdom/ts-execute-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

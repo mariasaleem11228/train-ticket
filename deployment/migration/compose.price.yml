@@ -1,0 +1,31 @@
+services:
+  price-legacy-test:
+    image: train-ticket/price-legacy-no-seed:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: legacy-price
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:26579:16579"]
+    networks: [migration-test, legacy]
+  price-module-test:
+    image: train-ticket/ts-modulith:price-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      PRICE_ENABLED: "true"
+      PRICE_MONGO_URI: mongodb://station-test-mongo:27017/module-price
+      PRICE_WRITES_ENABLED: "true"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18096:18080"]
+    networks: [migration-test, legacy]
+  price-candidate:
+    image: train-ticket/ts-modulith:price-candidate
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      PRICE_ENABLED: "true"
+      PRICE_MONGO_URI: mongodb://ts-price-mongo:27017/ts
+      PRICE_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18095:18080"]
+    networks: [legacy]

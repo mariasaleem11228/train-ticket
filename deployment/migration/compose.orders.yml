@@ -1,0 +1,33 @@
+services:
+  station-module-test:
+    image: train-ticket/ts-modulith:spring-modulith-1.4
+  orders-legacy-test:
+    image: codewisdom/ts-order-service:0.2.0
+    environment:
+      SPRING_DATA_MONGODB_HOST: station-test-mongo
+      SPRING_DATA_MONGODB_DATABASE: orders_legacy
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    ports: ["127.0.0.1:22031:12031"]
+    networks: [migration-test]
+  orders-module-test:
+    image: train-ticket/ts-modulith:spring-modulith-1.4
+    environment:
+      STATION_MONGO_URI: mongodb://station-test-mongo:27017/module
+      STATION_WRITES_ENABLED: "false"
+      ORDERS_ENABLED: "true"
+      ORDER_MONGO_URI: mongodb://station-test-mongo:27017/orders_module
+      ORDER_WRITES_ENABLED: "true"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18082:18080"]
+    networks: [migration-test]
+  orders-candidate:
+    image: train-ticket/ts-modulith:spring-modulith-1.4
+    environment:
+      STATION_MONGO_URI: mongodb://ts-station-mongo:27017/ts
+      STATION_WRITES_ENABLED: "false"
+      ORDERS_ENABLED: "true"
+      ORDER_MONGO_URI: mongodb://ts-order-mongo:27017/ts
+      ORDER_WRITES_ENABLED: "false"
+      TZ: Asia/Shanghai
+    ports: ["127.0.0.1:18083:18080"]
+    networks: [legacy]

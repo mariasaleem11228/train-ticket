@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:train-candidate
+    environment:
+      TRAIN_ENABLED: "true"
+      TRAIN_MONGO_URI: mongodb://ts-train-mongo:27017/ts
+      TRAIN_WRITES_ENABLED: "true"
+  train-legacy:
+    image: codewisdom/ts-train-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

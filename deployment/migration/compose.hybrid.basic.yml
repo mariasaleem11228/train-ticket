@@ -1,0 +1,12 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:basic-candidate
+    environment:
+      BASIC_ENABLED: "true"
+  basic-legacy:
+    image: codewisdom/ts-basic-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

@@ -1,0 +1,20 @@
+# Combine with compose.station.yml. One host; ownership gates permit independent cutovers.
+services:
+  modulith:
+    image: train-ticket/ts-modulith:orders-pilot
+    environment:
+      STATION_WRITES_ENABLED: "true"
+      ORDERS_ENABLED: "true"
+      ORDER_WRITES_ENABLED: "true"
+      ORDER_MONGO_URI: mongodb://ts-order-mongo:27017/ts
+      MODULITH_OWNERSHIP_FILE: /migration/ownership.json
+      TZ: Asia/Shanghai
+    volumes:
+      - ./.state/ownership:/migration:ro
+  orders-legacy:
+    image: codewisdom/ts-order-service:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

@@ -1,0 +1,14 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:price-candidate
+    environment:
+      PRICE_ENABLED: "true"
+      PRICE_MONGO_URI: mongodb://ts-price-mongo:27017/ts
+      PRICE_WRITES_ENABLED: "true"
+  price-legacy:
+    image: train-ticket/price-legacy-no-seed:0.2.0
+    profiles: [routing]
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:+UseSerialGC -Xmx192m"
+    networks: [legacy]

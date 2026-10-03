@@ -1,0 +1,12 @@
+services:
+  modulith:
+    image: train-ticket/ts-modulith:ticket-office-candidate
+    environment:
+      TICKET_OFFICE_ENABLED: "true"
+      TICKET_OFFICE_WRITES_ENABLED: "true"
+      TICKET_OFFICE_MONGO_URI: mongodb://ts-ticket-office-mongo:27017/ticket-office
+  ticket-office-legacy:
+    image: train-ticket/ts-ticket-office-legacy:no-reseed
+    profiles: [routing]
+    restart: unless-stopped
+    networks: [legacy]
