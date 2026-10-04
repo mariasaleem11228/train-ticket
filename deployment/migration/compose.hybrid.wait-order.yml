@@ -1,9 +1,10 @@
 services:
   modulith:
-    image: train-ticket/ts-modulith:wait-order-candidate
+    image: train-ticket/ts-modulith:direct-modules-candidate
     environment:
       WAIT_ORDER_ENABLED: "true"
       WAIT_ORDER_WRITES_ENABLED: "true"
+      WAIT_ORDER_RETRY_ENABLED: "true"
       WAIT_ORDER_JDBC_URL: jdbc:mysql://ts-wait-order-mysql:3306/waitorderservice
       WAIT_ORDER_DB_USER: root
       WAIT_ORDER_DB_PASSWORD: root

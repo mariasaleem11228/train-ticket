@@ -8,9 +8,9 @@ from http_support import request,test_token
 base='http://127.0.0.1:18144'
 path='/api/v1/waitorderservice'
 status,graph=request(base,'/actuator/modulith')
-assert status==200 and len(graph)==44 and graph['waitorder']['dependencies']==[]
+assert status==200 and len(graph)==44 and {d['target'] for d in graph['waitorder']['dependencies']}=={'preserve'}
 assert request(base,path+'/orders')[0] in (401,403)
-token=test_token('ROLE_USER')
+token=test_token('ROLE_ADMIN')
 assert request(base,path+'/welcome',token=token)==(200,'Welcome to [ Wait Order Service ] !')
 account=str(uuid.uuid4());contact=str(uuid.uuid4())
 order=dict(accountId=account,contactsId=contact,tripId='D1345',seatType=2,

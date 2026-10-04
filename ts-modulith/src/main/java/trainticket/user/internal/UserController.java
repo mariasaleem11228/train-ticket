@@ -33,7 +33,7 @@ class UserController implements UserOperations {
         Document user=repository.byName(name);
         return user==null?response(0,"No User",null):response(1,"Find User Success",toUser(user));
     }
-    @GetMapping("/id/{id}") Map<String,Object> byId(@PathVariable UUID id) {
+    @Override @GetMapping("/id/{id}") public Map<String,Object> byId(@PathVariable UUID id) {
         Document user=repository.byId(id);
         return user==null?response(0,"No User",null):response(1,"Find User Success",toUser(user));
     }

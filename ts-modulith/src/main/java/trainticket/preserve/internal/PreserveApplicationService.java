@@ -59,9 +59,35 @@ class PreserveApplicationService implements PreserveOperations {
     }
 
     @Override public BookingResult book(BookingRequest request, String authorization) {
+        return bookInternal(request, authorization, null);
+    }
+
+    @Override public BookingResult bookWaitOrder(BookingRequest request, UUID orderId) {
+        if (orderId == null) throw new IllegalArgumentException("Stable order ID required");
+        if (request.assurance() != 0 || request.foodType() != 0
+                || (request.consigneeName() != null && !request.consigneeName().isBlank()))
+            throw new IllegalArgumentException("Wait-list retries cannot purchase ancillary services");
+        return bookInternal(request, null, orderId);
+    }
+
+    private BookingResult bookInternal(BookingRequest request, String authorization, UUID waitOrderId) {
         // A disabled candidate must not reach order, insurance, food or consign writes.
         if (!writesEnabled || !ownership.permits("preserve"))
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Preserve writes disabled");
+
+        // A crashed retry can resume after the order was inserted but before WaitOrder
+        // recorded success. No seat allocation or downstream call is repeated.
+        if (waitOrderId != null) {
+            OrderResult<?> existing=orders.findOrderById(waitOrderId);
+            if (existing.getStatus() == 1) {
+                Order saved=(Order)existing.getData();
+                if (!saved.getAccountId().equals(UUID.fromString(request.accountId()))
+                        || !saved.getTrainNumber().equals(request.tripId())
+                        || !saved.getTravelDate().equals(request.date()))
+                    throw new IllegalStateException("Wait-list order ID belongs to another booking");
+                return new BookingResult(1,"Already booked",saved.getId().toString());
+            }
+        }
 
         SecurityResult<String> policy = security.check(request.accountId());
         if (policy.status() == 0) return failure(policy.msg());
@@ -92,7 +118,7 @@ class PreserveApplicationService implements PreserveOperations {
         if (allocation.status() == 0 || allocation.data() == null) return failure("Seat Not Enough");
 
         Order order = new Order();
-        order.setId(UUID.randomUUID());
+        order.setId(waitOrderId == null ? UUID.randomUUID() : waitOrderId);
         order.setTrainNumber(request.tripId());
         order.setAccountId(UUID.fromString(request.accountId()));
         order.setFrom(fromId); order.setTo(toId);
@@ -106,9 +132,11 @@ class PreserveApplicationService implements PreserveOperations {
         order.setTravelTime(tripResponse.startingTime());
         order.setSeatNumber(Integer.toString(allocation.data().seatNo()));
         order.setPrice(fares.path(request.seatType() == 2 ? "confortClass" : "economyClass").asText());
-        OrderResult<?> created = orders.create(order);
+        OrderResult<?> created = waitOrderId == null ? orders.create(order) : orders.createIfAbsent(order);
         if (created.getStatus() == 0) return failure(created.getMsg());
         Order saved = (Order) created.getData();
+        if (waitOrderId != null)
+            return new BookingResult(1,created.getMsg(),saved.getId().toString());
         String message = "Success.";
 
         if (request.assurance() != 0) {

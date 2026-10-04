@@ -1,47 +1,42 @@
 package trainticket.seat.internal;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-import java.time.Duration;
-import java.util.ArrayList;
+import trainticket.route.Route;
+import trainticket.route.RouteOperations;
+import trainticket.train.TrainOperations;
+import trainticket.train.TrainType;
+import trainticket.tripcatalog.TripCatalogOperations;
+import trainticket.tripcatalog.TripSnapshot;
+
 import java.util.List;
 
-/** Travel and Travel2 stay remote until their later migration stages. */
+/** Resolves seat-allocation metadata through published module APIs. */
 @Component
 @ConditionalOnProperty(name="modulith.seat.enabled", havingValue="true")
 class TravelLookup {
-    private final RestTemplate http;
-    private final String travel;
-    private final String travel2;
+    private final TripCatalogOperations trips;
+    private final RouteOperations routes;
+    private final TrainOperations trains;
 
-    TravelLookup(@Value("${modulith.seat.travel-url:http://ts-travel-service:12346}") String travel,
-                 @Value("${modulith.seat.travel2-url:http://ts-travel2-service:16346}") String travel2) {
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setConnectTimeout(Duration.ofSeconds(5));
-        factory.setReadTimeout(Duration.ofSeconds(20));
-        http = new RestTemplate(factory);
-        this.travel = travel;
-        this.travel2 = travel2;
+    TravelLookup(TripCatalogOperations trips,RouteOperations routes,TrainOperations trains) {
+        this.trips=trips;this.routes=routes;this.trains=trains;
     }
-    List<String> stations(String number, boolean standard) {
-        JsonNode node = data(number, standard, "routes").path("stations");
-        List<String> result = new ArrayList<>();
-        node.forEach(item -> result.add(item.asText()));
-        return result;
+    List<String> stations(String number,boolean standard) {
+        TripSnapshot trip=trip(number,standard);
+        Route route=routes.find(trip.routeId()).data();
+        if (route==null)throw new IllegalStateException("Route is unavailable for "+number);
+        return route.getStations();
     }
-    int capacity(String number, boolean standard, int seatType) {
-        JsonNode node = data(number, standard, "train_types");
-        return node.path(seatType == 2 ? "confortClass" : "economyClass").asInt();
+    int capacity(String number,boolean standard,int seatType) {
+        TripSnapshot trip=trip(number,standard);
+        TrainType train=trains.find(trip.trainTypeId()).data();
+        if (train==null)throw new IllegalStateException("Train type is unavailable for "+number);
+        return seatType==2?train.getConfortClass():train.getEconomyClass();
     }
-    private JsonNode data(String number, boolean standard, String resource) {
-        String base = standard ? travel + "/api/v1/travelservice/" : travel2 + "/api/v1/travel2service/";
-        JsonNode response = http.getForObject(base + resource + "/" + number, JsonNode.class);
-        if (response == null || response.path("data").isNull() || response.path("data").isMissingNode())
-            throw new IllegalStateException("Travel " + resource + " is unavailable for " + number);
-        return response.path("data");
+    private TripSnapshot trip(String number,boolean standard) {
+        TripSnapshot trip=trips.find(number,standard);
+        if (trip==null)throw new IllegalStateException("Trip is unavailable for "+number);
+        return trip;
     }
 }

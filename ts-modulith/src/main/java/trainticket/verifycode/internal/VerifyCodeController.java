@@ -19,11 +19,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
+import trainticket.verifycode.VerificationOperations;
 
 @RestController
 @ConditionalOnProperty(name="modulith.verifycode.enabled",havingValue="true")
 @RequestMapping("/api/v1/verifycode")
-class VerifyCodeController {
+class VerifyCodeController implements VerificationOperations {
     private static final String COOKIE="YsbCaptcha";
     private static final int EXPIRES_SECONDS=1000;
     private static final char[] LETTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
@@ -65,6 +66,10 @@ class VerifyCodeController {
     @GetMapping("/verify/{verifyCode}")
     boolean verify(@PathVariable String verifyCode,HttpServletRequest request,HttpServletResponse response) {
         String key=key(request,response,false);
+        return verify(verifyCode,key);
+    }
+
+    @Override public boolean verify(String verifyCode,String key) {
         // The deployed controller returns true regardless of this check. Preserve that wire contract.
         synchronized(codes) {
             Entry saved=codes.get(key);

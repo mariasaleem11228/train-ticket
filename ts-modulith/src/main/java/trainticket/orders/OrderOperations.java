@@ -15,6 +15,9 @@ public interface OrderOperations {
 
     public OrderResult create(Order var1);
 
+    /** Insert the supplied ID once; retries return the existing order. */
+    public OrderResult createIfAbsent(Order order);
+
     public OrderResult saveChanges(Order var1);
 
     public OrderResult cancelOrder(UUID var1, UUID var2);

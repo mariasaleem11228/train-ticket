@@ -1,21 +1,30 @@
 # Train Ticket: incremental migration to a modular monolith
 
-## Current progress (3 October 2026)
+## Current progress (4 October 2026)
 
-The live hybrid runs 44 Spring Modulith 1.4.13 business modules in one Spring Boot
-3.5.16/Java 21 host. TicketInfo is module 43; its GET and POST contracts match
+The live hybrid runs 44 business modules plus one internal Trip Catalog module
+in one Spring Boot 3.5.16/Java 21 host. TicketInfo is business module 43; its GET and POST contracts match
 the retained legacy container, and Travel, Travel2, Preserve and PreserveOther
-use its local API. WaitOrder is module 44 with isolated MySQL persistence,
-authenticated HTTP endpoints, duplicate protection and scheduled expiry.
+use its local API. WaitOrder is business module 44 with isolated MySQL persistence,
+authenticated HTTP endpoints, duplicate protection, scheduled expiry and
+durable booking retries through Preserve's published API.
 The legacy WaitOrder service is absent from this stack, so there is no live
-database to transfer or baseline to compare. Its automatic Preserve retry is
-still disabled: the old code calls an invalid URL, reverses expiry, and updates
-status using account ID instead of wait-order ID. See the
+database to transfer or baseline to compare. The replacement retry worker uses
+database leases and stable order IDs; the old PollThread is not used. See the
 [WaitOrder migration results](wait-order-results.md) and [testing guide](TESTING.md).
 The 40 existing HTTP routers remain reversible. TicketInfo's legacy container
 is retained on port 15681 for comparison; WaitOrder is currently exposed on
 the shared host's port 18080 without a port-8080 UI route. The inventory and
 sequence below remain the working context map.
+
+Auth now calls Verification Code through a published module API. Preserve and
+PreserveOther call User, Assurance, Food and Consign through published APIs,
+and Cancel calls User locally. The isolated candidate verified a booking with
+the corresponding legacy URLs unreachable. Trip Catalog now owns the two trip
+collections. Seat reads Trip Catalog, Route and Train through published APIs,
+while Travel and Travel2 still use Seat for availability. The isolated candidate
+matched the previous host's search and seat results and booked both trip types
+with the old Seat-to-Travel HTTP URLs disabled.
 
 ## Recommendation and scope
 
@@ -173,3 +182,7 @@ Maintain a stage manifest containing commit, image digests, migrated services, r
 6. Repeat fixed workloads on the baseline and hybrid topology with matched datasets, warm-up, resources and concurrency. Report multiple runs and variability. Record container counts and total system resources as well as host resources so consolidation gains are measurable.
 
 Save evidence at each checkpoint; do not claim improvement from degree counts alone. Retire each legacy service only after the hybrid gate and rollback rehearsal pass. The final acceptance condition is one backend deployable, explicit module boundaries, no internal service-to-service HTTP, preserved external contracts, and verified data ownership.
+
+### Direct module calls checkpoint
+
+The 45-module host now calls published module APIs for all Java in-host collaborations. The last HTTP adapters were Seat to Travel/Travel2, Travel/Travel2 to TicketInfo, Auth to Verification Code, Cancel to User, and Preserve/PreserveOther to TicketInfo, User, Assurance, Food and Consign. The old URL properties and HTTP clients were removed from the host. The gateway and compatibility proxies still expose the existing HTTP contracts to the browser and legacy processes; they remain the side-by-side rollback seam. RabbitMQ and databases remain external integrations. Run `python docs/migration/verify_direct_modules_candidate.py` before upgrading the host with `python docs/migration/prepare_direct_modules.py`.

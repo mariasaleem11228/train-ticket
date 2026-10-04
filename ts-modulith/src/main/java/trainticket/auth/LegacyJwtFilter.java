@@ -25,9 +25,11 @@ class LegacyJwtFilter extends OncePerRequestFilter {
                 if (claims.getExpiration() == null || claims.getExpiration().before(new Date())) throw new IllegalArgumentException("Expired token");
                 List<?> roles = claims.get("roles", List.class);
                 if (roles == null) throw new IllegalArgumentException("Missing roles");
-                SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+                UsernamePasswordAuthenticationToken authentication=new UsernamePasswordAuthenticationToken(
                         claims.getSubject(), "", roles.stream().map(Object::toString)
-                        .map(SimpleGrantedAuthority::new).collect(Collectors.toList())));
+                        .map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+                authentication.setDetails(claims.get("id"));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (JwtException | IllegalArgumentException ex) {
                 SecurityContextHolder.clearContext();
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

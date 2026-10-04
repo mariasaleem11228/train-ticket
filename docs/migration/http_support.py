@@ -7,12 +7,13 @@ import time
 import urllib.error
 import urllib.request
 
-def test_token(role='ROLE_ADMIN'):
+def test_token(role='ROLE_ADMIN', account_id=None):
     # Existing Train Ticket benchmark key. Test credentials, never a production identity.
     def encode(value):
         return base64.urlsafe_b64encode(json.dumps(value, separators=(',', ':')).encode()).rstrip(b'=')
-    value = encode({'alg': 'HS256', 'typ': 'JWT'}) + b'.' + encode(
-        {'sub': 'station-migration-test', 'roles': [role], 'exp': int(time.time()) + 3600})
+    claims={'sub': 'station-migration-test', 'roles': [role], 'exp': int(time.time()) + 3600}
+    if account_id is not None:claims['id']=account_id
+    value = encode({'alg': 'HS256', 'typ': 'JWT'}) + b'.' + encode(claims)
     return (value + b'.' + base64.urlsafe_b64encode(hmac.new(b'secret', value, hashlib.sha256).digest()).rstrip(b'=')).decode()
 
 def request(base, path, method='GET', body=None, token=None):

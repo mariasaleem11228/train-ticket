@@ -10,12 +10,8 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import trainticket.orders.OrderOperations;
 import trainticket.orders.SoldTicket;
 import trainticket.route.Route;
@@ -26,9 +22,8 @@ import trainticket.train.TrainOperations;
 import trainticket.train.TrainType;
 import trainticket.ticketinfo.TicketInfoOperations;
 import trainticket.travel2.*;
-import java.time.Duration;
 
-/** Deployed Travel behavior. The still-remote TicketInfo service is an HTTP adapter. */
+/** Deployed Travel2 behavior using published module APIs. */
 @Service("travel2ApplicationService")
 @ConditionalOnProperty(name="modulith.travel2.enabled",havingValue="true")
 class TravelApplicationService implements TravelOperations {
@@ -37,22 +32,14 @@ class TravelApplicationService implements TravelOperations {
     private final RouteOperations routes;
     private final OrderOperations orders;
     private final SeatOperations seats;
-    private final RestTemplate http;
-    private final String ticketInfoUrl;
-    private final ObjectProvider<TicketInfoOperations> ticketInfo;
+    private final TicketInfoOperations ticketInfo;
     private final ObjectMapper mapper;
 
     TravelApplicationService(TripRepository trips, TrainOperations trains, RouteOperations routes,
                              OrderOperations orders, SeatOperations seats,
-                             @Value("${modulith.travel2.ticket-info-url:http://ts-ticketinfo-service:15681}") String ticketInfoUrl,
-                             ObjectProvider<TicketInfoOperations> ticketInfo,ObjectMapper mapper) {
+                             TicketInfoOperations ticketInfo,ObjectMapper mapper) {
         this.trips=trips;this.trains=trains;this.routes=routes;this.orders=orders;this.seats=seats;
-        this.ticketInfoUrl=ticketInfoUrl;
         this.ticketInfo=ticketInfo;this.mapper=mapper;
-        SimpleClientHttpRequestFactory factory=new SimpleClientHttpRequestFactory();
-        factory.setConnectTimeout(Duration.ofSeconds(5));
-        factory.setReadTimeout(Duration.ofSeconds(20));
-        this.http=new RestTemplate(factory);
     }
     public TravelResult<List<Trip>> all() {
         List<Trip> found=trips.all();
@@ -140,9 +127,7 @@ class TravelApplicationService implements TravelOperations {
         return new TravelResult<>(1,"Success",detail);
     }
     private String stationId(String name) {
-        TicketInfoOperations local=ticketInfo.getIfAvailable();
-        JsonNode response=local==null?http.getForObject(ticketInfoUrl+"/api/v1/ticketinfoservice/ticketinfo/"+name,JsonNode.class):
-                mapper.valueToTree(local.stationId(name));
+        JsonNode response=mapper.valueToTree(ticketInfo.stationId(name));
         JsonNode data=response==null ? null : response.path("data");
         return data==null || data.isNull() || data.isMissingNode() ? null : data.asText();
     }
@@ -152,9 +137,7 @@ class TravelApplicationService implements TravelOperations {
         Map<String,Object> ticketRequest=new LinkedHashMap<>();
         ticketRequest.put("trip",trip);ticketRequest.put("startingPlace",startName);
         ticketRequest.put("endPlace",endName);ticketRequest.put("departureTime",date);
-        TicketInfoOperations local=ticketInfo.getIfAvailable();
-        JsonNode info=local==null?http.postForObject(ticketInfoUrl+"/api/v1/ticketinfoservice/ticketinfo",ticketRequest,JsonNode.class):
-                mapper.valueToTree(local.travel(mapper.valueToTree(ticketRequest)));
+        JsonNode info=mapper.valueToTree(ticketInfo.travel(mapper.valueToTree(ticketRequest)));
         JsonNode fares=info.path("data").path("prices");
         SoldTicket sold=(SoldTicket)orders.queryAlreadySoldOrders(date,trip.tripId().toString()).getData();
         String number=sold.getTrainNumber();

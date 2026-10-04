@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import trainticket.food.FoodOrder;
+import trainticket.food.FoodOperations;
 import trainticket.food.FoodResult;
 import trainticket.foodmap.FoodMapOperations;
 import trainticket.route.Route;
@@ -19,7 +20,7 @@ import java.util.UUID;
 
 @Service
 @ConditionalOnProperty(name="modulith.food.enabled",havingValue="true")
-class FoodApplicationService {
+class FoodApplicationService implements FoodOperations {
     private static final Logger LOG=LoggerFactory.getLogger(FoodApplicationService.class);
     private final FoodOrderRepository orders;
     private final FoodDeliveryPublisher delivery;
@@ -40,7 +41,7 @@ class FoodApplicationService {
         return row==null?new FoodResult<>(0,"Order Id Is Non-Existent.",null):
                 new FoodResult<>(1,"Success.",row);
     }
-    FoodResult<?> create(FoodOrder input) {
+    @Override public FoodResult<?> create(FoodOrder input) {
         if (orders.byOrder(input.orderId())!=null)
             return new FoodResult<>(0,"Order Id Has Existed.",null);
         FoodOrder created=new FoodOrder(UUID.randomUUID(),input.orderId(),input.foodType(),

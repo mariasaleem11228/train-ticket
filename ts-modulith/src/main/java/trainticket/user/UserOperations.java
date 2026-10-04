@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 /** Published User operations for local modules. */
 public interface UserOperations {
     Map<String,Object> all();
+    Map<String,Object> byId(UUID id);
     ResponseEntity<Map<String,Object>> register(Map<String,Object> body);
     Map<String,Object> update(Map<String,Object> body);
     Map<String,Object> delete(UUID id);

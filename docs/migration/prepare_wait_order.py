@@ -10,7 +10,7 @@ state=json.loads((routing.STATE/'hybrid.json').read_text())
 existing=tuple(state['modules'])
 if len(existing) not in (43,44) or 'ticketinfo' not in existing or (len(existing)==44 and 'waitorder' not in existing):
     raise RuntimeError('Expected the TicketInfo or WaitOrder checkpoint')
-routing.require_gate('wait-order-candidate.json',3)
+routing.require_gate('wait-order-retry-candidate.json',4)
 
 def reload(name):
     proxy=routing.DEFS[name]['proxy']
@@ -41,7 +41,8 @@ try:
         if status==200 and set(graph)==set(existing)|{'waitorder'}:break
         time.sleep(3)
     else:raise RuntimeError('Unexpected WaitOrder module graph')
-    if graph['waitorder']['dependencies']!=[]:raise RuntimeError('WaitOrder must remain independent')
+    if {dependency['target'] for dependency in graph['waitorder']['dependencies']}!={'preserve'}:
+        raise RuntimeError('WaitOrder must use only Preserve')
     state.update(stage='waitorder',image=routing.inspect(routing.station.MODULE)['Image'],
                  modules=[*existing] if 'waitorder' in existing else [*existing,'waitorder'])
     routing.write_json(routing.STATE/'hybrid.json',state)
@@ -50,4 +51,4 @@ finally:
     routing.owner('delivery','module')
     routing.owner('fooddelivery','module')
 routing.owner('waitorder','module')
-print('WaitOrder API enabled in shared host; automated booking retries remain disabled')
+print('WaitOrder retry enabled in shared host with stable booking IDs and durable leases')

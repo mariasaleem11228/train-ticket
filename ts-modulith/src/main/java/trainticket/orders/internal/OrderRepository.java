@@ -3,6 +3,7 @@ package trainticket.orders.internal;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.*;
 import com.mongodb.client.model.ReplaceOptions;
+import com.mongodb.MongoWriteException;
 import org.bson.Document;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Value;
@@ -82,6 +83,24 @@ class OrderRepository {
         doc.put("travelTime", order.getTravelTime());
         doc.put("_class", "order.entity.Order");
         collection.replaceOne(eq("_id", id(order.getId())), doc, new ReplaceOptions().upsert(true));
+    }
+    boolean insertIfAbsent(Order order) {
+        requireWriter();
+        Document doc = new Document(mapper.convertValue(order, Map.class));
+        doc.remove("id");
+        doc.put("_id", id(order.getId()));
+        doc.put("accountId", id(order.getAccountId()));
+        doc.put("boughtDate", order.getBoughtDate());
+        doc.put("travelDate", order.getTravelDate());
+        doc.put("travelTime", order.getTravelTime());
+        doc.put("_class", "order.entity.Order");
+        try {
+            collection.insertOne(doc);
+            return true;
+        } catch (MongoWriteException duplicate) {
+            if (duplicate.getError().getCode() == 11000) return false;
+            throw duplicate;
+        }
     }
     void deleteById(UUID value) { requireWriter(); collection.deleteOne(eq("_id", id(value))); }
     void ping() { collection.estimatedDocumentCount(); }

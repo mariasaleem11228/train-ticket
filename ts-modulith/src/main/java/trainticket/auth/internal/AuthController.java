@@ -4,16 +4,13 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.bson.Document;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriUtils;
 import trainticket.auth.AuthOperations;
+import trainticket.verifycode.VerificationOperations;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -31,12 +28,12 @@ class AuthController {
     private final AuthRepository repository;
     private final AuthOperations operations;
     private final BCryptPasswordEncoder passwords=new BCryptPasswordEncoder();
-    private final RestTemplate http=new RestTemplate();
-    private final String verifyUrl;
+    private final VerificationOperations verification;
 
     AuthController(AuthRepository repository,AuthOperations operations,
-                   @Value("${modulith.identity.verify-url}") String verifyUrl) {
-        this.repository=repository;this.operations=operations;this.verifyUrl=verifyUrl;
+                   VerificationOperations verification) {
+        this.repository=repository;this.operations=operations;
+        this.verification=verification;
     }
 
     @GetMapping("/api/v1/auth/hello") String authHello() { return "hello"; }
@@ -56,13 +53,8 @@ class AuthController {
         String password=(String)body.get("password");
         String code=(String)body.get("verificationCode");
         if (code!=null && !code.isEmpty()) {
-            String path="/api/v1/verifycode/verify/"+UriUtils.encodePathSegment(code,StandardCharsets.UTF_8);
-            HttpHeaders forwarded=new HttpHeaders();
-            if (headers.getFirst(HttpHeaders.COOKIE)!=null)
-                forwarded.set(HttpHeaders.COOKIE,headers.getFirst(HttpHeaders.COOKIE));
-            Boolean valid=http.exchange(verifyUrl+path,HttpMethod.GET,
-                    new org.springframework.http.HttpEntity<>(forwarded),Boolean.class).getBody();
-            if (!Boolean.TRUE.equals(valid))return result(0,"Verification failed.",null);
+            String cookie=extractCaptchaCookie(headers.getFirst(HttpHeaders.COOKIE));
+            if (!verification.verify(code,cookie))return result(0,"Verification failed.",null);
         }
         Document user=repository.byName(username);
         if (user==null || password==null || !passwords.matches(password,user.getString("password")))
@@ -76,6 +68,15 @@ class AuthController {
                 .setExpiration(new Date(now.getTime()+3600000))
                 .signWith(SignatureAlgorithm.HS256,SECRET).compact();
         return result(1,"login success",Map.of("userId",id,"username",username,"token",token));
+    }
+
+    private String extractCaptchaCookie(String cookieHeader) {
+        if (cookieHeader==null)return null;
+        for (String item:cookieHeader.split(";")) {
+            String part=item.trim();
+            if (part.startsWith("YsbCaptcha="))return part.substring("YsbCaptcha=".length());
+        }
+        return null;
     }
 
     @GetMapping("/api/v1/users") List<Map<String,Object>> all() {

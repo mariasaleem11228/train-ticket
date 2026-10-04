@@ -1,10 +1,12 @@
 ﻿# Test the current hybrid application
 
-Checkpoint: 3 October 2026. All 44 identified business services now have Spring
+Checkpoint: 4 October 2026. All 44 identified business services now have Spring
 Modulith modules in one Spring Boot 3.5.16/Java 21 host. TicketInfo's contract
 matches the retained legacy service. WaitOrder's HTTP and persistence paths
-work; automatic booking retries remain disabled pending an idempotent booking
-design and end-to-end comparison. Avatar uses a colocated Python dlib utility.
+work; automatic booking retries are enabled with a durable lease and a stable
+order ID for replay. A separate internal Trip Catalog module makes 45 runtime
+modules; Seat, Travel and Travel2 use its published API. Avatar uses a colocated
+Python dlib utility.
 See the [WaitOrder migration results](wait-order-results.md).
 
 ## Resume the hybrid
@@ -21,7 +23,7 @@ The launcher resumes this existing deployment and preserves its data and routing
 It is not a fresh-machine installer. Allow the existing services time to start
 after a Docker restart. The checkpoint verifies the UI and direct service routes,
 host health, authentication on protected endpoints, retained synthetic orders,
-and the 44-module Spring Modulith runtime graph. Rebook depends on Orders,
+and the 45-module Spring Modulith runtime graph. Rebook depends on Orders,
 OrderOther, Station, Travel, Travel2, Seat and Inside Payment through their
 published APIs. The Actuator endpoint is on the host's
 local port 18080; the browser-facing port 8080 does not expose it.
@@ -66,12 +68,24 @@ local port 18080; the browser-facing port 8080 does not expose it.
 - Delivery has no HTTP endpoint or standalone screen. A booking with food sends a `food_delivery` RabbitMQ message. Verify its persistence with `python docs/migration/verify_delivery_live.py`; see [Delivery migration results](delivery-results.md).
 - Food Delivery has no current UI screen. Its API is on the shared host at http://localhost:18080/api/v1/fooddeliveryservice/welcome. Run `python docs/migration/verify_food_delivery_live.py` for catalogue pricing, CRUD and write-gate checks. The current port 8080 proxy has no Food Delivery route.
 - TicketInfo: run `python docs/migration/verify_ticketinfo_live.py` to compare the local module with the retained legacy service on port 15681. Travel and booking modules call the local API.
-- WaitOrder has no current UI screen or port-8080 route. Run `python docs/migration/verify_wait_order_live.py`; its authenticated API is at http://localhost:18080/api/v1/waitorderservice/welcome. The isolated candidate was stopped after testing to save memory; start it with `docker start wait-order-module-candidate` before running `python docs/migration/verify_wait_order_candidate.py`. Automatic booking retries remain disabled.
+- WaitOrder has no current UI screen or port-8080 route. Run `python docs/migration/verify_wait_order_live.py`; its authenticated API is at http://localhost:18080/api/v1/waitorderservice/welcome. The booking retry was tested in an isolated candidate; see [WaitOrder migration results](wait-order-results.md). Add `--write` only when you want a new synthetic wait-list entry; its deliberately invalid contact will retry until expiry.
 - Local email inbox: http://localhost:8025
 
 Run `mvn -f ts-modulith/pom.xml test` to check module boundaries and the Station
 module's Spring context. The architecture test calls Spring Modulith's
 `ApplicationModules.verify()`.
+
+The shared-host image includes the Avatar Python worker. After packaging the
+JAR, rebuild it with `docker build -f ts-modulith/Dockerfile.avatar -t
+train-ticket/ts-modulith:trip-catalog-candidate ts-modulith`. The plain
+`ts-modulith/Dockerfile` lacks that worker.
+
+The Trip Catalog cutover was checked with
+`python docs/migration/verify_trip_catalog_candidate.py` and
+`python docs/migration/verify_trip_catalog_booking_candidate.py`. The first
+compares Travel, Travel2 and Seat reads against the previous live host. The
+second books both trip types into isolated Order databases. Both candidates
+set the old Seat-to-Travel URLs to an unreachable address.
 
 ## Try the UI
 
@@ -83,6 +97,17 @@ module's Spring context. The architecture test calls Spring Modulith's
 5. In browser developer tools, inspect both Order List `refresh` requests:
    Orders has `X-Orders-Backend: module`, and OrderOther has
    `X-OrderOther-Backend: module`. Station has `X-Station-Backend: module`.
+
+To check the latest direct module calls, sign in through **Login**, open
+**Ticket Reserve**, choose a future trip and select a contact. Choose
+**Assurance** and **Need Food** before booking. For a consign check, also
+select **Consign** and enter its details. The booking response is
+`POST /api/v1/preserveservice/preserve` with `X-Preserve-Backend: module`;
+the order should appear on **Order List**. Calls between modules run inside
+the host and do not appear as separate browser Network requests. The isolated
+candidate verified Auth, Preserve, Assurance, Food and Consign with their
+legacy URLs disabled. An eligible test order's Cancel action also exercises
+the Cancel module's local User lookup.
 
 Config's route is `http://localhost:8080/api/v1/configservice/configs` and its
 response has `X-Config-Backend: module`. The API workflow has been tested automatically. A full manual browser walkthrough
@@ -296,3 +321,6 @@ Auth can be rolled back independently with `python docs/migration/hybrid_routing
 
 User can be rolled back independently with `python docs/migration/hybrid_routing.py legacy user` and returned with `python docs/migration/hybrid_routing.py module user`. Run `python docs/migration/verify_user_rollback.py` for a read-only rehearsal. To prove the User backend directly, inspect `GET http://localhost:8080/api/v1/userservice/users/fdse_microservice` for `X-User-Backend: module`. Admin User now calls User through its published module API; its independent rollback rehearsal is `python docs/migration/verify_admin_user_rollback.py`. On http://localhost:8080/admin_user.html, inspect `GET /api/v1/adminuserservice/users` for `X-AdminUser-Backend: module`. See the [User report](user-results.md) and [Admin User report](admin-user-results.md).
 
+## Direct module calls checkpoint
+
+Run `python docs/migration/verify_direct_modules_candidate.py` to start an isolated copy of the host. It checks the 45-module graph, login, both trip searches, and both booking paths with Assurance, Food and Consign using separate test databases. It also checks that Java source has no in-host HTTP client. After it passes, `python docs/migration/prepare_direct_modules.py` updates the hybrid host. Then run `python docs/migration/verify_checkpoint.py`, `python docs/migration/verify_booking.py direct-modules-live`, and `python docs/migration/verify_booking_other.py direct-modules-other-live`. The browser still uses HTTP through port 8080; response headers identify the routed module but cannot by themselves prove that calls *inside* the host are in-process.

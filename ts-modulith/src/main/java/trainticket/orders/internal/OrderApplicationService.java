@@ -83,6 +83,18 @@ implements OrderOperations {
         return new OrderResult(Integer.valueOf(1), this.success, (Object)order);
     }
 
+    @Override public OrderResult createIfAbsent(Order order) {
+        if (order.getId() == null) throw new IllegalArgumentException("Stable order ID required");
+        boolean inserted=orderRepository.insertIfAbsent(order);
+        Order saved=inserted?order:orderRepository.findById(order.getId());
+        if (saved == null) throw new IllegalStateException("Existing order disappeared");
+        if (!saved.getAccountId().equals(order.getAccountId())
+                || !saved.getTrainNumber().equals(order.getTrainNumber())
+                || !saved.getTravelDate().equals(order.getTravelDate()))
+            throw new IllegalStateException("Stable order ID belongs to another booking");
+        return new OrderResult(1, inserted?"Success":"Already booked", saved);
+    }
+
     @Override
     public OrderResult alterOrder(OrderAlterInfo oai) {
         UUID oldOrderId = oai.getPreviousOrderId();

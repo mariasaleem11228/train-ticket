@@ -13,6 +13,7 @@ import java.util.List;
 @ConditionalOnProperty(name="modulith.wait-order.enabled", havingValue="true")
 class WaitOrderRepository {
     private final String url,user,password;
+    private volatile boolean schemaReady;
     WaitOrderRepository(@Value("${modulith.wait-order.jdbc-url}") String url,
                         @Value("${modulith.wait-order.username}") String user,
                         @Value("${modulith.wait-order.password}") String password) {
@@ -21,17 +22,40 @@ class WaitOrderRepository {
 
     private Connection connect() throws SQLException {
         Connection db=DriverManager.getConnection(url,user,password);
-        try (Statement statement=db.createStatement()) {
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS wait_list_order ("
-                +"id VARCHAR(36) PRIMARY KEY, travel_time DATETIME(3), account_id VARCHAR(36),"
-                +"contacts_id VARCHAR(36), contacts_name VARCHAR(255), contacts_document_type INT,"
-                +"contacts_document_number VARCHAR(255), train_number VARCHAR(64), seat_type INT,"
-                +"from_station VARCHAR(255), to_station VARCHAR(255), price VARCHAR(64),"
-                +"wait_util_time DATETIME(3), created_time DATETIME(3), status INT,"
-                +"dedup_key CHAR(64) NOT NULL UNIQUE,"
-                +"INDEX idx_wait_account (account_id), INDEX idx_wait_status (status,wait_util_time))");
+        try {
+            if (!schemaReady) synchronized(this) {
+                if (!schemaReady) {
+                    try (Statement statement=db.createStatement()) {
+                        statement.executeUpdate("CREATE TABLE IF NOT EXISTS wait_list_order ("
+                            +"id VARCHAR(36) PRIMARY KEY, travel_time DATETIME(3), account_id VARCHAR(36),"
+                            +"contacts_id VARCHAR(36), contacts_name VARCHAR(255), contacts_document_type INT,"
+                            +"contacts_document_number VARCHAR(255), train_number VARCHAR(64), seat_type INT,"
+                            +"from_station VARCHAR(255), to_station VARCHAR(255), price VARCHAR(64),"
+                            +"wait_util_time DATETIME(3), created_time DATETIME(3), status INT,"
+                            +"dedup_key CHAR(64) NOT NULL UNIQUE,"
+                            +"next_attempt DATETIME(3), lease_token VARCHAR(36), lease_until DATETIME(3),"
+                            +"booking_order_id VARCHAR(36), attempt_count INT NOT NULL DEFAULT 0,"
+                            +"last_error VARCHAR(512),"
+                            +"INDEX idx_wait_account (account_id), INDEX idx_wait_status (status,wait_util_time))");
+                        ensureColumn(db,statement,"next_attempt","DATETIME(3)");
+                        ensureColumn(db,statement,"lease_token","VARCHAR(36)");
+                        ensureColumn(db,statement,"lease_until","DATETIME(3)");
+                        ensureColumn(db,statement,"booking_order_id","VARCHAR(36)");
+                        ensureColumn(db,statement,"attempt_count","INT NOT NULL DEFAULT 0");
+                        ensureColumn(db,statement,"last_error","VARCHAR(512)");
+                    }
+                    schemaReady=true;
+                }
+            }
         } catch (SQLException error) { db.close(); throw error; }
         return db;
+    }
+
+    private void ensureColumn(Connection db,Statement statement,String name,String type) throws SQLException {
+        try (ResultSet found=db.getMetaData().getColumns(db.getCatalog(),null,"wait_list_order",name)) {
+            if (found.next())return;
+        }
+        statement.executeUpdate("ALTER TABLE wait_list_order ADD COLUMN "+name+" "+type);
     }
 
     List<WaitOrderRecord> all() {
@@ -88,6 +112,50 @@ class WaitOrderRepository {
                 "UPDATE wait_list_order SET status=5 WHERE status IN (0,1) AND wait_util_time < CURRENT_TIMESTAMP(3)")) {
             return sql.executeUpdate();
         } catch (SQLException error) { throw new IllegalStateException("WaitOrder expiry failed",error); }
+    }
+
+    record Claim(WaitOrderRecord order,String token) { }
+
+    Claim claimDue() {
+        String token=java.util.UUID.randomUUID().toString();
+        try (Connection db=connect(); PreparedStatement claim=db.prepareStatement(
+                "UPDATE wait_list_order SET lease_token=?, "
+                +"lease_until=DATE_ADD(CURRENT_TIMESTAMP(3), INTERVAL 120 SECOND), "
+                +"attempt_count=attempt_count+1 WHERE status IN (0,1) "
+                +"AND wait_util_time>CURRENT_TIMESTAMP(3) "
+                +"AND (next_attempt IS NULL OR next_attempt<=CURRENT_TIMESTAMP(3)) "
+                +"AND (lease_until IS NULL OR lease_until<CURRENT_TIMESTAMP(3)) "
+                +"ORDER BY created_time,id LIMIT 1")) {
+            claim.setString(1,token);
+            if (claim.executeUpdate()==0)return null;
+            try (PreparedStatement lookup=db.prepareStatement(
+                    "SELECT * FROM wait_list_order WHERE lease_token=?")) {
+                lookup.setString(1,token);
+                try (ResultSet rows=lookup.executeQuery()) {
+                    return rows.next()?new Claim(map(rows),token):null;
+                }
+            }
+        } catch (SQLException error) { throw new IllegalStateException("WaitOrder claim failed",error); }
+    }
+
+    void complete(Claim claim,String bookingOrderId) {
+        try (Connection db=connect(); PreparedStatement sql=db.prepareStatement(
+                "UPDATE wait_list_order SET status=2,booking_order_id=?,lease_token=NULL,"
+                +"lease_until=NULL,next_attempt=NULL,last_error=NULL WHERE id=? AND lease_token=?")) {
+            sql.setString(1,bookingOrderId);sql.setString(2,claim.order().id());sql.setString(3,claim.token());
+            if (sql.executeUpdate()!=1)throw new IllegalStateException("WaitOrder lease was lost");
+        } catch (SQLException error) { throw new IllegalStateException("WaitOrder completion failed",error); }
+    }
+
+    void retryLater(Claim claim,String reason,int backoffSeconds) {
+        try (Connection db=connect(); PreparedStatement sql=db.prepareStatement(
+                "UPDATE wait_list_order SET lease_token=NULL,lease_until=NULL,last_error=?,"
+                +"next_attempt=DATE_ADD(CURRENT_TIMESTAMP(3), INTERVAL ? SECOND) "
+                +"WHERE id=? AND lease_token=?")) {
+            sql.setString(1,reason.length()>500?reason.substring(0,500):reason);
+            sql.setInt(2,backoffSeconds);sql.setString(3,claim.order().id());sql.setString(4,claim.token());
+            sql.executeUpdate();
+        } catch (SQLException error) { throw new IllegalStateException("WaitOrder retry update failed",error); }
     }
 
     private WaitOrderRecord map(ResultSet row) throws SQLException {

@@ -373,9 +373,10 @@ if not args.legacy_framework:
     if 'config' in expected_modules:
         check('Config is an independent Spring Modulith module', modules['config']['dependencies'] == [])
     if 'seat' in expected_modules:
-        check('Seat uses Orders, OrderOther and Config',
+        check('Seat uses its published providers',
               {edge['target'] for edge in modules['seat']['dependencies']} ==
-              {'orders', 'orderother', 'config'})
+              {'orders', 'orderother', 'config'} |
+              ({'tripcatalog', 'route', 'train'} if 'tripcatalog' in expected_modules else set()))
     if 'security' in expected_modules:
         check('Security uses Orders and OrderOther',
               {edge['target'] for edge in modules['security']['dependencies']} ==
@@ -393,11 +394,18 @@ if not args.legacy_framework:
     if 'travel' in expected_modules:
         check('Travel uses its published providers',
               {edge['target'] for edge in modules['travel']['dependencies']} ==
-              {'train', 'route', 'orders', 'seat'} | ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()))
+              {'train', 'route', 'orders', 'seat'} |
+              ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()) |
+              ({'tripcatalog'} if 'tripcatalog' in expected_modules else set()))
     if 'travel2' in expected_modules:
         check('Travel2 uses its published providers',
               {edge['target'] for edge in modules['travel2']['dependencies']} ==
-              {'train', 'route', 'orders', 'seat'} | ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()))
+              {'train', 'route', 'orders', 'seat'} |
+              ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()) |
+              ({'tripcatalog'} if 'tripcatalog' in expected_modules else set()))
+    if 'tripcatalog' in expected_modules:
+        check('Trip Catalog owns trip persistence without module dependencies',
+              modules['tripcatalog']['dependencies'] == [])
     if 'routeplan' in expected_modules:
         check('Route Plan uses Station, Route, Travel and Travel2',
               {edge['target'] for edge in modules['routeplan']['dependencies']} ==
@@ -412,7 +420,8 @@ if not args.legacy_framework:
     if 'preserveother' in expected_modules:
         check('PreserveOther uses its published providers',
               {edge['target'] for edge in modules['preserveother']['dependencies']} ==
-              {'security', 'contacts', 'travel2', 'station', 'seat', 'orderother'} |
+              {'security', 'contacts', 'travel2', 'station', 'seat', 'orderother',
+               'user', 'assurance', 'food', 'consign'} |
               ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()))
     if 'execute' in expected_modules:
         check('Execute uses Orders and OrderOther',
@@ -426,9 +435,9 @@ if not args.legacy_framework:
               {edge['target'] for edge in modules['insidepayment']['dependencies']} ==
               {'orders','orderother','payment'})
     if 'cancel' in expected_modules:
-        check('Cancel uses Orders, OrderOther and Inside Payment',
+        check('Cancel uses Orders, OrderOther, Inside Payment and User',
               {edge['target'] for edge in modules['cancel']['dependencies']} ==
-              {'orders','orderother','insidepayment'})
+              {'orders','orderother','insidepayment','user'})
     if 'rebook' in expected_modules:
         check('Rebook uses seven published modules',
               {edge['target'] for edge in modules['rebook']['dependencies']} ==
@@ -456,8 +465,8 @@ if not args.legacy_framework:
         check('Verification Code is an independent Spring Modulith module',
               modules['verifycode']['dependencies'] == [])
     if 'auth' in expected_modules:
-        check('Auth is an independent Spring Modulith module',
-              modules['auth']['dependencies'] == [])
+        check('Auth uses Verification Code through its published API',
+              {edge['target'] for edge in modules['auth']['dependencies']} == {'verifycode'})
     if 'user' in expected_modules:
         check('User uses Auth through its published API',
               {edge['target'] for edge in modules['user']['dependencies']} == {'auth'})
@@ -499,11 +508,13 @@ if not args.legacy_framework:
         check('TicketInfo uses Basic and Station published APIs',
               {dependency['target'] for dependency in modules['ticketinfo']['dependencies']} == {'basic', 'station'})
     if 'waitorder' in expected_modules:
-        check('WaitOrder is an independent Spring Modulith module', modules['waitorder']['dependencies'] == [])
+        check('WaitOrder uses Preserve through a published module API',
+              {dependency['target'] for dependency in modules['waitorder']['dependencies']} == {'preserve'})
     if 'preserve' in expected_modules:
         check('Preserve uses its published providers',
               {edge['target'] for edge in modules['preserve']['dependencies']} ==
-              {'security', 'contacts', 'travel', 'station', 'seat', 'orders'} |
+              {'security', 'contacts', 'travel', 'station', 'seat', 'orders',
+               'user', 'assurance', 'food', 'consign'} |
               ({'ticketinfo'} if 'ticketinfo' in expected_modules else set()))
 fixture = json.loads((ROOT / 'deployment/migration/.state/e2e/fixture.json').read_text())
 for order in fixture['testOrders']:

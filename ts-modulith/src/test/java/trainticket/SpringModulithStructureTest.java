@@ -13,7 +13,7 @@ class SpringModulithStructureTest {
         try {
             ApplicationModules modules = ApplicationModules.of(ModulithApplication.class);
             modules.verify();
-            assertEquals(java.util.Set.of("station", "orders", "orderother", "config", "seat", "security", "train", "route", "price", "basic", "travel", "travel2", "routeplan", "travelplan", "contacts", "preserve", "preserveother", "execute", "payment", "insidepayment", "cancel", "rebook", "assurance", "consignprice", "consign", "foodmap", "food", "notification", "verifycode", "auth", "user", "adminbasic", "adminroute", "admintravel", "adminorder", "adminuser", "voucher", "news", "ticketoffice", "avatar", "delivery", "fooddelivery", "ticketinfo", "waitorder"),
+            assertEquals(java.util.Set.of("station", "orders", "orderother", "config", "seat", "security", "train", "route", "price", "basic", "travel", "travel2", "routeplan", "travelplan", "contacts", "preserve", "preserveother", "execute", "payment", "insidepayment", "cancel", "rebook", "assurance", "consignprice", "consign", "foodmap", "food", "notification", "verifycode", "auth", "user", "adminbasic", "adminroute", "admintravel", "adminorder", "adminuser", "voucher", "news", "ticketoffice", "avatar", "delivery", "fooddelivery", "ticketinfo", "waitorder", "tripcatalog"),
                     StreamSupport.stream(modules.spliterator(), false)
                             .map(module -> module.getIdentifier().toString()).collect(Collectors.toSet()));
         } finally {
