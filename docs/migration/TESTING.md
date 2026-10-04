@@ -9,6 +9,11 @@ modules; Seat, Travel and Travel2 use its published API. Avatar uses a colocated
 Python dlib utility.
 See the [WaitOrder migration results](wait-order-results.md).
 
+For all host HTTP endpoints grouped by Spring Modulith module, import the
+[Postman collection](postman/TrainTicket-Modulith.postman_collection.json) and
+follow its [setup and safety notes](postman/POSTMAN.md). The collection has 272
+method/URL mappings; Delivery and Trip Catalog are internal-only modules.
+
 ## Resume the hybrid
 
 Start Docker Desktop, then open PowerShell in `C:\TrainTicketMSsProject\train-ticket`:
